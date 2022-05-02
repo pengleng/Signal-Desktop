@@ -525,7 +525,7 @@ function makeHTTPError(
 const URL_CALLS = {
   accounts: 'v1/accounts',
   accountExistence: 'v1/accounts/account',
-  attachmentId: 'v2/attachments/form/upload',
+  attachmentId: 'v4/attachments/form/upload',
   attestation: 'v1/attestation',
   challenge: 'v1/challenge',
   config: 'v1/config',
@@ -2111,6 +2111,26 @@ export function initialize({
       signature: string;
     };
 
+    type ServerAttachmentTypeV4 = ServerAttachmentType & {
+      cdn: number;
+      signedUploadLocation: string;
+    };
+
+    function makePutParamsV4(encryptedBin: Uint8Array) {
+      const data = Buffer.from(encryptedBin);
+      const contentLength = data.length;
+
+      return {
+        data,
+        contentType: 'application/octet-stream',
+        headers: {
+          'Content-Length': contentLength.toString(),
+        },
+        dataType: 'binary',
+        processData: false,
+      };
+    }
+
     function makePutParams(
       {
         key,
@@ -2256,32 +2276,26 @@ export function initialize({
       });
     }
 
-    type PutAttachmentResponseType = ServerAttachmentType & {
-      attachmentIdString: string;
-    };
-
     async function putAttachment(encryptedBin: Uint8Array) {
       const response = (await _ajax({
         call: 'attachmentId',
         httpType: 'GET',
         responseType: 'json',
-      })) as PutAttachmentResponseType;
+      })) as ServerAttachmentTypeV4;
 
-      const { attachmentIdString } = response;
-
-      const params = makePutParams(response, encryptedBin);
+      const params = makePutParamsV4(encryptedBin);
 
       // This is going to the CDN, not the service, so we use _outerAjax
-      await _outerAjax(`${cdnUrlObject['0']}/attachments/`, {
+      await _outerAjax(response.signedUploadLocation, {
         ...params,
         certificateAuthority,
         proxyUrl,
         timeout: 0,
-        type: 'POST',
+        type: 'PUT',
         version,
       });
 
-      return attachmentIdString;
+      return response.key;
     }
 
     function getHeaderPadding() {
