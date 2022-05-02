@@ -28,7 +28,7 @@ import { MessageMetadata } from './MessageMetadata';
 import { MessageTextMetadataSpacer } from './MessageTextMetadataSpacer';
 import { ImageGrid } from './ImageGrid';
 import { GIF } from './GIF';
-import { Image } from './Image';
+import { CurveType, Image } from './Image';
 import { ContactName } from './ContactName';
 import type { QuotedAttachmentType } from './Quote';
 import { Quote } from './Quote';
@@ -83,6 +83,7 @@ import { getCustomColorStyle } from '../../util/getCustomColorStyle';
 import { offsetDistanceModifier } from '../../util/popperUtil';
 import * as KeyboardLayout from '../../services/keyboardLayout';
 import { StopPropagation } from '../StopPropagation';
+import type { UUIDStringType } from '../../types/UUID';
 
 type Trigger = {
   handleContextClick: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -279,7 +280,7 @@ export type PropsActions = {
   clearSelectedMessage: () => unknown;
   doubleCheckMissingQuoteReference: (messageId: string) => unknown;
   messageExpanded: (id: string, displayLimit: number) => unknown;
-  checkForAccount: (identifier: string) => unknown;
+  checkForAccount: (phoneNumber: string) => unknown;
 
   reactToMessage: (
     id: string,
@@ -293,10 +294,14 @@ export type PropsActions = {
   deleteMessageForEveryone: (id: string) => void;
   showMessageDetail: (id: string) => void;
 
+  startConversation: (e164: string, uuid: UUIDStringType) => void;
   openConversation: (conversationId: string, messageId?: string) => void;
   showContactDetail: (options: {
     contact: EmbeddedContactType;
-    signalAccount?: string;
+    signalAccount?: {
+      phoneNumber: string;
+      uuid: UUIDStringType;
+    };
   }) => void;
   showContactModal: (contactId: string, conversationId?: string) => void;
 
@@ -501,7 +506,7 @@ export class Message extends React.PureComponent<Props, State> {
     }
 
     const { contact, checkForAccount } = this.props;
-    if (contact && contact.firstNumber && !contact.isNumberOnSignal) {
+    if (contact && contact.firstNumber && !contact.uuid) {
       checkForAccount(contact.firstNumber);
     }
   }
@@ -594,14 +599,11 @@ export class Message extends React.PureComponent<Props, State> {
    * because it can reduce layout jumpiness.
    */
   private guessMetadataWidth(): number {
-    const { direction, expirationLength, expirationTimestamp, status } =
-      this.props;
+    const { direction, expirationLength, status } = this.props;
 
     let result = GUESS_METADATA_WIDTH_TIMESTAMP_SIZE;
 
-    const hasExpireTimer = Boolean(
-      expirationLength && (expirationTimestamp || direction === 'outgoing')
-    );
+    const hasExpireTimer = Boolean(expirationLength);
     if (hasExpireTimer) {
       result += GUESS_METADATA_WIDTH_EXPIRE_TIMER_SIZE;
     }
@@ -906,18 +908,17 @@ export class Message extends React.PureComponent<Props, State> {
           <div className={containerClassName}>
             <ImageGrid
               attachments={attachments}
-              withContentAbove={
-                isSticker || withContentAbove || shouldCollapseAbove
-              }
-              withContentBelow={
-                isSticker || withContentBelow || shouldCollapseBelow
-              }
+              direction={direction}
+              withContentAbove={isSticker || withContentAbove}
+              withContentBelow={isSticker || withContentBelow}
               isSticker={isSticker}
               stickerSize={STICKER_SIZE}
               bottomOverlay={bottomOverlay}
               i18n={i18n}
-              theme={theme}
               onError={this.handleImageError}
+              theme={theme}
+              shouldCollapseAbove={shouldCollapseAbove}
+              shouldCollapseBelow={shouldCollapseBelow}
               tabIndex={tabIndex}
               onClick={attachment => {
                 if (!isDownloaded(attachment)) {
@@ -1058,6 +1059,7 @@ export class Message extends React.PureComponent<Props, State> {
       openLink,
       previews,
       quote,
+      shouldCollapseAbove,
       theme,
       kickOffAttachmentDownload,
     } = this.props;
@@ -1111,6 +1113,8 @@ export class Message extends React.PureComponent<Props, State> {
           <ImageGrid
             attachments={[first.image]}
             withContentAbove={withContentAbove}
+            direction={direction}
+            shouldCollapseAbove={shouldCollapseAbove}
             withContentBelow
             onError={this.handleImageError}
             i18n={i18n}
@@ -1122,10 +1126,14 @@ export class Message extends React.PureComponent<Props, State> {
           {first.image && previewHasImage && !isFullSizeImage ? (
             <div className="module-message__link-preview__icon_container">
               <Image
-                smallCurveTopLeft={!withContentAbove}
                 noBorder
                 noBackground
-                softCorners
+                curveBottomLeft={
+                  withContentAbove ? CurveType.Tiny : CurveType.Small
+                }
+                curveBottomRight={CurveType.Tiny}
+                curveTopRight={CurveType.Tiny}
+                curveTopLeft={CurveType.Tiny}
                 alt={i18n('previewThumbnail', [first.domain])}
                 height={72}
                 width={72}
@@ -1336,8 +1344,7 @@ export class Message extends React.PureComponent<Props, State> {
       this.getMetadataPlacement() !== MetadataPlacement.NotRendered;
 
     const otherContent =
-      (contact && contact.firstNumber && contact.isNumberOnSignal) ||
-      withCaption;
+      (contact && contact.firstNumber && contact.uuid) || withCaption;
     const tabIndex = otherContent ? 0 : -1;
 
     return (
@@ -1346,7 +1353,18 @@ export class Message extends React.PureComponent<Props, State> {
         isIncoming={direction === 'incoming'}
         i18n={i18n}
         onClick={() => {
-          showContactDetail({ contact, signalAccount: contact.firstNumber });
+          const signalAccount =
+            contact.firstNumber && contact.uuid
+              ? {
+                  phoneNumber: contact.firstNumber,
+                  uuid: contact.uuid,
+                }
+              : undefined;
+
+          showContactDetail({
+            contact,
+            signalAccount,
+          });
         }}
         withContentAbove={withContentAbove}
         withContentBelow={withContentBelow}
@@ -1356,20 +1374,30 @@ export class Message extends React.PureComponent<Props, State> {
   }
 
   public renderSendMessageButton(): JSX.Element | null {
-    const { contact, openConversation, i18n } = this.props;
+    const { contact, direction, shouldCollapseBelow, startConversation, i18n } =
+      this.props;
+    const noBottomLeftCurve = direction === 'incoming' && shouldCollapseBelow;
+    const noBottomRightCurve = direction === 'outgoing' && shouldCollapseBelow;
+
     if (!contact) {
       return null;
     }
-    const { firstNumber, isNumberOnSignal } = contact;
-    if (!firstNumber || !isNumberOnSignal) {
+    const { firstNumber, uuid } = contact;
+    if (!firstNumber || !uuid) {
       return null;
     }
 
     return (
       <button
         type="button"
-        onClick={() => openConversation(firstNumber)}
-        className="module-message__send-message-button"
+        onClick={() => startConversation(firstNumber, uuid)}
+        className={classNames(
+          'module-message__send-message-button',
+          noBottomLeftCurve &&
+            'module-message__send-message-button--no-bottom-left-curve',
+          noBottomRightCurve &&
+            'module-message__send-message-button--no-bottom-right-curve'
+        )}
       >
         {i18n('sendMessageToContact')}
       </button>
@@ -1710,6 +1738,7 @@ export class Message extends React.PureComponent<Props, State> {
     const {
       attachments,
       canDownload,
+      contact,
       canReact,
       canReply,
       canRetry,
@@ -1729,7 +1758,7 @@ export class Message extends React.PureComponent<Props, State> {
       text,
     } = this.props;
 
-    const canForward = !isTapToView && !deletedForEveryone;
+    const canForward = !isTapToView && !deletedForEveryone && !contact;
     const multipleAttachments = attachments && attachments.length > 1;
 
     const shouldShowAdditional =
@@ -2483,7 +2512,7 @@ export class Message extends React.PureComponent<Props, State> {
       this.audioButtonRef.current.click();
     }
 
-    if (contact && contact.firstNumber && contact.isNumberOnSignal) {
+    if (contact && contact.firstNumber && contact.uuid) {
       openConversation(contact.firstNumber);
 
       event.preventDefault();
@@ -2491,7 +2520,14 @@ export class Message extends React.PureComponent<Props, State> {
     }
 
     if (contact) {
-      showContactDetail({ contact, signalAccount: contact.firstNumber });
+      const signalAccount =
+        contact.firstNumber && contact.uuid
+          ? {
+              phoneNumber: contact.firstNumber,
+              uuid: contact.uuid,
+            }
+          : undefined;
+      showContactDetail({ contact, signalAccount });
 
       event.preventDefault();
       event.stopPropagation();
@@ -2628,7 +2664,7 @@ export class Message extends React.PureComponent<Props, State> {
     const containerStyles = {
       width: isShowingImage ? width : undefined,
     };
-    if (!isStickerLike && direction === 'outgoing') {
+    if (!isStickerLike && !deletedForEveryone && direction === 'outgoing') {
       Object.assign(containerStyles, getCustomColorStyle(customColor));
     }
 
@@ -2638,6 +2674,10 @@ export class Message extends React.PureComponent<Props, State> {
           className={containerClassnames}
           style={containerStyles}
           onContextMenu={this.showContextMenu}
+          role="row"
+          onKeyDown={this.handleKeyDown}
+          onClick={this.handleClick}
+          tabIndex={-1}
         >
           {this.renderAuthor()}
           {this.renderContents()}
@@ -2687,7 +2727,6 @@ export class Message extends React.PureComponent<Props, State> {
         //   cannot be within another button
         role="button"
         onKeyDown={this.handleKeyDown}
-        onClick={this.handleClick}
         onFocus={this.handleFocus}
         ref={this.focusRef}
       >

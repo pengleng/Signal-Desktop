@@ -2932,6 +2932,7 @@ async function updateGroup(
     );
 
     if (
+      !isMe(contact.attributes) &&
       member.profileKey &&
       member.profileKey.length > 0 &&
       contact.get('profileKey') !== member.profileKey
@@ -3893,7 +3894,10 @@ async function integrateGroupChange({
 
     const newMembers = profileKeysToMembers(newProfileKeys);
 
-    if (groupChangeMessages.length !== 0 || newMembers.length !== 0) {
+    if (
+      canApplyChange &&
+      (groupChangeMessages.length !== 0 || newMembers.length !== 0)
+    ) {
       assert(
         groupChangeMessages.length === 0,
         'Fallback group state processing should not kick in'

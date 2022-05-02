@@ -6,12 +6,18 @@ import { hasErrors } from '../state/selectors/message';
 import { readReceiptsJobQueue } from '../jobs/readReceiptsJobQueue';
 import { readSyncJobQueue } from '../jobs/readSyncJobQueue';
 import { notificationService } from '../services/notifications';
+import { isGroup } from './whatTypeOfConversation';
 import * as log from '../logging/log';
+import { getConversationIdForLogging } from './idForLogging';
 
 export async function markConversationRead(
   conversationAttrs: ConversationAttributesType,
   newestUnreadAt: number,
-  options: { readAt?: number; sendReadReceipts: boolean } = {
+  options: {
+    readAt?: number;
+    sendReadReceipts: boolean;
+    newestSentAt?: number;
+  } = {
     sendReadReceipts: true,
   }
 ): Promise<boolean> {
@@ -22,6 +28,7 @@ export async function markConversationRead(
       conversationId,
       newestUnreadAt,
       readAt: options.readAt,
+      isGroup: isGroup(conversationAttrs),
     }),
     window.Signal.Data.getUnreadReactionsAndMarkRead({
       conversationId,
@@ -30,7 +37,8 @@ export async function markConversationRead(
   ]);
 
   log.info('markConversationRead', {
-    conversationId,
+    conversationId: getConversationIdForLogging(conversationAttrs),
+    newestSentAt: options.newestSentAt,
     newestUnreadAt,
     unreadMessages: unreadMessages.length,
     unreadReactions: unreadReactions.length,

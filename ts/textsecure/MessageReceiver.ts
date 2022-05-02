@@ -60,7 +60,11 @@ import type { UnprocessedType } from '../textsecure.d';
 import { deriveGroupFields, MASTER_KEY_LENGTH } from '../groups';
 
 import createTaskWithTimeout from './TaskWithTimeout';
-import { processAttachment, processDataMessage } from './processDataMessage';
+import {
+  processAttachment,
+  processDataMessage,
+  processGroupV2Context,
+} from './processDataMessage';
 import { processSyncMessage } from './processSyncMessage';
 import type { EventHandler } from './EventTarget';
 import EventTarget from './EventTarget';
@@ -100,7 +104,6 @@ import {
   KeysEvent,
   PNIIdentityEvent,
   StickerPackEvent,
-  VerifiedEvent,
   ReadSyncEvent,
   ViewSyncEvent,
   ContactEvent,
@@ -110,7 +113,6 @@ import {
 } from './messageReceiverEvents';
 import * as log from '../logging/log';
 import * as durations from '../util/durations';
-import { IMAGE_JPEG } from '../types/MIME';
 import { areArraysMatchingSets } from '../util/areArraysMatchingSets';
 import { generateBlurHash } from '../util/generateBlurHash';
 
@@ -353,6 +355,7 @@ export default class MessageReceiver
   }
 
   public stopProcessing(): void {
+    log.info('MessageReceiver.stopProcessing');
     this.stoppingProcessing = true;
   }
 
@@ -479,11 +482,6 @@ export default class MessageReceiver
   public override addEventListener(
     name: 'sticker-pack',
     handler: (ev: StickerPackEvent) => void
-  ): void;
-
-  public override addEventListener(
-    name: 'verified',
-    handler: (ev: VerifiedEvent) => void
   ): void;
 
   public override addEventListener(
@@ -1803,8 +1801,7 @@ export default class MessageReceiver
 
     if (msg.textAttachment) {
       attachments.push({
-        contentType: IMAGE_JPEG,
-        size: 0,
+        size: msg.textAttachment.text?.length,
         textAttachment: msg.textAttachment,
         blurHash: generateBlurHash(
           (msg.textAttachment.color ||
@@ -1814,8 +1811,21 @@ export default class MessageReceiver
       });
     }
 
+    const groupV2 = msg.group ? processGroupV2Context(msg.group) : undefined;
+    if (groupV2 && this.isGroupBlocked(groupV2.id)) {
+      log.warn(
+        `MessageReceiver.handleStoryMessage: envelope ${this.getEnvelopeId(
+          envelope
+        )} ignored; destined for blocked group`
+      );
+      this.removeFromCache(envelope);
+      return;
+    }
+
     const expireTimer = Math.min(
-      (envelope.serverTimestamp + durations.DAY - Date.now()) / 1000,
+      Math.floor(
+        (envelope.serverTimestamp + durations.DAY - Date.now()) / 1000
+      ),
       durations.DAY / 1000
     );
 
@@ -1843,6 +1853,7 @@ export default class MessageReceiver
           attachments,
           expireTimer,
           flags: 0,
+          groupV2,
           isStory: true,
           isViewOnce: false,
           timestamp: envelope.timestamp,
@@ -2441,7 +2452,9 @@ export default class MessageReceiver
       return this.handleRead(envelope, syncMessage.read);
     }
     if (syncMessage.verified) {
-      return this.handleVerified(envelope, syncMessage.verified);
+      log.info('Got verified sync message, dropping');
+      this.removeFromCache(envelope);
+      return undefined;
     }
     if (syncMessage.configuration) {
       return this.handleConfiguration(envelope, syncMessage.configuration);
@@ -2612,6 +2625,7 @@ export default class MessageReceiver
     }
 
     log.info('MessageReceiver: scheduling pni identity sync message');
+    this.pendingPNIIdentityEvent?.confirm();
     this.pendingPNIIdentityEvent = ev;
   }
 
@@ -2634,27 +2648,6 @@ export default class MessageReceiver
       this.removeFromCache.bind(this, envelope)
     );
 
-    return this.dispatchAndWait(ev);
-  }
-
-  private async handleVerified(
-    envelope: ProcessedEnvelope,
-    verified: Proto.IVerified
-  ): Promise<void> {
-    const ev = new VerifiedEvent(
-      {
-        state: verified.state,
-        destination: dropNull(verified.destination),
-        destinationUuid: verified.destinationUuid
-          ? normalizeUuid(
-              verified.destinationUuid,
-              'handleVerified.destinationUuid'
-            )
-          : undefined,
-        identityKey: verified.identityKey ? verified.identityKey : undefined,
-      },
-      this.removeFromCache.bind(this, envelope)
-    );
     return this.dispatchAndWait(ev);
   }
 

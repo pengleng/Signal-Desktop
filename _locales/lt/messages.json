@@ -221,6 +221,10 @@
         "message": "Šie pokalbiai yra archyvuoti ir atsiras skyrelyje Gauta tik tuomet, jei bus gautos naujos žinutės.",
         "description": "Shown at the top of the archived conversations list in the left pane"
     },
+    "noArchivedConversations": {
+        "message": "Nėra jokių archyvuotų pokalbių.",
+        "description": "Shown at the top of the archived conversations list in the left pane if there is no any archived conversation"
+    },
     "archiveConversation": {
         "message": "Archyvuoti",
         "description": "Shown in menu for conversation, and moves conversation out of main conversation list"
@@ -833,7 +837,11 @@
     },
     "findByUsernameHeader": {
         "message": "Rasti pagal naudotojo vardą",
-        "description": "Shown to separate the types of search results"
+        "description": "Shown when search could be a valid username, with one sub-item that will kick off the search"
+    },
+    "findByPhoneNumberHeader": {
+        "message": "Rasti pagal telefono numerį",
+        "description": "Shown when search could be a valid phone number, with one sub-item that will kick off the search"
     },
     "at-username": {
         "message": "@$username$",
@@ -966,7 +974,7 @@
         "description": "Confirmation dialog message for when the voice recording is interrupted due to app losing focus"
     },
     "voiceNoteLimit": {
-        "message": "Balso žinutės trukmė yra ribojama iki penkių minučių. Jei perjungsite į kitą programą, įrašymas bus sustabdytas.",
+        "message": "Balso žinučių trukmė yra ribojama iki vienos valandos. Jei perjungsite į kitą programą, įrašymas bus sustabdytas.",
         "description": "Shown in toast to warn user about limited time and that window must be in focus"
     },
     "voiceNoteMustBeOnlyAttachment": {
@@ -1055,6 +1063,20 @@
                 "content": "$2",
                 "example": "retry update"
             },
+            "url": {
+                "content": "$2",
+                "example": "https://signal.org/download"
+            },
+            "support": {
+                "content": "$3",
+                "example": "contact support"
+            }
+        }
+    },
+    "cannotUpdateRequireManualDetail": {
+        "message": "Signal nepavyko atsinaujinti. Apsilankykite adresu $url$, kad įdiegtumėte programą rankiniu būdu. Tuomet, $support$ dėl šios problemos",
+        "description": "Shown if a general error happened while trying to install update package and manual update is required",
+        "placeholders": {
             "url": {
                 "content": "$2",
                 "example": "https://signal.org/download"
@@ -2383,6 +2405,10 @@
         "message": "Nepavyko gauti naudotojo vardo. Patikrinkite interneto ryšį ir bandykite dar kartą.",
         "description": "Shown if request to Signal servers to find username fails"
     },
+    "Toast--failed-to-fetch-phone-number": {
+        "message": "Nepavyko gauti telefono numerio. Patikrinkite interneto ryšį ir bandykite dar kartą.",
+        "description": "Shown if request to Signal servers to find phone number fails"
+    },
     "startConversation--username-not-found": {
         "message": "Naudotojas nerastas. $atUsername$ nėra Signal naudotojas; įsitikinkite, kad įvedėte pilną naudotojo vardą.",
         "description": "Shown in dialog if username is not found. Note that 'username' will be the output of at-username",
@@ -2390,6 +2416,26 @@
             "atUsername": {
                 "content": "$1",
                 "example": "@alex"
+            }
+        }
+    },
+    "startConversation--phone-number-not-found": {
+        "message": "Naudotojas nerastas. „$phoneNumber$“ nėra Signal naudotojas.",
+        "description": "Shown in dialog if phone number is not found.",
+        "placeholders": {
+            "phoneNumber": {
+                "content": "$1",
+                "example": "+1 203-123-4567"
+            }
+        }
+    },
+    "startConversation--phone-number-not-valid": {
+        "message": "Naudotojas nerastas. „$phoneNumber$“ nėra tinkamas telefono numeris.",
+        "description": "Shown in dialog if phone number is not valid.",
+        "placeholders": {
+            "phoneNumber": {
+                "content": "$1",
+                "example": "+1 203-123-4567"
             }
         }
     },
@@ -5150,7 +5196,7 @@
         }
     },
     "GroupV2--admin-approval-bounce--one": {
-        "message": "$joinerName$ requested and cancelled their request to join via the group link",
+        "message": "$joinerName$ paprašė ir panaikino savo prašymą prisijungti per grupės nuorodą",
         "description": "Shown in timeline or conversation preview when v2 group changes",
         "placeholders": {
             "joinerName": {
@@ -5160,7 +5206,7 @@
         }
     },
     "GroupV2--admin-approval-bounce": {
-        "message": "$joinerName$ requested and cancelled $numberOfRequests$ requests to join via the group link",
+        "message": "$joinerName$ paprašė ir panaikino $numberOfRequests$ prašymus(-ų) prisijungti per grupės nuorodą",
         "description": "Shown in timeline or conversation preview when v2 group changes",
         "placeholders": {
             "joinerName": {
@@ -5750,7 +5796,7 @@
         }
     },
     "PendingRequests--deny-for--with-link": {
-        "message": "Deny request from \"$name$\"? They will not be able to request to join via the group link again.",
+        "message": "Atmesti prašymą, kurį atsiuntė „$name$“? Šis žmogus daugiau nebegalės prašyti prisijungti per grupės nuorodą.",
         "description": "This is the modal content when confirming denying a group request to join",
         "placeholders": {
             "name": {
@@ -5858,7 +5904,7 @@
         "description": "Title of dialog to block a user from requesting to join via the link again"
     },
     "PendingRequests--block--contents": {
-        "message": "$name$ will not be able to join or request to join this group via the group link. They can still be added to the group manually.",
+        "message": "$name$ negalės prisijungti prie šios grupės ar prašyti prisijungti prie jos per grupės nuorodą. Šis žmogus vis tiek galės būti pridėtas į grupę rankiniu būdu.",
         "description": "Details of dialog to block a user from requesting to join via the link again",
         "placeholders": {
             "name": {
@@ -6164,7 +6210,7 @@
         }
     },
     "RemoveGroupMemberConfirmation__description__with-link": {
-        "message": "Remove \"$name$\" from the group? They will not be able to rejoin via the group link.",
+        "message": "Pašalinti „$name$“ iš grupės? Šis žmogus nebegalės iš naujo prisijungti per grupės nuorodą.",
         "description": "When confirming the removal of a group member, show this text in the dialog",
         "placeholders": {
             "name": {
@@ -6310,6 +6356,14 @@
     "selectedCustomDisappearingTimeOption": {
         "message": "Tinkintas laikas",
         "description": "Text for an option in Conversation Details Disappearing Messages setting when user previously selected custom time"
+    },
+    "DisappearingTimeDialog__label--value": {
+        "message": "Numeris",
+        "description": "aria-label for the number select box"
+    },
+    "DisappearingTimeDialog__label--units": {
+        "message": "Laiko vienetas",
+        "description": "aria-label for the units of time select box"
     },
     "DisappearingTimeDialog__title": {
         "message": "Tinkintas laikas",
@@ -6757,6 +6811,24 @@
         "message": "Pabandykite ją užverti rankiniu būdu ir norėdami tęsti spustelėkite „Bandyti dar kartą“.",
         "description": "Second line of the dialog displayed when Windows installer can't close application automatically and needs user intervention to complete the installation."
     },
+    "NSIS__appRunning": {
+        "message": "$appName$ vis dar veikia.\nSpustelėkite „Gerai“, kad ją užvertumėte.\nJeigu ji neužsiveria, pabandykite ją užverti rankiniu būdu.",
+        "description": "The contents of a dialog displayed when Windows installer detect that the application is running and asks user to close it. Note: please keep the line breaks so that the text occupies three separate lines",
+        "placeholders": {
+            "appName": {
+                "content": "$1",
+                "example": "Signal"
+            }
+        }
+    },
+    "NSIS__decompressionFailed": {
+        "message": "Nepavyko išglaudinti failų. Bandykite paleisti diegimo programą dar kartą.",
+        "description": "Displayed when Windows installer cannot decompress application files"
+    },
+    "NSIS__uninstallFailed": {
+        "message": "Nepavyko pašalinti senos programos failų. Bandykite paleisti diegimo programą dar kartą.",
+        "description": "Displayed when Windows installer cannot uninstall the old application"
+    },
     "CrashReportDialog__title": {
         "message": "Programa užstrigo",
         "description": "A title of the dialog displayed when starting an application after a recent crash"
@@ -6941,6 +7013,10 @@
         "message": "Pridėti istoriją",
         "description": "Description hint to add a story"
     },
+    "Stories__hidden-stories": {
+        "message": "Paslėptos istorijos",
+        "description": "Button label to go to hidden stories pane"
+    },
     "Stories__list-empty": {
         "message": "Šiuo metu nėra paskiausių istorijų, kurias rodyti",
         "description": "Description for when there are no stories to show"
@@ -6991,6 +7067,10 @@
         "message": "Istorija",
         "description": "aria-label for the story list button"
     },
+    "StoryListItem__unhide": {
+        "message": "Rodyti istorijas",
+        "description": "Label for menu item to un-hide the story"
+    },
     "StoryListItem__hide": {
         "message": "Slėpti istoriją",
         "description": "Label for menu item to hide the story"
@@ -7005,17 +7085,15 @@
     },
     "StoryListItem__hide-modal--confirm": {
         "message": "Slėpti",
-        "description": "Action button for the confirmation dialog to hide a story",
-        "placeholders": {
-            "name": {
-                "content": "$1",
-                "example": "Abby"
-            }
-        }
+        "description": "Action button for the confirmation dialog to hide a story"
     },
     "StoryImage__error": {
         "message": "Klaida atvaizduojant paveikslą",
         "description": "aria-label for image errors"
+    },
+    "TextAttachment__preview__link": {
+        "message": "Aplankyti tinklalapį",
+        "description": "Title for the link preview tooltip"
     },
     "WhatsNew__modal-title": {
         "message": "Kas naujo",
@@ -7025,32 +7103,22 @@
         "message": "Šioje versijoje yra daug smulkių patobulinimų ir klaidų ištaisymų, kurie padės Signal sklandžiai veikti.",
         "description": "Release notes for releases that only include bug fixes"
     },
-    "WhatsNew__v5.35--1": {
-        "message": "Pristatyta nauja atnaujinimų sistema ir visi bičiuliai nuo kito atnaujinimo turėtų pradėti matyti smulkesnius atnaujinimus.",
-        "description": "Release notes for v5.35"
+    "WhatsNew__v5.40--1": {
+        "message": "Klaidų pataisymas, skirtas išspręsti problemą, dėl kurios, kartais, būdavo sunku spustelėti ant meniu.",
+        "description": "Release notes for v5.40"
     },
-    "WhatsNew__v5.35--2": {
-        "message": "Medijos klavišus naudojančios programos džiūgaukite! Signal daugiau jų nebeblokuoja.",
-        "description": "Release notes for v5.35"
-    },
-    "WhatsNew__v5.35--3": {
-        "message": "Geresnis šrifto palaikymas mūsų draugams japonams.",
-        "description": "Release notes for v5.35"
-    },
-    "WhatsNew__v5.36--1": {
-        "message": "Greitai peržiūrite pokalbį? Vienu metu ekrane yra daugiau vietos žinutėms. Dabar, grupuojame siuntėjų žinutes, jeigu jos buvo išsiųstos panašiu laiku.",
-        "description": "Release notes for v5.36"
-    },
-    "WhatsNew__v5.36--2": {
-        "message": "Dabar, atlikdami veiksmą „Ištrinti visiems“, matysite eigos suktuką, leidžiantį jums suprasti, ar ištrynimo veiksmas buvo sėkmingai išsiųstas, ar ne. Jei dėl kažkokių priežasčių jo išsiųsti nepavyko, galėsite bandyti dar kartą!",
-        "description": "Release notes for v5.36"
-    },
-    "WhatsNew__v5.37--1": {
-        "message": "Trumpas žinutes išlaikome trumpomis, atvaizduodami laiko žymes toje pačioje eilutėje, kaip ir tekstą. Dabar, ekrane yra daugiau vietos, kad parašytumėte draugui greitą žinutę su žodžiu „Labas“.",
-        "description": "Release notes for v5.37"
-    },
-    "WhatsNew__v5.37--2": {
-        "message": "Missing sticker packs begone! Desktop should now be able to handle all sticker packs that your phone can!",
-        "description": "Release notes for v5.37"
+    "WhatsNew__v5.40--2": {
+        "message": "Dėkojame mūsų atvirojo kodo talkininkams $dsanders11$ ir $yusufsahinhamza$ už šių patobulinimų pateikimą.",
+        "description": "Release notes for v5.40",
+        "placeholders": {
+            "dsanders11": {
+                "content": "$1",
+                "example": "dsanders11"
+            },
+            "yusufsahinhamza": {
+                "content": "$2",
+                "example": "yusufsahinhamza"
+            }
+        }
     }
 }

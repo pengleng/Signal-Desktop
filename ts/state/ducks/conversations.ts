@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 
 /* eslint-disable camelcase */
+
+import PQueue from 'p-queue';
 import type { ThunkAction } from 'redux-thunk';
 import {
   difference,
@@ -77,6 +79,7 @@ import { useBoundActions } from '../../hooks/useBoundActions';
 import type { NoopActionType } from './noop';
 import { conversationJobQueue } from '../../jobs/conversationJobQueue';
 import type { TimelineMessageLoadingState } from '../../util/timelineUtil';
+import { isGroup } from '../../util/whatTypeOfConversation';
 
 // State
 
@@ -231,8 +234,8 @@ type MessagePointerType = {
 type MessageMetricsType = {
   newest?: MessagePointerType;
   oldest?: MessagePointerType;
-  oldestUnread?: MessagePointerType;
-  totalUnread: number;
+  oldestUnseen?: MessagePointerType;
+  totalUnseen: number;
 };
 
 export type MessageLookupType = {
@@ -1272,6 +1275,10 @@ function verifyConversationsStoppingSend(): ThunkAction<
     const conversationIdsStoppingSend = getConversationIdsStoppingSend(state);
     const conversationIdsBlocked =
       getConversationIdsStoppedForVerification(state);
+    log.info(
+      `verifyConversationsStoppingSend: Starting with ${conversationIdsBlocked.length} blocked ` +
+        `conversations and ${conversationIdsStoppingSend.length} conversations to verify.`
+    );
 
     // Mark conversations as approved/verified as appropriate
     const promises: Array<Promise<unknown>> = [];
@@ -1280,6 +1287,10 @@ function verifyConversationsStoppingSend(): ThunkAction<
       if (!conversation) {
         return;
       }
+
+      log.info(
+        `verifyConversationsStoppingSend: Verifying conversation ${conversation.idForLogging()}`
+      );
       if (conversation.isUnverified()) {
         promises.push(conversation.setVerifiedDefault());
       }
@@ -1495,6 +1506,27 @@ function conversationStoppedByMissingVerification(payload: {
   conversationId: string;
   untrustedConversationIds: ReadonlyArray<string>;
 }): ConversationStoppedByMissingVerificationActionType {
+  // Fetching profiles to ensure that we have their latest identity key in storage
+  const profileFetchQueue = new PQueue({
+    concurrency: 3,
+  });
+  payload.untrustedConversationIds.forEach(untrustedConversationId => {
+    const conversation = window.ConversationController.get(
+      untrustedConversationId
+    );
+    if (!conversation) {
+      log.error(
+        `conversationStoppedByMissingVerification: conversationId ${untrustedConversationId} not found!`
+      );
+      return;
+    }
+
+    profileFetchQueue.add(() => {
+      const active = conversation.getActiveProfileFetch();
+      return active || conversation.getProfiles();
+    });
+  });
+
   return {
     type: CONVERSATION_STOPPED_BY_MISSING_VERIFICATION,
     payload,
@@ -2422,6 +2454,12 @@ export function reducer(
       return state;
     }
 
+    const conversationAttrs = state.conversationLookup[conversationId];
+    const isGroupStoryReply = isGroup(conversationAttrs) && data.storyId;
+    if (isGroupStoryReply) {
+      return state;
+    }
+
     return {
       ...state,
       messagesLookup: {
@@ -2635,7 +2673,7 @@ export function reducer(
     let metrics;
     if (messageIds.length === 0) {
       metrics = {
-        totalUnread: 0,
+        totalUnseen: 0,
       };
     } else {
       metrics = {
@@ -2753,7 +2791,7 @@ export function reducer(
       return state;
     }
 
-    let { newest, oldest, oldestUnread, totalUnread } =
+    let { newest, oldest, oldestUnseen, totalUnseen } =
       existingConversation.metrics;
 
     if (messages.length < 1) {
@@ -2815,7 +2853,7 @@ export function reducer(
     const newMessageIds = difference(newIds, existingConversation.messageIds);
     const { isNearBottom } = existingConversation;
 
-    if ((!isNearBottom || !isActive) && !oldestUnread) {
+    if ((!isNearBottom || !isActive) && !oldestUnseen) {
       const oldestId = newMessageIds.find(messageId => {
         const message = lookup[messageId];
 
@@ -2823,7 +2861,7 @@ export function reducer(
       });
 
       if (oldestId) {
-        oldestUnread = pick(lookup[oldestId], [
+        oldestUnseen = pick(lookup[oldestId], [
           'id',
           'received_at',
           'sent_at',
@@ -2831,14 +2869,14 @@ export function reducer(
       }
     }
 
-    // If this is a new incoming message, we'll increment our totalUnread count
-    if (isNewMessage && !isJustSent && oldestUnread) {
+    // If this is a new incoming message, we'll increment our totalUnseen count
+    if (isNewMessage && !isJustSent && oldestUnseen) {
       const newUnread: number = newMessageIds.reduce((sum, messageId) => {
         const message = lookup[messageId];
 
         return sum + (message && isMessageUnread(message) ? 1 : 0);
       }, 0);
-      totalUnread = (totalUnread || 0) + newUnread;
+      totalUnseen = (totalUnseen || 0) + newUnread;
     }
 
     return {
@@ -2858,8 +2896,8 @@ export function reducer(
             ...existingConversation.metrics,
             newest,
             oldest,
-            totalUnread,
-            oldestUnread,
+            totalUnseen,
+            oldestUnseen,
           },
         },
       },
@@ -2888,8 +2926,8 @@ export function reducer(
           ...existingConversation,
           metrics: {
             ...existingConversation.metrics,
-            oldestUnread: undefined,
-            totalUnread: 0,
+            oldestUnseen: undefined,
+            totalUnseen: 0,
           },
         },
       },

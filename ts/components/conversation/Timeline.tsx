@@ -88,10 +88,10 @@ export type PropsDataType = {
   messageLoadingState?: TimelineMessageLoadingState;
   isNearBottom?: boolean;
   items: ReadonlyArray<string>;
-  oldestUnreadIndex?: number;
+  oldestUnseenIndex?: number;
   scrollToIndex?: number;
   scrollToIndexCounter: number;
-  totalUnread: number;
+  totalUnseen: number;
 };
 
 type PropsHousekeepingType = {
@@ -253,6 +253,7 @@ const getActions = createSelector(
       'scrollToQuotedMessage',
       'showExpiredIncomingTapToViewToast',
       'showExpiredOutgoingTapToViewToast',
+      'startConversation',
 
       'showIdentity',
 
@@ -341,7 +342,7 @@ export class Timeline extends React.Component<
       items,
       loadNewestMessages,
       messageLoadingState,
-      oldestUnreadIndex,
+      oldestUnseenIndex,
       selectMessage,
     } = this.props;
     const { newestBottomVisibleMessageId } = this.state;
@@ -357,15 +358,15 @@ export class Timeline extends React.Component<
 
     if (
       newestBottomVisibleMessageId &&
-      isNumber(oldestUnreadIndex) &&
+      isNumber(oldestUnseenIndex) &&
       items.findIndex(item => item === newestBottomVisibleMessageId) <
-        oldestUnreadIndex
+        oldestUnseenIndex
     ) {
       if (setFocus) {
-        const messageId = items[oldestUnreadIndex];
+        const messageId = items[oldestUnseenIndex];
         selectMessage(messageId, id);
       } else {
-        this.scrollToItemIndex(oldestUnreadIndex);
+        this.scrollToItemIndex(oldestUnseenIndex);
       }
     } else if (haveNewest) {
       this.scrollToBottom(setFocus);
@@ -540,17 +541,13 @@ export class Timeline extends React.Component<
     this.intersectionObserver.observe(atBottomDetectorEl);
   }
 
-  private markNewestBottomVisibleMessageRead = throttle(
-    (): void => {
-      const { markMessageRead } = this.props;
-      const { newestBottomVisibleMessageId } = this.state;
-      if (newestBottomVisibleMessageId) {
-        markMessageRead(newestBottomVisibleMessageId);
-      }
-    },
-    500,
-    { leading: false }
-  );
+  private markNewestBottomVisibleMessageRead = throttle((): void => {
+    const { markMessageRead } = this.props;
+    const { newestBottomVisibleMessageId } = this.state;
+    if (newestBottomVisibleMessageId) {
+      markMessageRead(newestBottomVisibleMessageId);
+    }
+  }, 500);
 
   public override componentDidMount(): void {
     const containerEl = this.containerRef.current;
@@ -673,6 +670,8 @@ export class Timeline extends React.Component<
           numberToKeepAtBottom: this.maxVisibleRows,
         });
       }
+    } else {
+      this.markNewestBottomVisibleMessageRead();
     }
   }
 
@@ -791,7 +790,7 @@ export class Timeline extends React.Component<
       isSomeoneTyping,
       items,
       messageLoadingState,
-      oldestUnreadIndex,
+      oldestUnseenIndex,
       onBlock,
       onBlockAndReportSpam,
       onDelete,
@@ -805,7 +804,7 @@ export class Timeline extends React.Component<
       reviewMessageRequestNameCollision,
       showContactModal,
       theme,
-      totalUnread,
+      totalUnseen,
       unblurAvatar,
       unreadCount,
       updateSharedGroups,
@@ -899,17 +898,17 @@ export class Timeline extends React.Component<
       }
 
       let unreadIndicatorPlacement: undefined | UnreadIndicatorPlacement;
-      if (oldestUnreadIndex === itemIndex) {
+      if (oldestUnseenIndex === itemIndex) {
         unreadIndicatorPlacement = UnreadIndicatorPlacement.JustAbove;
         messageNodes.push(
           <LastSeenIndicator
             key="last seen indicator"
-            count={totalUnread}
+            count={totalUnseen}
             i18n={i18n}
             ref={this.lastSeenIndicatorRef}
           />
         );
-      } else if (oldestUnreadIndex === nextItemIndex) {
+      } else if (oldestUnseenIndex === nextItemIndex) {
         unreadIndicatorPlacement = UnreadIndicatorPlacement.JustBelow;
       }
 

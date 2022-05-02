@@ -221,6 +221,10 @@
         "message": "Deze gesprekken zijn gearchiveerd en zullen alleen in postvak-in verschijnen als je nieuwe berichten ontvangt.",
         "description": "Shown at the top of the archived conversations list in the left pane"
     },
+    "noArchivedConversations": {
+        "message": "Je hebt geen gesprekken gearchiveerd.",
+        "description": "Shown at the top of the archived conversations list in the left pane if there is no any archived conversation"
+    },
     "archiveConversation": {
         "message": "Gesprek archiveren",
         "description": "Shown in menu for conversation, and moves conversation out of main conversation list"
@@ -320,7 +324,7 @@
         "description": "Used as a label on a button allowing user to see more information"
     },
     "youLeftTheGroup": {
-        "message": "Je kunt geen berichten verzenden omdat je niet langer lid bent van de groep.",
+        "message": "Je bent niet langer lid van deze groep en je zult daarom geen nieuwe berichten zien.",
         "description": "Displayed when a user can't send a message because they have left the group"
     },
     "invalidConversation": {
@@ -460,7 +464,7 @@
         "description": "Shown in conversation banner when more than one group member's safety number has changed, but they were previously verified."
     },
     "debugLogExplanation": {
-        "message": "Als je op uploaden klikt dan wordt dit log 30 dagen lang online beschikbaar gesteld op een unieke nergens onthulde URL. Die URL kun je vervolgens naar de ontwikkelaars sturen. Je kunt dit log ook offline op je eigen apparaat opslaan.",
+        "message": "Dit log bevat geen persoonlijke details zoals telefoonnummers. Als je op uploaden klikt dan wordt dit log 30 dagen lang online beschikbaar gesteld op een unieke nergens onthulde verwijzing. Die verwijzing kun je zelf naar de ontwikkelaars sturen. Je kunt dit log ook offline op je eigen apparaat opslaan.",
         "description": "Description of what will happen with your debug log"
     },
     "debugLogError": {
@@ -500,7 +504,7 @@
         "description": "Label for a button that dismisses a dialog. The user clicks it to confirm that they understand the message in the dialog."
     },
     "submit": {
-        "message": "Verzenden",
+        "message": "Uploaden",
         "description": ""
     },
     "acceptNewKey": {
@@ -788,7 +792,7 @@
         "description": "Shown in the search box before text is entered when searching in a specific conversation"
     },
     "noSearchResults": {
-        "message": "Geen resultaten voor ‘$searchTerm$’",
+        "message": "Geen resultaten voor  “$searchTerm$”",
         "description": "Shown in the search left pane when no results were found",
         "placeholders": {
             "searchTerm": {
@@ -802,7 +806,7 @@
         "description": "Shown in the search left pane when no results were found and primary device has SMS/MMS handling enabled"
     },
     "noSearchResultsInConversation": {
-        "message": "Geen resultaten voor “$searchTerm$” in ‘$conversationName$’",
+        "message": "Geen resultaten voor “$searchTerm$” in “$conversationName$”",
         "description": "Shown in the search left pane when no results were found",
         "placeholders": {
             "searchTerm": {
@@ -833,7 +837,11 @@
     },
     "findByUsernameHeader": {
         "message": "Zoeken op gebruikersnaam",
-        "description": "Shown to separate the types of search results"
+        "description": "Shown when search could be a valid username, with one sub-item that will kick off the search"
+    },
+    "findByPhoneNumberHeader": {
+        "message": "Zoeken op telefoonnummer",
+        "description": "Shown when search could be a valid phone number, with one sub-item that will kick off the search"
     },
     "at-username": {
         "message": "@$username$",
@@ -962,11 +970,11 @@
         "description": "Confirmation dialog message for when the voice recording is interrupted due to max time limit"
     },
     "voiceRecordingInterruptedBlur": {
-        "message": "Het opnemen van een audiobericht is gestopt omdat je je aandacht naar een nadere app hebt verplaatst.",
+        "message": "Het opnemen van een audiobericht is gestopt omdat je een andere app aandacht hebt gegeven.",
         "description": "Confirmation dialog message for when the voice recording is interrupted due to app losing focus"
     },
     "voiceNoteLimit": {
-        "message": "Audioberichten hebben een lengtelimiet van vijf minuten. De opname wordt gestopt als je je aandacht verlegd naar een andere app.",
+        "message": "Audioberichten hebben een lengtelimiet van een uur. De opname wordt gestopt als je een andere app aandacht geeft.",
         "description": "Shown in toast to warn user about limited time and that window must be in focus"
     },
     "voiceNoteMustBeOnlyAttachment": {
@@ -1055,6 +1063,20 @@
                 "content": "$2",
                 "example": "retry update"
             },
+            "url": {
+                "content": "$2",
+                "example": "https://signal.org/download"
+            },
+            "support": {
+                "content": "$3",
+                "example": "contact support"
+            }
+        }
+    },
+    "cannotUpdateRequireManualDetail": {
+        "message": "Signal kan niet worden bijgewerkt. Bezoek $url$ om handmatig een nieuwere versie te installeren. Neem vervolgens over dit probleem $support$.  ",
+        "description": "Shown if a general error happened while trying to install update package and manual update is required",
+        "placeholders": {
             "url": {
                 "content": "$2",
                 "example": "https://signal.org/download"
@@ -1254,7 +1276,7 @@
         "description": "Shown in left pane preview when message delivery issue happens"
     },
     "DeliveryIssue--notification": {
-        "message": "Een bericht van $sender$ kon niet worden afgeleverd",
+        "message": "Een bericht van $sender$ kan niet worden afgeleverd",
         "description": "Shown in timeline when message delivery issue happens",
         "placeholders": {
             "name": {
@@ -1918,7 +1940,7 @@
         "description": "Header in the settings dialog for the section dealing with data deletion"
     },
     "clearDataExplanation": {
-        "message": "Dit verwijdert alle gegevens in de toepassing: alle berichten, alle opgeslagen voorkeuren en alle profielinformatie.",
+        "message": "Dit wist alle gegevens in de toepassing: alle berichten, alle opgeslagen voorkeuren en alle profielinformatie.",
         "description": "Text describing what the clear data button will do."
     },
     "clearDataButton": {
@@ -1938,7 +1960,7 @@
         "description": "Text of the button that deletes all data"
     },
     "deleteAllDataProgress": {
-        "message": "Verbinding wordt verbroken en alle gegevens worden verwijderd",
+        "message": "Verbinding wordt verbroken en alle gegevens worden gewist",
         "description": "Message shown to user when app is disconnected and data deleted"
     },
     "deleteOldIndexedDBData": {
@@ -2383,6 +2405,10 @@
         "message": "Het ophalen van de gebruikersnaam is mislukt. Ga na dat je apparaat met het internet is verbonden en probeer het opnieuw.",
         "description": "Shown if request to Signal servers to find username fails"
     },
+    "Toast--failed-to-fetch-phone-number": {
+        "message": "Het ophalen van het telefoonnummer is mislukt. Ga na dat je apparaat met het internet is verbonden en probeer het opnieuw.",
+        "description": "Shown if request to Signal servers to find phone number fails"
+    },
     "startConversation--username-not-found": {
         "message": "De gebruikersnaam is niet gevonden. $atUsername$ is geen Signalgebruiker. Ga na dat je de volledige gebruikersnaam hebt ingevoerd.",
         "description": "Shown in dialog if username is not found. Note that 'username' will be the output of at-username",
@@ -2390,6 +2416,26 @@
             "atUsername": {
                 "content": "$1",
                 "example": "@alex"
+            }
+        }
+    },
+    "startConversation--phone-number-not-found": {
+        "message": "Gebruiker niet gevonden. “$phoneNumber$” heeft de Signal-app niet.",
+        "description": "Shown in dialog if phone number is not found.",
+        "placeholders": {
+            "phoneNumber": {
+                "content": "$1",
+                "example": "+1 203-123-4567"
+            }
+        }
+    },
+    "startConversation--phone-number-not-valid": {
+        "message": "Gebruiker niet gevonden. “$phoneNumber$” is geen geldig telefoonnummer.",
+        "description": "Shown in dialog if phone number is not valid.",
+        "placeholders": {
+            "phoneNumber": {
+                "content": "$1",
+                "example": "+1 203-123-4567"
             }
         }
     },
@@ -2628,7 +2674,7 @@
         }
     },
     "ConversationList__last-message-undefined": {
-        "message": "Het meest recente bericht is mogelijk verwijderd.",
+        "message": "Het meest recente bericht is mogelijk gewist.",
         "description": "For aria-label within conversation list. Describes if last message is not defined."
     },
     "BaseConversationListItem__aria-label": {
@@ -3510,7 +3556,7 @@
         "description": "Shown as a button to let the user delete any message request"
     },
     "MessageRequests--delete-direct-confirm-title": {
-        "message": "Gesprek verwijderen?",
+        "message": "Gesprek wissen?",
         "description": "Shown as the title in the confirmation modal for deleting a private message request"
     },
     "MessageRequests--delete-direct-confirm-body": {
@@ -3518,7 +3564,7 @@
         "description": "Shown as the body in the confirmation modal for deleting a private message request"
     },
     "MessageRequests--delete-group-confirm-title": {
-        "message": "$group$ verlaten en verwijderen?",
+        "message": "$group$ verlaten en wissen?",
         "description": "Shown as the title in the confirmation modal for deleting a group message request",
         "placeholders": {
             "group": {
@@ -3528,11 +3574,11 @@
         }
     },
     "MessageRequests--delete-direct": {
-        "message": "Verwijderen",
+        "message": "Wissen",
         "description": "Shown as a button to let the user delete a direct message request"
     },
     "MessageRequests--delete-group": {
-        "message": "Verwijderen en verlaten",
+        "message": "Wissen en verlaten",
         "description": "Shown as a button to let the user delete a group message request"
     },
     "MessageRequests--delete-group-confirm-body": {
@@ -3692,7 +3738,7 @@
         "description": "Shown to indicate this user is not a member of any groups"
     },
     "no-groups-in-common-warning": {
-        "message": "Je hebt met deze persoon geen gemeenschappelijke groep: overweeg dit gespreksverzoek zorgvuldig.",
+        "message": "Deze persoon is een onbekende, je zit zelfs niet in een groepsgesprek met deze persoon. Overweeg daarom zorgvuldig of je dit gespreksverzoek wilt aanvaarden.",
         "description": "When a user has no common groups, show this warning"
     },
     "acceptCall": {
@@ -4302,7 +4348,7 @@
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-attributes--admins--other": {
-        "message": "$adminName$ heeft de instelling voor wie de groepsinformatie kan wijzigen naar “Enkel beheerders” ingesteld.",
+        "message": "$adminName$ heeft de instelling voor wie de groepsinformatie kan wijzigen naar ‘Enkel beheerders’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes",
         "placeholders": {
             "adminName": {
@@ -4312,15 +4358,15 @@
         }
     },
     "GroupV2--access-attributes--admins--you": {
-        "message": "Je hebt de instelling voor wie de groepsinformatie kan wijzigen naar “Enkel beheerders” ingesteld.",
+        "message": "Je hebt de instelling voor wie de groepsinformatie kan wijzigen naar ‘Enkel beheerders’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-attributes--admins--unknown": {
-        "message": "Een beheerder heeft de instelling voor wie de groepsinformatie kan wijzigen naar “Enkel beheerders” ingesteld.",
+        "message": "Een beheerder heeft de instelling voor wie de groepsinformatie kan wijzigen naar ‘Enkel beheerders’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-attributes--all--other": {
-        "message": "$adminName$ heeft de instelling voor wie de groepsinformatie kan wijzigen naar “Alle groepsleden” ingesteld.",
+        "message": "$adminName$ heeft de instelling voor wie de groepsinformatie kan wijzigen naar ‘Alle groepsleden’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes",
         "placeholders": {
             "adminName": {
@@ -4330,15 +4376,15 @@
         }
     },
     "GroupV2--access-attributes--all--you": {
-        "message": "Je hebt de instelling voor wie de groepsinformatie kan wijzigen naar “Alle groepsleden” ingesteld.",
+        "message": "Je hebt de instelling voor wie de groepsinformatie kan wijzigen naar ‘Alle groepsleden’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-attributes--all--unknown": {
-        "message": "Een beheerder heeft de instelling voor wie de groepsinformatie kan wijzigen naar “Alle groepsleden” ingesteld.",
+        "message": "Een beheerder heeft de instelling voor wie de groepsinformatie kan wijzigen naar ‘Alle groepsleden’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-members--admins--other": {
-        "message": "$adminName$ heeft de instelling voor wie de groepsleden kan wijzigen naar “Enkel beheerders” ingesteld.",
+        "message": "$adminName$ heeft de instelling voor wie de groepsleden kan wijzigen naar ‘Enkel beheerders’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes",
         "placeholders": {
             "adminName": {
@@ -4348,15 +4394,15 @@
         }
     },
     "GroupV2--access-members--admins--you": {
-        "message": "Je hebt de instelling voor wie de groepsleden kan wijzigen naar “Enkel beheerders” ingesteld.",
+        "message": "Je hebt de instelling voor wie de groepsleden kan wijzigen naar ‘Enkel beheerders’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-members--admins--unknown": {
-        "message": "Een beheerder heeft de instelling voor wie de groepsleden kan wijzigen naar “Enkel beheerders” ingesteld.",
+        "message": "Een beheerder heeft de instelling voor wie de groepsleden kan wijzigen naar ‘Enkel beheerders’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-members--all--other": {
-        "message": "$adminName$ heeft de instelling voor wie de groepsleden kan wijzigen naar “Alle groepsleden” ingesteld.",
+        "message": "$adminName$ heeft de instelling voor wie de groepsleden kan wijzigen naar ‘Alle groepsleden’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes",
         "placeholders": {
             "adminName": {
@@ -4366,11 +4412,11 @@
         }
     },
     "GroupV2--access-members--all--you": {
-        "message": "Je hebt de instelling voor wie de groepsleden kan wijzigen naar “Alle groepsleden” ingesteld.",
+        "message": "Je hebt de instelling voor wie de groepsleden kan wijzigen naar ‘Alle groepsleden’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-members--all--unknown": {
-        "message": "Een beheerder heeft de instelling voor wie de groepsleden kan wijzigen naar “Alle groepsleden” ingesteld.",
+        "message": "Een beheerder heeft de instelling voor wie de groepsleden kan wijzigen naar ‘Alle groepsleden’ ingesteld.",
         "description": "Shown in timeline or conversation preview when v2 group changes"
     },
     "GroupV2--access-invite-link--disabled--you": {
@@ -6210,7 +6256,7 @@
         "description": "Displayed when delete-for-everyone has failed to send to all recipients"
     },
     "ChatColorPicker__delete--title": {
-        "message": "Kleur verwijderen",
+        "message": "Kleur wissen",
         "description": "Confirm title for deleting custom color"
     },
     "ChatColorPicker__delete--message": {
@@ -6310,6 +6356,14 @@
     "selectedCustomDisappearingTimeOption": {
         "message": "Zelfgekozen tijdspanne",
         "description": "Text for an option in Conversation Details Disappearing Messages setting when user previously selected custom time"
+    },
+    "DisappearingTimeDialog__label--value": {
+        "message": "Getal",
+        "description": "aria-label for the number select box"
+    },
+    "DisappearingTimeDialog__label--units": {
+        "message": "Tijdseenheid",
+        "description": "aria-label for the units of time select box"
     },
     "DisappearingTimeDialog__title": {
         "message": "Zelfgekozen tijdspanne",
@@ -6478,15 +6532,15 @@
         "description": "Shown if something unknown has gone wrong with username save."
     },
     "ProfileEditor--username--delete-general-error": {
-        "message": "Je gebruikersnaam kan niet worden verwijderd. Ga na dat je apparaat met het internet is verbonden en probeer het opnieuw.",
+        "message": "Je gebruikersnaam kan niet worden gewist. Ga na dat je apparaat met het internet is verbonden en probeer het opnieuw.",
         "description": "Shown if something unknown has gone wrong with username delete."
     },
     "ProfileEditor--username--delete-username": {
-        "message": "Gebruikersnaam verwijderen",
+        "message": "Gebruikersnaam wissen",
         "description": "Shown as aria label for trash icon next to username"
     },
     "ProfileEditor--username--confirm-delete-body": {
-        "message": "Je staat op het punt je gebruikersnaam te verwijderen. Als je door gaat kunnen anderen deze naam claimen. Weet je het zeker?",
+        "message": "Je staat op het punt je gebruikersnaam te wissen. Als je door gaat kunnen anderen deze naam claimen. Weet je het zeker?",
         "description": "Shown in dialog body if user has saved an empty string to delete their username"
     },
     "ProfileEditor--username--confirm-delete-button": {
@@ -6757,6 +6811,24 @@
         "message": "Sluit zelf de Signal-app en klik vervolgens op ‘Opnieuw proberen’.",
         "description": "Second line of the dialog displayed when Windows installer can't close application automatically and needs user intervention to complete the installation."
     },
+    "NSIS__appRunning": {
+        "message": "$appName$ is nog actief.\nKlik op OK om de applicatie te sluiten.\nAls de applicatie vervolgens nog niet sluit, probeer dan om de applicatie zelf te sluiten.",
+        "description": "The contents of a dialog displayed when Windows installer detect that the application is running and asks user to close it. Note: please keep the line breaks so that the text occupies three separate lines",
+        "placeholders": {
+            "appName": {
+                "content": "$1",
+                "example": "Signal"
+            }
+        }
+    },
+    "NSIS__decompressionFailed": {
+        "message": "Het decomprimeren van bestanden is mislukt. Voer het installatiebestand opnieuw uit om te proberen dit probleem te verhelpen.",
+        "description": "Displayed when Windows installer cannot decompress application files"
+    },
+    "NSIS__uninstallFailed": {
+        "message": "Het deïnstalleren van oude applicatiebestanden is mislukt. Voer het installatiebestand opnieuw uit om te proberen dit probleem te verhelpen.",
+        "description": "Displayed when Windows installer cannot uninstall the old application"
+    },
     "CrashReportDialog__title": {
         "message": "De applicatie is gecrashed",
         "description": "A title of the dialog displayed when starting an application after a recent crash"
@@ -6941,6 +7013,10 @@
         "message": "Een verhaal toevoegen",
         "description": "Description hint to add a story"
     },
+    "Stories__hidden-stories": {
+        "message": "Verborgen verhalen",
+        "description": "Button label to go to hidden stories pane"
+    },
     "Stories__list-empty": {
         "message": "Er zijn op dit moment geen recente verhalen om weer te geven",
         "description": "Description for when there are no stories to show"
@@ -6991,6 +7067,10 @@
         "message": "Verhaal",
         "description": "aria-label for the story list button"
     },
+    "StoryListItem__unhide": {
+        "message": "Verhalen niet langer verbergen",
+        "description": "Label for menu item to un-hide the story"
+    },
     "StoryListItem__hide": {
         "message": "Verhaal verbergen",
         "description": "Label for menu item to hide the story"
@@ -7005,17 +7085,15 @@
     },
     "StoryListItem__hide-modal--confirm": {
         "message": "Verbergen",
-        "description": "Action button for the confirmation dialog to hide a story",
-        "placeholders": {
-            "name": {
-                "content": "$1",
-                "example": "Abby"
-            }
-        }
+        "description": "Action button for the confirmation dialog to hide a story"
     },
     "StoryImage__error": {
         "message": "Fout bij weergeven van afbeelding",
         "description": "aria-label for image errors"
+    },
+    "TextAttachment__preview__link": {
+        "message": "Verwijzing volgen",
+        "description": "Title for the link preview tooltip"
     },
     "WhatsNew__modal-title": {
         "message": "wat er nieuw is",
@@ -7025,32 +7103,22 @@
         "message": "Deze versie bevat een aantal kleine foutoplossingen waardoor Signal voor nog meer mensen goed werkt.",
         "description": "Release notes for releases that only include bug fixes"
     },
-    "WhatsNew__v5.35--1": {
-        "message": "Het systeem om Signal bij te werken is vernieuwd, daardoor zouden updates vanaf nu kleiner moeten zijn.",
-        "description": "Release notes for v5.35"
+    "WhatsNew__v5.40--1": {
+        "message": "Foutoplossingen, waaronder een oplossing voor een fout waarbij het soms moeilijk was op op menuknoppen te klikken.",
+        "description": "Release notes for v5.40"
     },
-    "WhatsNew__v5.35--2": {
-        "message": "Als je een toetsenbord met mediatoetsen gebruikt dan is het fijn dat Signal niet langer blokkeert dat je die toetsen voor andere applicaties gebruikt.",
-        "description": "Release notes for v5.35"
-    },
-    "WhatsNew__v5.35--3": {
-        "message": "Verbeterd lettertype voor Japans.",
-        "description": "Release notes for v5.35"
-    },
-    "WhatsNew__v5.36--1": {
-        "message": "Er passen vanaf nu meer berichten tegelijk op het scherm omdat berichten van dezelfde afzender die korte tijd na elkaar zijn verzonden nu als een groep berichten wordt weergeven.",
-        "description": "Release notes for v5.36"
-    },
-    "WhatsNew__v5.36--2": {
-        "message": "Wanneer je iets voor iedereen wist dan zie je vanaf nu een draaient figuurtje totdat duidelijk is of de opdracht om te wissen naar iedereen kon worden verzonden. Als het niet lukt dan krijg je de optie om het opnieuw te proberen.",
-        "description": "Release notes for v5.36"
-    },
-    "WhatsNew__v5.37--1": {
-        "message": "Korte berichten zijn vanaf nu nog korter, omdat de tijdsindicatie op dezelfde regel staat als de tekst van je bericht.",
-        "description": "Release notes for v5.37"
-    },
-    "WhatsNew__v5.37--2": {
-        "message": "Er was een fout waardoor sommige stickerpakketten niet konden worden weergegeven in Signal-desktop. Vanaf nu kun je alle stickerpakketten zien net als op je telefoon.",
-        "description": "Release notes for v5.37"
+    "WhatsNew__v5.40--2": {
+        "message": "Dank aan $dsanders11$ en $yusufsahinhamza$ voor hun hulp bij het schrijven van code voor deze verbeteringen.",
+        "description": "Release notes for v5.40",
+        "placeholders": {
+            "dsanders11": {
+                "content": "$1",
+                "example": "dsanders11"
+            },
+            "yusufsahinhamza": {
+                "content": "$2",
+                "example": "yusufsahinhamza"
+            }
+        }
     }
 }

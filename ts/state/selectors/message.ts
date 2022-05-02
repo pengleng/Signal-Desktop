@@ -785,13 +785,6 @@ export function getPropsForBubble(
       timestamp,
     };
   }
-  if (isMessageHistoryUnsynced(message)) {
-    return {
-      type: 'linkNotification',
-      data: null,
-      timestamp,
-    };
-  }
   if (isExpirationTimerUpdate(message)) {
     return {
       type: 'timerNotification',
@@ -982,14 +975,6 @@ function getPropsForGroupV1Migration(
     droppedMembers,
     invitedMembers,
   };
-}
-
-// Message History Unsynced
-
-export function isMessageHistoryUnsynced(
-  message: MessageWithUIFieldsType
-): boolean {
-  return message.type === 'message-history-unsynced';
 }
 
 // Note: props are null!
@@ -1443,7 +1428,7 @@ export function getMessagePropStatus(
 export function getPropsForEmbeddedContact(
   message: MessageWithUIFieldsType,
   regionCode: string | undefined,
-  accountSelector: (identifier?: string) => boolean
+  accountSelector: (identifier?: string) => UUIDStringType | undefined
 ): EmbeddedContactType | undefined {
   const contacts = message.contact;
   if (!contacts || !contacts.length) {
@@ -1459,7 +1444,7 @@ export function getPropsForEmbeddedContact(
     getAbsoluteAttachmentPath:
       window.Signal.Migrations.getAbsoluteAttachmentPath,
     firstNumber,
-    isNumberOnSignal: accountSelector(firstNumber),
+    uuid: accountSelector(firstNumber),
   });
 }
 

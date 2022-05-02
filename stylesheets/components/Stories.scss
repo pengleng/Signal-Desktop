@@ -10,7 +10,7 @@
   top: 0;
   user-select: none;
   width: 100%;
-  z-index: $z-index-popup-overlay;
+  z-index: $z-index-stories;
 
   &__pane {
     background: $color-gray-80;
@@ -130,6 +130,37 @@
         '../images/icons/v2/stories-outline-56.svg',
         $color-gray-05
       );
+    }
+  }
+
+  &__hidden-stories {
+    @include button-reset;
+    @include font-body-1-bold;
+    align-items: center;
+    color: $color-gray-05;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 24px;
+    position: relative;
+    width: 100%;
+
+    &::after {
+      @include color-svg(
+        '../images/icons/v2/chevron-right-24.svg',
+        $color-gray-05
+      );
+      content: '';
+      height: 16px;
+      width: 16px;
+    }
+
+    &--expanded {
+      &::after {
+        @include color-svg(
+          '../images/icons/v2/chevron-down-24.svg',
+          $color-gray-05
+        );
+      }
     }
   }
 }

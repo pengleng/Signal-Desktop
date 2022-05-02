@@ -6,7 +6,10 @@ import { pick } from 'lodash';
 import type { AttachmentType } from '../../types/Attachment';
 import type { BodyRangeType } from '../../types/Util';
 import type { MessageAttributesType } from '../../model-types.d';
-import type { MessageDeletedActionType } from './conversations';
+import type {
+  MessageChangedActionType,
+  MessageDeletedActionType,
+} from './conversations';
 import type { NoopActionType } from './noop';
 import type { StateType as RootStateType } from '../reducer';
 import type { StoryViewType } from '../../components/StoryListItem';
@@ -22,7 +25,11 @@ import { markViewed } from '../../services/MessageUpdater';
 import { queueAttachmentDownloads } from '../../util/queueAttachmentDownloads';
 import { replaceIndex } from '../../util/replaceIndex';
 import { showToast } from '../../util/showToast';
-import { isDownloaded, isDownloading } from '../../types/Attachment';
+import {
+  hasNotResolved,
+  isDownloaded,
+  isDownloading,
+} from '../../types/Attachment';
 import { useBoundActions } from '../../hooks/useBoundActions';
 import { viewSyncJobQueue } from '../../jobs/viewSyncJobQueue';
 import { viewedReceiptsJobQueue } from '../../jobs/viewedReceiptsJobQueue';
@@ -33,22 +40,44 @@ export type StoryDataType = {
   selectedReaction?: string;
 } & Pick<
   MessageAttributesType,
-  'conversationId' | 'readStatus' | 'source' | 'sourceUuid' | 'timestamp'
+  | 'conversationId'
+  | 'deletedForEveryone'
+  | 'readStatus'
+  | 'sendStateByConversationId'
+  | 'source'
+  | 'sourceUuid'
+  | 'timestamp'
+  | 'type'
 >;
 
 // State
 
 export type StoriesStateType = {
   readonly isShowingStoriesView: boolean;
+  readonly replyState?: {
+    messageId: string;
+    replies: Array<MessageAttributesType>;
+  };
   readonly stories: Array<StoryDataType>;
 };
 
 // Actions
 
+const LOAD_STORY_REPLIES = 'stories/LOAD_STORY_REPLIES';
 const MARK_STORY_READ = 'stories/MARK_STORY_READ';
 const REACT_TO_STORY = 'stories/REACT_TO_STORY';
+const REPLY_TO_STORY = 'stories/REPLY_TO_STORY';
+export const RESOLVE_ATTACHMENT_URL = 'stories/RESOLVE_ATTACHMENT_URL';
 const STORY_CHANGED = 'stories/STORY_CHANGED';
 const TOGGLE_VIEW = 'stories/TOGGLE_VIEW';
+
+type LoadStoryRepliesActionType = {
+  type: typeof LOAD_STORY_REPLIES;
+  payload: {
+    messageId: string;
+    replies: Array<MessageAttributesType>;
+  };
+};
 
 type MarkStoryReadActionType = {
   type: typeof MARK_STORY_READ;
@@ -63,6 +92,19 @@ type ReactToStoryActionType = {
   };
 };
 
+type ReplyToStoryActionType = {
+  type: typeof REPLY_TO_STORY;
+  payload: MessageAttributesType;
+};
+
+type ResolveAttachmentUrlActionType = {
+  type: typeof RESOLVE_ATTACHMENT_URL;
+  payload: {
+    messageId: string;
+    attachmentUrl: string;
+  };
+};
+
 type StoryChangedActionType = {
   type: typeof STORY_CHANGED;
   payload: StoryDataType;
@@ -73,15 +115,20 @@ type ToggleViewActionType = {
 };
 
 export type StoriesActionType =
+  | LoadStoryRepliesActionType
   | MarkStoryReadActionType
+  | MessageChangedActionType
   | MessageDeletedActionType
   | ReactToStoryActionType
+  | ReplyToStoryActionType
+  | ResolveAttachmentUrlActionType
   | StoryChangedActionType
   | ToggleViewActionType;
 
 // Action Creators
 
 export const actions = {
+  loadStoryReplies,
   markStoryRead,
   queueStoryDownload,
   reactToStory,
@@ -91,6 +138,26 @@ export const actions = {
 };
 
 export const useStoriesActions = (): typeof actions => useBoundActions(actions);
+
+function loadStoryReplies(
+  conversationId: string,
+  messageId: string
+): ThunkAction<void, RootStateType, unknown, LoadStoryRepliesActionType> {
+  return async dispatch => {
+    const replies = await dataInterface.getOlderMessagesByConversation(
+      conversationId,
+      { limit: 9000, storyId: messageId }
+    );
+
+    dispatch({
+      type: LOAD_STORY_REPLIES,
+      payload: {
+        messageId,
+        replies,
+      },
+    });
+  };
+}
 
 function markStoryRead(
   messageId: string
@@ -102,6 +169,10 @@ function markStoryRead(
 
     if (!matchingStory) {
       log.warn(`markStoryRead: no matching story found: ${messageId}`);
+      return;
+    }
+
+    if (!isDownloaded(matchingStory.attachment)) {
       return;
     }
 
@@ -149,7 +220,12 @@ function markStoryRead(
 
 function queueStoryDownload(
   storyId: string
-): ThunkAction<void, RootStateType, unknown, NoopActionType> {
+): ThunkAction<
+  void,
+  RootStateType,
+  unknown,
+  NoopActionType | ResolveAttachmentUrlActionType
+> {
   return async dispatch => {
     const story = await getMessageById(storyId);
 
@@ -169,6 +245,25 @@ function queueStoryDownload(
     }
 
     if (isDownloaded(attachment)) {
+      if (!attachment.path) {
+        return;
+      }
+
+      // This function also resolves the attachment's URL in case we've already
+      // downloaded the attachment but haven't pointed its path to an absolute
+      // location on disk.
+      if (hasNotResolved(attachment)) {
+        dispatch({
+          type: RESOLVE_ATTACHMENT_URL,
+          payload: {
+            messageId: storyId,
+            attachmentUrl: window.Signal.Migrations.getAbsoluteAttachmentPath(
+              attachment.path
+            ),
+          },
+        });
+      }
+
       return;
     }
 
@@ -221,27 +316,33 @@ function replyToStory(
   mentions: Array<BodyRangeType>,
   timestamp: number,
   story: StoryViewType
-): NoopActionType {
-  const conversation = window.ConversationController.get(conversationId);
+): ThunkAction<void, RootStateType, unknown, ReplyToStoryActionType> {
+  return async dispatch => {
+    const conversation = window.ConversationController.get(conversationId);
 
-  if (conversation) {
-    conversation.enqueueMessageForSend(
-      messageBody,
-      [],
-      undefined,
-      undefined,
-      undefined,
-      mentions,
+    if (!conversation) {
+      log.error('replyToStory: conversation does not exist', conversationId);
+      return;
+    }
+
+    const messageAttributes = await conversation.enqueueMessageForSend(
+      {
+        body: messageBody,
+        attachments: [],
+        mentions,
+      },
       {
         storyId: story.messageId,
         timestamp,
       }
     );
-  }
 
-  return {
-    type: 'NOOP',
-    payload: null,
+    if (messageAttributes) {
+      dispatch({
+        type: REPLY_TO_STORY,
+        payload: messageAttributes,
+      });
+    }
   };
 }
 
@@ -282,11 +383,17 @@ export function reducer(
   }
 
   if (action.type === 'MESSAGE_DELETED') {
+    const nextStories = state.stories.filter(
+      story => story.messageId !== action.payload.id
+    );
+
+    if (nextStories.length === state.stories.length) {
+      return state;
+    }
+
     return {
       ...state,
-      stories: state.stories.filter(
-        story => story.messageId !== action.payload.id
-      ),
+      stories: nextStories,
     };
   }
 
@@ -294,41 +401,43 @@ export function reducer(
     const newStory = pick(action.payload, [
       'attachment',
       'conversationId',
+      'deletedForEveryone',
       'messageId',
       'readStatus',
       'selectedReaction',
+      'sendStateByConversationId',
       'source',
       'sourceUuid',
       'timestamp',
+      'type',
     ]);
 
-    // Stories don't really need to change except for when we don't have the
-    // attachment downloaded and we queue a download. Then the story's message
-    // will have the new attachment information. This is an optimization so
-    // we don't needlessly re-render.
-    const prevStory = state.stories.find(
+    const prevStoryIndex = state.stories.findIndex(
       existingStory => existingStory.messageId === newStory.messageId
     );
-    if (prevStory) {
-      const shouldReplace =
-        (!isDownloaded(prevStory.attachment) &&
-          isDownloaded(newStory.attachment)) ||
-        isDownloading(newStory.attachment);
+    if (prevStoryIndex >= 0) {
+      const prevStory = state.stories[prevStoryIndex];
 
+      // Stories rarely need to change, here are the following exceptions:
+      const isDownloadingAttachment = isDownloading(newStory.attachment);
+      const hasAttachmentDownloaded =
+        !isDownloaded(prevStory.attachment) &&
+        isDownloaded(newStory.attachment);
+      const readStatusChanged = prevStory.readStatus !== newStory.readStatus;
+
+      const shouldReplace =
+        isDownloadingAttachment || hasAttachmentDownloaded || readStatusChanged;
       if (!shouldReplace) {
         return state;
       }
 
-      const storyIndex = state.stories.findIndex(
-        existingStory => existingStory.messageId === newStory.messageId
-      );
-
       return {
         ...state,
-        stories: replaceIndex(state.stories, storyIndex, newStory),
+        stories: replaceIndex(state.stories, prevStoryIndex, newStory),
       };
     }
 
+    // Adding a new story
     const stories = [...state.stories, newStory].sort((a, b) =>
       a.timestamp > b.timestamp ? 1 : -1
     );
@@ -368,6 +477,99 @@ export function reducer(
 
         return story;
       }),
+    };
+  }
+
+  if (action.type === LOAD_STORY_REPLIES) {
+    return {
+      ...state,
+      replyState: action.payload,
+    };
+  }
+
+  // For live updating of the story replies
+  if (
+    action.type === 'MESSAGE_CHANGED' &&
+    state.replyState &&
+    state.replyState.messageId === action.payload.data.storyId
+  ) {
+    const { replyState } = state;
+    const messageIndex = replyState.replies.findIndex(
+      reply => reply.id === action.payload.id
+    );
+
+    // New message
+    if (messageIndex < 0) {
+      return {
+        ...state,
+        replyState: {
+          messageId: replyState.messageId,
+          replies: [...replyState.replies, action.payload.data],
+        },
+      };
+    }
+
+    // Changed message, also handles DOE
+    return {
+      ...state,
+      replyState: {
+        messageId: replyState.messageId,
+        replies: replaceIndex(
+          replyState.replies,
+          messageIndex,
+          action.payload.data
+        ),
+      },
+    };
+  }
+
+  if (action.type === REPLY_TO_STORY) {
+    const { replyState } = state;
+    if (!replyState) {
+      return state;
+    }
+
+    return {
+      ...state,
+      replyState: {
+        messageId: replyState.messageId,
+        replies: [...replyState.replies, action.payload],
+      },
+    };
+  }
+
+  if (action.type === RESOLVE_ATTACHMENT_URL) {
+    const { messageId, attachmentUrl } = action.payload;
+
+    const storyIndex = state.stories.findIndex(
+      existingStory => existingStory.messageId === messageId
+    );
+
+    if (storyIndex < 0) {
+      return state;
+    }
+
+    const story = state.stories[storyIndex];
+
+    if (!story.attachment) {
+      return state;
+    }
+
+    const storyWithResolvedAttachment = {
+      ...story,
+      attachment: {
+        ...story.attachment,
+        url: attachmentUrl,
+      },
+    };
+
+    return {
+      ...state,
+      stories: replaceIndex(
+        state.stories,
+        storyIndex,
+        storyWithResolvedAttachment
+      ),
     };
   }
 

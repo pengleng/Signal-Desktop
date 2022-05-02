@@ -592,10 +592,7 @@ function makeChannel(fnName: string) {
             'Detected sql corruption in renderer process. ' +
               `Restarting the application immediately. Error: ${error.message}`
           );
-          ipc?.send(
-            'database-error',
-            `${error.stack}\n${Server.getCorruptionLog()}`
-          );
+          ipc?.send('database-error', error.stack);
         }
         log.error(
           `Renderer SQL channel job (${fnName}) error ${error.message}`
@@ -676,6 +673,8 @@ function keysFromBytes(keys: Array<string>, data: any) {
 // Top-level calls
 
 async function shutdown() {
+  log.info('Client.shutdown');
+
   // Stop accepting new SQL jobs, flush outstanding queue
   await _shutdown();
 
@@ -1171,13 +1170,17 @@ async function getMessageBySender({
 
 async function getTotalUnreadForConversation(
   conversationId: string,
-  storyId?: UUIDStringType
+  options: {
+    storyId: UUIDStringType | undefined;
+    isGroup: boolean;
+  }
 ) {
-  return channels.getTotalUnreadForConversation(conversationId, storyId);
+  return channels.getTotalUnreadForConversation(conversationId, options);
 }
 
 async function getUnreadByConversationAndMarkRead(options: {
   conversationId: string;
+  isGroup?: boolean;
   newestUnreadAt: number;
   readAt?: number;
   storyId?: UUIDStringType;
@@ -1229,22 +1232,25 @@ function handleMessageJSON(
 async function getOlderMessagesByConversation(
   conversationId: string,
   {
+    isGroup,
     limit = 100,
     messageId,
     receivedAt = Number.MAX_VALUE,
     sentAt = Number.MAX_VALUE,
     storyId,
   }: {
+    isGroup?: boolean;
     limit?: number;
     messageId?: string;
     receivedAt?: number;
     sentAt?: number;
-    storyId?: UUIDStringType;
+    storyId?: string;
   }
 ) {
   const messages = await channels.getOlderMessagesByConversation(
     conversationId,
     {
+      isGroup,
       limit,
       receivedAt,
       sentAt,
@@ -1268,11 +1274,13 @@ async function getOlderStories(options: {
 async function getNewerMessagesByConversation(
   conversationId: string,
   {
+    isGroup,
     limit = 100,
     receivedAt = 0,
     sentAt = 0,
     storyId,
   }: {
+    isGroup?: boolean;
     limit?: number;
     receivedAt?: number;
     sentAt?: number;
@@ -1282,6 +1290,7 @@ async function getNewerMessagesByConversation(
   const messages = await channels.getNewerMessagesByConversation(
     conversationId,
     {
+      isGroup,
       limit,
       receivedAt,
       sentAt,
@@ -1293,14 +1302,17 @@ async function getNewerMessagesByConversation(
 }
 async function getConversationMessageStats({
   conversationId,
+  isGroup,
   ourUuid,
 }: {
   conversationId: string;
+  isGroup?: boolean;
   ourUuid: UUIDStringType;
 }): Promise<ConversationMessageStatsType> {
   const { preview, activity, hasUserInitiatedMessages } =
     await channels.getConversationMessageStats({
       conversationId,
+      isGroup,
       ourUuid,
     });
 
@@ -1319,11 +1331,13 @@ async function getLastConversationMessage({
 }
 async function getMessageMetricsForConversation(
   conversationId: string,
-  storyId?: UUIDStringType
+  storyId?: UUIDStringType,
+  isGroup?: boolean
 ) {
   const result = await channels.getMessageMetricsForConversation(
     conversationId,
-    storyId
+    storyId,
+    isGroup
   );
 
   return result;

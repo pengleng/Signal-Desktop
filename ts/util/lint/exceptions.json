@@ -4503,6 +4503,12 @@
   },
   {
     "rule": "jQuery-$(",
+    "path": "node_modules/moment/min/moment-with-locales.min.js",
+    "reasonCategory": "falseMatch",
+    "updated": "2022-04-11T17:11:47.521Z"
+  },
+  {
+    "rule": "jQuery-$(",
     "path": "node_modules/moment/min/moment.min.js",
     "reasonCategory": "falseMatch",
     "updated": "2021-05-07T01:39:53.992Z"
@@ -7696,7 +7702,7 @@
   {
     "rule": "React-useRef",
     "path": "ts/components/StoryViewsNRepliesModal.tsx",
-    "line": "  const inputApiRef = React.useRef<InputApi | undefined>();",
+    "line": "  const inputApiRef = useRef<InputApi | undefined>();",
     "reasonCategory": "usageTrusted",
     "updated": "2022-02-15T17:57:06.507Z"
   },

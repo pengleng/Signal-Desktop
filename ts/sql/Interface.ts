@@ -50,8 +50,8 @@ export type MessageMetricsType = {
 export type ConversationMetricsType = {
   oldest?: MessageMetricsType;
   newest?: MessageMetricsType;
-  oldestUnread?: MessageMetricsType;
-  totalUnread: number;
+  oldestUnseen?: MessageMetricsType;
+  totalUnseen: number;
 };
 export type ConversationType = ConversationAttributesType;
 export type EmojiType = {
@@ -384,10 +384,14 @@ export type DataInterface = {
   removeMessages: (ids: Array<string>) => Promise<void>;
   getTotalUnreadForConversation: (
     conversationId: string,
-    storyId?: UUIDStringType
+    options: {
+      storyId: UUIDStringType | undefined;
+      isGroup: boolean;
+    }
   ) => Promise<number>;
   getUnreadByConversationAndMarkRead: (options: {
     conversationId: string;
+    isGroup?: boolean;
     newestUnreadAt: number;
     readAt?: number;
     storyId?: UUIDStringType;
@@ -448,11 +452,13 @@ export type DataInterface = {
   // getNewerMessagesByConversation is JSON on server, full message on Client
   getMessageMetricsForConversation: (
     conversationId: string,
-    storyId?: UUIDStringType
+    storyId?: UUIDStringType,
+    isGroup?: boolean
   ) => Promise<ConversationMetricsType>;
   // getConversationRangeCenteredOnMessage is JSON on server, full message on client
   getConversationMessageStats: (options: {
     conversationId: string;
+    isGroup?: boolean;
     ourUuid: UUIDStringType;
   }) => Promise<ConversationMessageStatsType>;
   getLastConversationMessage(options: {
@@ -613,16 +619,18 @@ export type ServerInterface = DataInterface & {
   getOlderMessagesByConversation: (
     conversationId: string,
     options?: {
+      isGroup?: boolean;
       limit?: number;
       messageId?: string;
       receivedAt?: number;
       sentAt?: number;
-      storyId?: UUIDStringType;
+      storyId?: string;
     }
   ) => Promise<Array<MessageTypeUnhydrated>>;
   getNewerMessagesByConversation: (
     conversationId: string,
     options?: {
+      isGroup?: boolean;
       limit?: number;
       receivedAt?: number;
       sentAt?: number;
@@ -644,7 +652,6 @@ export type ServerInterface = DataInterface & {
 
   // Server-only
 
-  getCorruptionLog: () => string;
   initialize: (options: {
     configDir: string;
     key: string;
@@ -684,16 +691,18 @@ export type ClientInterface = DataInterface & {
   getOlderMessagesByConversation: (
     conversationId: string,
     options: {
+      isGroup?: boolean;
       limit?: number;
       messageId?: string;
       receivedAt?: number;
       sentAt?: number;
-      storyId?: UUIDStringType;
+      storyId?: string;
     }
   ) => Promise<Array<MessageAttributesType>>;
   getNewerMessagesByConversation: (
     conversationId: string,
     options: {
+      isGroup?: boolean;
       limit?: number;
       receivedAt?: number;
       sentAt?: number;

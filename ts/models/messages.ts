@@ -91,7 +91,6 @@ import {
   isGroupV2Change,
   isIncoming,
   isKeyChange,
-  isMessageHistoryUnsynced,
   isOutgoing,
   isStory,
   isProfileChange,
@@ -141,7 +140,7 @@ import {
 } from '../messages/helpers';
 import type { ReplacementValuesType } from '../types/I18N';
 import { viewOnceOpenJobQueue } from '../jobs/viewOnceOpenJobQueue';
-import { getMessageIdForLogging } from '../util/getMessageIdForLogging';
+import { getMessageIdForLogging } from '../util/idForLogging';
 import { hasAttachmentDownloads } from '../util/hasAttachmentDownloads';
 import { queueAttachmentDownloads } from '../util/queueAttachmentDownloads';
 import { findStoryMessage } from '../util/findStoryMessage';
@@ -151,6 +150,8 @@ import type { ConversationQueueJobData } from '../jobs/conversationJobQueue';
 import { getMessageById } from '../messages/getMessageById';
 import { shouldDownloadStory } from '../util/shouldDownloadStory';
 import { shouldShowStoriesView } from '../state/selectors/stories';
+import type { ContactWithHydratedAvatar } from '../textsecure/SendMessage';
+import { SeenStatus } from '../MessageSeenStatus';
 
 /* eslint-disable camelcase */
 /* eslint-disable more/no-then */
@@ -187,6 +188,8 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
   private pendingMarkRead?: number;
 
   syncPromise?: Promise<CallbackResultType | void>;
+
+  cachedOutgoingContactData?: Array<ContactWithHydratedAvatar>;
 
   cachedOutgoingPreviewData?: Array<LinkPreviewType>;
 
@@ -227,14 +230,6 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
   }
 
   notifyRedux(): void {
-    const { messageChanged } = window.reduxActions.conversations;
-
-    if (messageChanged) {
-      const conversationId = this.get('conversationId');
-      // Note: The clone is important for triggering a re-run of selectors
-      messageChanged(this.id, conversationId, { ...this.attributes });
-    }
-
     const { storyChanged } = window.reduxActions.stories;
 
     if (isStory(this.attributes)) {
@@ -250,6 +245,17 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
       }
 
       storyChanged(storyData);
+
+      // We don't want messageChanged to run
+      return;
+    }
+
+    const { messageChanged } = window.reduxActions.conversations;
+
+    if (messageChanged) {
+      const conversationId = this.get('conversationId');
+      // Note: The clone is important for triggering a re-run of selectors
+      messageChanged(this.id, conversationId, { ...this.attributes });
     }
   }
 
@@ -288,7 +294,6 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
       !isGroupV2Change(attributes) &&
       !isGroupV1Migration(attributes) &&
       !isKeyChange(attributes) &&
-      !isMessageHistoryUnsynced(attributes) &&
       !isProfileChange(attributes) &&
       !isUniversalTimerNotification(attributes) &&
       !isUnsupportedMessage(attributes) &&
@@ -1049,7 +1054,6 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
 
     // Locally-generated notifications
     const isKeyChangeValue = isKeyChange(attributes);
-    const isMessageHistoryUnsyncedValue = isMessageHistoryUnsynced(attributes);
     const isProfileChangeValue = isProfileChange(attributes);
     const isUniversalTimerNotificationValue =
       isUniversalTimerNotification(attributes);
@@ -1078,7 +1082,6 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
       hasErrorsValue ||
       // Locally-generated notifications
       isKeyChangeValue ||
-      isMessageHistoryUnsyncedValue ||
       isProfileChangeValue ||
       isUniversalTimerNotificationValue;
 
@@ -1924,11 +1927,13 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
       );
 
       if (
-        type === 'story' &&
-        !isConversationAccepted(conversation.attributes)
+        isStory(message.attributes) &&
+        !isConversationAccepted(conversation.attributes, {
+          ignoreEmptyConvo: true,
+        })
       ) {
         log.info(
-          'handleDataMessage: dropping story from !whitelisted',
+          'handleDataMessage: dropping story from !accepted',
           this.getSenderIdentifier()
         );
         confirm();
@@ -2432,9 +2437,10 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
 
           if (isStory(message.attributes)) {
             attributes.hasPostedStory = true;
+          } else {
+            attributes.active_at = now;
           }
 
-          attributes.active_at = now;
           conversation.set(attributes);
 
           if (
@@ -2534,9 +2540,13 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
         }
 
         const conversationTimestamp = conversation.get('timestamp');
+        const isGroupStoryReply =
+          isGroup(conversation.attributes) && message.get('storyId');
         if (
-          !conversationTimestamp ||
-          message.get('sent_at') > conversationTimestamp
+          !isStory(message.attributes) &&
+          !isGroupStoryReply &&
+          (!conversationTimestamp ||
+            message.get('sent_at') > conversationTimestamp)
         ) {
           conversation.set({
             lastMessage: message.getNotificationText(),
@@ -2564,14 +2574,13 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
 
         const shouldHoldOffDownload =
           (isStory(message.attributes) && !queueStoryForDownload) ||
-          ((isImage(attachments) || isVideo(attachments)) &&
+          (!isStory(message.attributes) &&
+            (isImage(attachments) || isVideo(attachments)) &&
             isInCall(reduxState));
 
         if (
           this.hasAttachmentDownloads() &&
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          (this.getConversation()!.getAccepted() ||
-            isOutgoing(message.attributes)) &&
+          (conversation.getAccepted() || isOutgoing(message.attributes)) &&
           !shouldHoldOffDownload
         ) {
           if (window.attachmentDownloadQueue) {
@@ -2619,7 +2628,10 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
     const isFirstRun = false;
     await this.modifyTargetMessage(conversation, isFirstRun);
 
-    if (isMessageUnread(this.attributes)) {
+    const isGroupStoryReply =
+      isGroup(conversation.attributes) && this.get('storyId');
+
+    if (isMessageUnread(this.attributes) && !isGroupStoryReply) {
       await conversation.notify(this);
     }
 
@@ -2715,6 +2727,9 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
 
       const viewSyncs = ViewSyncs.getSingleton().forMessage(message);
 
+      const isGroupStoryReply =
+        isGroup(conversation.attributes) && message.get('storyId');
+
       if (readSyncs.length !== 0 || viewSyncs.length !== 0) {
         const markReadAt = Math.min(
           Date.now(),
@@ -2744,14 +2759,17 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
           newReadStatus = ReadStatus.Read;
         }
 
-        message.set('readStatus', newReadStatus);
+        message.set({
+          readStatus: newReadStatus,
+          seenStatus: SeenStatus.Seen,
+        });
         changed = true;
 
         this.pendingMarkRead = Math.min(
           this.pendingMarkRead ?? Date.now(),
           markReadAt
         );
-      } else if (isFirstRun) {
+      } else if (isFirstRun && !isGroupStoryReply) {
         conversation.set({
           unreadCount: (conversation.get('unreadCount') || 0) + 1,
           isArchived: false,
@@ -2781,6 +2799,20 @@ export class MessageModel extends window.Backbone.Model<MessageAttributesType> {
           changed = true;
         }
       }
+    }
+
+    if (
+      isStory(message.attributes) &&
+      !message.get('expirationStartTimestamp')
+    ) {
+      message.set(
+        'expirationStartTimestamp',
+        Math.min(
+          message.get('serverTimestamp') || message.get('timestamp'),
+          Date.now()
+        )
+      );
+      changed = true;
     }
 
     // Does this message have any pending, previously-received associated reactions?

@@ -489,7 +489,6 @@ async function createWindow() {
         __dirname,
         usePreloadBundle ? '../preload.bundle.js' : '../preload.js'
       ),
-      nativeWindowOpen: true,
       spellcheck: await getSpellCheckSetting(),
       backgroundThrottling: isThrottlingEnabled,
       enablePreferredSizeMode: true,
@@ -1693,7 +1692,7 @@ async function requestShutdown() {
   }
 
   getLogger().info('requestShutdown: Requesting close of mainWindow...');
-  const request = new Promise<void>((resolveFn, reject) => {
+  const request = new Promise<void>(resolveFn => {
     let timeout: NodeJS.Timeout | undefined;
 
     if (!mainWindow) {
@@ -1705,7 +1704,10 @@ async function requestShutdown() {
       getLogger().info('requestShutdown: Response received');
 
       if (error) {
-        return reject(error);
+        getLogger().error(
+          'requestShutdown: got error, still shutting down.',
+          error
+        );
       }
       clearTimeoutIfNecessary(timeout);
 
@@ -1929,24 +1931,14 @@ ipc.on(
 
 // Permissions Popup-related IPC calls
 
-ipc.handle('show-permissions-popup', async () => {
-  try {
-    await showPermissionsPopupWindow(false, false);
-  } catch (error) {
-    getLogger().error(
-      'show-permissions-popup error:',
-      error && error.stack ? error.stack : error
-    );
-  }
-});
 ipc.handle(
-  'show-calling-permissions-popup',
-  async (_event: Electron.Event, forCamera: boolean) => {
+  'show-permissions-popup',
+  async (_event: Electron.Event, forCalling: boolean, forCamera: boolean) => {
     try {
-      await showPermissionsPopupWindow(true, forCamera);
+      await showPermissionsPopupWindow(forCalling, forCamera);
     } catch (error) {
       getLogger().error(
-        'show-calling-permissions-popup error:',
+        'show-permissions-popup error:',
         error && error.stack ? error.stack : error
       );
     }

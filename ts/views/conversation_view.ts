@@ -136,6 +136,7 @@ const {
   getAbsoluteAttachmentPath,
   getAbsoluteTempPath,
   loadAttachmentData,
+  loadContactData,
   loadPreviewData,
   loadStickerData,
   openFileInFolder,
@@ -172,7 +173,10 @@ type MessageActionsType = {
   retryDeleteForEveryone: (messageId: string) => unknown;
   showContactDetail: (options: {
     contact: EmbeddedContactType;
-    signalAccount?: string;
+    signalAccount?: {
+      phoneNumber: string;
+      uuid: UUIDStringType;
+    };
   }) => unknown;
   showContactModal: (contactId: string) => unknown;
   showSafetyNumber: (contactId: string) => unknown;
@@ -186,6 +190,7 @@ type MessageActionsType = {
     messageId: string;
     showSingle?: boolean;
   }) => unknown;
+  startConversation: (e164: string, uuid: UUIDStringType) => unknown;
 };
 
 type MediaType = {
@@ -488,7 +493,10 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
         throw new Error(`markMessageRead: failed to load message ${messageId}`);
       }
 
-      await this.model.markRead(message.get('received_at'));
+      await this.model.markRead(message.get('received_at'), {
+        newestSentAt: message.get('sent_at'),
+        sendReadReceipts: true,
+      });
     };
 
     const createMessageRequestResponseHandler =
@@ -767,7 +775,10 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
     };
     const showContactDetail = (options: {
       contact: EmbeddedContactType;
-      signalAccount?: string;
+      signalAccount?: {
+        phoneNumber: string;
+        uuid: UUIDStringType;
+      };
     }) => {
       this.showContactDetail(options);
     };
@@ -865,6 +876,7 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
     };
 
     const showForwardMessageModal = this.showForwardMessageModal.bind(this);
+    const startConversation = this.startConversation.bind(this);
 
     return {
       deleteMessage,
@@ -890,6 +902,7 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
       showIdentity,
       showMessageDetail,
       showVisualAttachment,
+      startConversation,
     };
   }
 
@@ -1284,34 +1297,37 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
     }
     const attachments = getAttachmentsForMessage(message.attributes);
 
+    const doForwardMessage = async (
+      conversationIds: Array<string>,
+      messageBody?: string,
+      includedAttachments?: Array<AttachmentType>,
+      linkPreview?: LinkPreviewType
+    ) => {
+      try {
+        const didForwardSuccessfully = await this.maybeForwardMessage(
+          message,
+          conversationIds,
+          messageBody,
+          includedAttachments,
+          linkPreview
+        );
+
+        if (didForwardSuccessfully && this.forwardMessageModal) {
+          this.forwardMessageModal.remove();
+          this.forwardMessageModal = undefined;
+        }
+      } catch (err) {
+        log.warn('doForwardMessage', err && err.stack ? err.stack : err);
+      }
+    };
+
     this.forwardMessageModal = new Whisper.ReactWrapperView({
       JSX: window.Signal.State.Roots.createForwardMessageModal(
         window.reduxStore,
         {
           attachments,
-          doForwardMessage: async (
-            conversationIds: Array<string>,
-            messageBody?: string,
-            includedAttachments?: Array<AttachmentType>,
-            linkPreview?: LinkPreviewType
-          ) => {
-            try {
-              const didForwardSuccessfully = await this.maybeForwardMessage(
-                message,
-                conversationIds,
-                messageBody,
-                includedAttachments,
-                linkPreview
-              );
-
-              if (didForwardSuccessfully && this.forwardMessageModal) {
-                this.forwardMessageModal.remove();
-                this.forwardMessageModal = undefined;
-              }
-            } catch (err) {
-              log.warn('doForwardMessage', err && err.stack ? err.stack : err);
-            }
-          },
+          doForwardMessage,
+          hasContact: Boolean(message.get('contact')?.length),
           isSticker: Boolean(message.get('sticker')),
           messageBody: message.getRawText(),
           onClose: () => {
@@ -1433,6 +1449,8 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
         const timestamp = baseTimestamp + offset;
         if (conversation) {
           const sticker = message.get('sticker');
+          const contact = message.get('contact');
+
           if (sticker) {
             const stickerWithData = await loadStickerData(sticker);
             const stickerNoPath = stickerWithData
@@ -1446,12 +1464,21 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
               : undefined;
 
             conversation.enqueueMessageForSend(
-              undefined, // body
-              [],
-              undefined, // quote
-              [],
-              stickerNoPath,
-              undefined, // BodyRanges
+              {
+                body: undefined,
+                attachments: [],
+                sticker: stickerNoPath,
+              },
+              { ...sendMessageOptions, timestamp }
+            );
+          } else if (contact?.length) {
+            const contactWithHydratedAvatar = await loadContactData(contact);
+            conversation.enqueueMessageForSend(
+              {
+                body: undefined,
+                attachments: [],
+                contact: contactWithHydratedAvatar,
+              },
               { ...sendMessageOptions, timestamp }
             );
           } else {
@@ -1472,12 +1499,11 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
             );
 
             conversation.enqueueMessageForSend(
-              messageBody || undefined,
-              attachmentsToSend,
-              undefined, // quote
-              preview,
-              undefined, // sticker
-              undefined, // BodyRanges
+              {
+                body: messageBody || undefined,
+                attachments: attachmentsToSend,
+                preview,
+              },
               { ...sendMessageOptions, timestamp }
             );
           }
@@ -2354,7 +2380,10 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
     signalAccount,
   }: {
     contact: EmbeddedContactType;
-    signalAccount?: string;
+    signalAccount?: {
+      phoneNumber: string;
+      uuid: UUIDStringType;
+    };
   }): void {
     const view = new Whisper.ReactWrapperView({
       Component: window.Signal.Components.ContactDetail,
@@ -2364,7 +2393,10 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
         hasSignalAccount: Boolean(signalAccount),
         onSendMessage: () => {
           if (signalAccount) {
-            this.openConversation(signalAccount);
+            this.startConversation(
+              signalAccount.phoneNumber,
+              signalAccount.uuid
+            );
           }
         },
       },
@@ -2374,6 +2406,19 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
     });
 
     this.listenBack(view);
+  }
+
+  startConversation(e164: string, uuid: UUIDStringType): void {
+    const conversationId = window.ConversationController.ensureContactIds({
+      e164,
+      uuid,
+    });
+    strictAssert(
+      conversationId,
+      `startConversation failed given ${e164}/${uuid} combination`
+    );
+
+    this.openConversation(conversationId);
   }
 
   async openConversation(
@@ -2885,12 +2930,13 @@ export class ConversationView extends window.Backbone.View<ConversationModel> {
       log.info('Send pre-checks took', sendDelta, 'milliseconds');
 
       model.enqueueMessageForSend(
-        message,
-        attachments,
-        this.quote,
-        this.getLinkPreviewForSend(message),
-        undefined, // sticker
-        mentions,
+        {
+          body: message,
+          attachments,
+          quote: this.quote,
+          preview: this.getLinkPreviewForSend(message),
+          mentions,
+        },
         {
           sendHQImages,
           timestamp,

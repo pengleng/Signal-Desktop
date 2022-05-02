@@ -221,6 +221,10 @@
         "message": "Bu danışıqlar arxivlənir və yeni mesaj gələndə yalnız Gələn qutusunda görünür.",
         "description": "Shown at the top of the archived conversations list in the left pane"
     },
+    "noArchivedConversations": {
+        "message": "Arxivlənmiş danışıq yoxdur.",
+        "description": "Shown at the top of the archived conversations list in the left pane if there is no any archived conversation"
+    },
     "archiveConversation": {
         "message": "Arxivlə",
         "description": "Shown in menu for conversation, and moves conversation out of main conversation list"
@@ -833,7 +837,11 @@
     },
     "findByUsernameHeader": {
         "message": "İstifadəçi adına görə tap",
-        "description": "Shown to separate the types of search results"
+        "description": "Shown when search could be a valid username, with one sub-item that will kick off the search"
+    },
+    "findByPhoneNumberHeader": {
+        "message": "Telefon nömrəsinə görə tap",
+        "description": "Shown when search could be a valid phone number, with one sub-item that will kick off the search"
     },
     "at-username": {
         "message": "@$username$",
@@ -966,7 +974,7 @@
         "description": "Confirmation dialog message for when the voice recording is interrupted due to app losing focus"
     },
     "voiceNoteLimit": {
-        "message": "Səsyazmalı mesajların limiti beş dəqiqədir. Başqa bir tətbiqə keçsəniz, səsyazma dayandırılacaq.",
+        "message": "Səsyazmalı mesajlar bir saatla limitlidir. Başqa bir tətbiqə keçsəniz, səsyazma dayandırılacaq.",
         "description": "Shown in toast to warn user about limited time and that window must be in focus"
     },
     "voiceNoteMustBeOnlyAttachment": {
@@ -1055,6 +1063,20 @@
                 "content": "$2",
                 "example": "retry update"
             },
+            "url": {
+                "content": "$2",
+                "example": "https://signal.org/download"
+            },
+            "support": {
+                "content": "$3",
+                "example": "contact support"
+            }
+        }
+    },
+    "cannotUpdateRequireManualDetail": {
+        "message": "Signal yenilənə bilmədi. Əllə quraşdırmaq üçün $url$ ünvanını ziyarət edin. Daha sonra bu problem barədə $support$",
+        "description": "Shown if a general error happened while trying to install update package and manual update is required",
+        "placeholders": {
             "url": {
                 "content": "$2",
                 "example": "https://signal.org/download"
@@ -2383,6 +2405,10 @@
         "message": "İstifadəçi adı alma uğursuz oldu. Bağlantınızı yoxlayıb yenidən sınayın.",
         "description": "Shown if request to Signal servers to find username fails"
     },
+    "Toast--failed-to-fetch-phone-number": {
+        "message": "Telefon nömrəsini alma uğursuz oldu. Bağlantınızı yoxlayıb yenidən sınayın.",
+        "description": "Shown if request to Signal servers to find phone number fails"
+    },
     "startConversation--username-not-found": {
         "message": "İstifadəçi tapılmadı. $atUsername$, bir Signal istifadəçisi deyil; tam istifadəçi adını daxil etdiyinizə əmin olun.",
         "description": "Shown in dialog if username is not found. Note that 'username' will be the output of at-username",
@@ -2390,6 +2416,26 @@
             "atUsername": {
                 "content": "$1",
                 "example": "@alex"
+            }
+        }
+    },
+    "startConversation--phone-number-not-found": {
+        "message": "İstifadəçi tapılmadı. \"$phoneNumber$\", bir Signal istifadəçisi deyil.",
+        "description": "Shown in dialog if phone number is not found.",
+        "placeholders": {
+            "phoneNumber": {
+                "content": "$1",
+                "example": "+1 203-123-4567"
+            }
+        }
+    },
+    "startConversation--phone-number-not-valid": {
+        "message": "İstifadəçi tapılmadı. \"$phoneNumber$\", etibarlı bir telefon nömrəsi deyil.",
+        "description": "Shown in dialog if phone number is not valid.",
+        "placeholders": {
+            "phoneNumber": {
+                "content": "$1",
+                "example": "+1 203-123-4567"
             }
         }
     },
@@ -6311,6 +6357,14 @@
         "message": "Özəl vaxt",
         "description": "Text for an option in Conversation Details Disappearing Messages setting when user previously selected custom time"
     },
+    "DisappearingTimeDialog__label--value": {
+        "message": "Nömrə",
+        "description": "aria-label for the number select box"
+    },
+    "DisappearingTimeDialog__label--units": {
+        "message": "Zaman vahidi",
+        "description": "aria-label for the units of time select box"
+    },
     "DisappearingTimeDialog__title": {
         "message": "Özəl Vaxt",
         "description": "Title for the custom disappearing message timeout dialog"
@@ -6757,6 +6811,24 @@
         "message": "Zəhmət olmasa əllə bağlayın və davam etmək üçün \"Yenidən sına\"ya klikləyin.",
         "description": "Second line of the dialog displayed when Windows installer can't close application automatically and needs user intervention to complete the installation."
     },
+    "NSIS__appRunning": {
+        "message": "$appName$ işləyir.\nBağlamaq üçün \"Oldu\"ya klikləyin.\nƏgər bağlanmasa, əllə bağlamağa çalışın.",
+        "description": "The contents of a dialog displayed when Windows installer detect that the application is running and asks user to close it. Note: please keep the line breaks so that the text occupies three separate lines",
+        "placeholders": {
+            "appName": {
+                "content": "$1",
+                "example": "Signal"
+            }
+        }
+    },
+    "NSIS__decompressionFailed": {
+        "message": "Faylların sıxışdırması açılmadı. Zəhmət olmasa quraşdırıcını yenidən işə salmağa çalışın.",
+        "description": "Displayed when Windows installer cannot decompress application files"
+    },
+    "NSIS__uninstallFailed": {
+        "message": "Köhnə tətbiq faylları silinmədi. Zəhmət olmasa quraşdırıcını yenidən işə salmağa çalışın.",
+        "description": "Displayed when Windows installer cannot uninstall the old application"
+    },
     "CrashReportDialog__title": {
         "message": "Tətbiqetmə çökdü",
         "description": "A title of the dialog displayed when starting an application after a recent crash"
@@ -6941,6 +7013,10 @@
         "message": "Bir hekayə əlavə et",
         "description": "Description hint to add a story"
     },
+    "Stories__hidden-stories": {
+        "message": "Gizli hekayələr",
+        "description": "Button label to go to hidden stories pane"
+    },
     "Stories__list-empty": {
         "message": "Hal-hazırda göstəriləcək yeni bir hekayə yoxdur",
         "description": "Description for when there are no stories to show"
@@ -6991,6 +7067,10 @@
         "message": "Hekayə",
         "description": "aria-label for the story list button"
     },
+    "StoryListItem__unhide": {
+        "message": "Hekayələri göstər",
+        "description": "Label for menu item to un-hide the story"
+    },
     "StoryListItem__hide": {
         "message": "Hekayəni gizlət",
         "description": "Label for menu item to hide the story"
@@ -7005,17 +7085,15 @@
     },
     "StoryListItem__hide-modal--confirm": {
         "message": "Gizlət",
-        "description": "Action button for the confirmation dialog to hide a story",
-        "placeholders": {
-            "name": {
-                "content": "$1",
-                "example": "Abby"
-            }
-        }
+        "description": "Action button for the confirmation dialog to hide a story"
     },
     "StoryImage__error": {
         "message": "Təsvirin görüntülənmə xətası",
         "description": "aria-label for image errors"
+    },
+    "TextAttachment__preview__link": {
+        "message": "Dəvət bağlantısı",
+        "description": "Title for the link preview tooltip"
     },
     "WhatsNew__modal-title": {
         "message": "Yeni nə var",
@@ -7025,32 +7103,22 @@
         "message": "Bu versiya, Signal-ın problemsiz işləməsini təmin etmək üçün kiçik düzəltmələr və xəta düzəltmələri ehtiva edir.",
         "description": "Release notes for releases that only include bug fixes"
     },
-    "WhatsNew__v5.35--1": {
-        "message": "Ən son yeniləmə sistemi təqdim edildi və arıtq növbəti yeniləmələr üçün kiçik yeniləmələr olacaq.",
-        "description": "Release notes for v5.35"
+    "WhatsNew__v5.40--1": {
+        "message": "Bəzən menyuya klikləməni çətinləşdirən problemin həlli də daxil olmaqla bir çox xətalar aradan qaldırılıb.",
+        "description": "Release notes for v5.40"
     },
-    "WhatsNew__v5.35--2": {
-        "message": "Signal artıq medi düymələri saxlamır.",
-        "description": "Release notes for v5.35"
-    },
-    "WhatsNew__v5.35--3": {
-        "message": "Yapon dostlarımız üçün daha yaxşı şrift dəstəyi.",
-        "description": "Release notes for v5.35"
-    },
-    "WhatsNew__v5.36--1": {
-        "message": "Bu qrup söhbəti cəld skan edilsin? Ekranda eyni anda daha çox mesaj üçün daha çox otaq var. Artıq göndərənin mesajlarını əgər vaxt baxımından yaxındırsa birlikdə qruplaşdırırıq.",
-        "description": "Release notes for v5.36"
-    },
-    "WhatsNew__v5.36--2": {
-        "message": "Artıq \"Hər kəs üçün sil\" əməliyyatını icra edəndə, uğurla göndərilib göndərilmədiyini bildirən bir irəliləyiş bildirişi görəcəksiniz. Hər hansısa bir səbəbə görə uğursuz olsa, yenidən sınaya biləcəksiniz!",
-        "description": "Release notes for v5.36"
-    },
-    "WhatsNew__v5.37--1": {
-        "message": "Mətnlə eyni sətrə vaxtı əlavə edərək mesajları qısa saxlamağa çalışırıq. Artıq bir dostunuzu daha tez \"salamlamaq\" üçün ekranınızda daha çox yer var.",
-        "description": "Release notes for v5.37"
-    },
-    "WhatsNew__v5.37--2": {
-        "message": "Əskik stiker paketlər geri qayıtdı! Artıq Masaüstü versiya, telefonunuzun bacara bildiyi bütün stiker paketlərini ələ ala bilməlidir!",
-        "description": "Release notes for v5.37"
+    "WhatsNew__v5.40--2": {
+        "message": "Bu təkmilləşdirməyə töhfə verən açıq mənbə töhfəçilərimiz $dsanders11$ və $yusufsahinhamza$-ya təşəkkürlər.",
+        "description": "Release notes for v5.40",
+        "placeholders": {
+            "dsanders11": {
+                "content": "$1",
+                "example": "dsanders11"
+            },
+            "yusufsahinhamza": {
+                "content": "$2",
+                "example": "yusufsahinhamza"
+            }
+        }
     }
 }

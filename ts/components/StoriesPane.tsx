@@ -61,6 +61,7 @@ export type PropsType = {
 };
 
 export const StoriesPane = ({
+  hiddenStories,
   i18n,
   onBack,
   onStoryClicked,
@@ -70,6 +71,7 @@ export const StoriesPane = ({
   toggleHideStories,
 }: PropsType): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [isShowingHiddenStories, setIsShowingHiddenStories] = useState(false);
   const [renderedStories, setRenderedStories] =
     useState<Array<ConversationStoryType>>(stories);
 
@@ -88,6 +90,7 @@ export const StoriesPane = ({
           aria-label={i18n('back')}
           className="Stories__pane__header--back"
           onClick={onBack}
+          tabIndex={0}
           type="button"
         />
         <div className="Stories__pane__header--title">
@@ -110,8 +113,9 @@ export const StoriesPane = ({
       >
         {renderedStories.map(story => (
           <StoryListItem
-            key={getNewestStory(story).timestamp}
+            group={story.group}
             i18n={i18n}
+            key={getNewestStory(story).timestamp}
             onClick={() => {
               onStoryClicked(story.conversationId);
             }}
@@ -125,6 +129,38 @@ export const StoriesPane = ({
             story={getNewestStory(story)}
           />
         ))}
+        {Boolean(hiddenStories.length) && (
+          <>
+            <button
+              className={classNames('Stories__hidden-stories', {
+                'Stories__hidden-stories--expanded': isShowingHiddenStories,
+              })}
+              onClick={() => setIsShowingHiddenStories(!isShowingHiddenStories)}
+              type="button"
+            >
+              {i18n('Stories__hidden-stories')}
+            </button>
+            {isShowingHiddenStories &&
+              hiddenStories.map(story => (
+                <StoryListItem
+                  key={getNewestStory(story).timestamp}
+                  i18n={i18n}
+                  isHidden
+                  onClick={() => {
+                    onStoryClicked(story.conversationId);
+                  }}
+                  onHideStory={() => {
+                    toggleHideStories(getNewestStory(story).sender.id);
+                  }}
+                  onGoToConversation={conversationId => {
+                    openConversationInternal({ conversationId });
+                  }}
+                  queueStoryDownload={queueStoryDownload}
+                  story={getNewestStory(story)}
+                />
+              ))}
+          </>
+        )}
         {!stories.length && i18n('Stories__list-empty')}
       </div>
     </>

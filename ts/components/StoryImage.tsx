@@ -1,7 +1,7 @@
 // Copyright 2022 Signal Messenger, LLC
 // SPDX-License-Identifier: AGPL-3.0-only
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { Blurhash } from 'react-blurhash';
 
@@ -12,15 +12,17 @@ import { TextAttachment } from './TextAttachment';
 import { ThemeType } from '../types/Util';
 import {
   defaultBlurHash,
-  isDownloaded,
   hasNotResolved,
+  isDownloaded,
   isDownloading,
+  isGIF,
 } from '../types/Attachment';
 import { getClassNamesFor } from '../util/getClassNamesFor';
+import { isVideoTypeSupported } from '../util/GoogleChrome';
 
 export type PropsType = {
   readonly attachment?: AttachmentType;
-  i18n: LocalizerType;
+  readonly i18n: LocalizerType;
   readonly isThumbnail?: boolean;
   readonly label: string;
   readonly moduleClassName?: string;
@@ -37,10 +39,10 @@ export const StoryImage = ({
   queueStoryDownload,
   storyId,
 }: PropsType): JSX.Element | null => {
-  const [attachmentBroken, setAttachmentBroken] = useState<boolean>(false);
-
   const shouldDownloadAttachment =
-    !isDownloaded(attachment) && !isDownloading(attachment);
+    !isDownloaded(attachment) &&
+    !isDownloading(attachment) &&
+    !hasNotResolved(attachment);
 
   useEffect(() => {
     if (shouldDownloadAttachment) {
@@ -52,15 +54,20 @@ export const StoryImage = ({
     return null;
   }
 
-  const isPending = Boolean(attachment.pending);
+  const isPending = Boolean(attachment.pending) && !attachment.textAttachment;
   const isNotReadyToShow = hasNotResolved(attachment) || isPending;
+  const isSupportedVideo = isVideoTypeSupported(attachment.contentType);
 
   const getClassName = getClassNamesFor('StoryImage', moduleClassName);
 
   let storyElement: JSX.Element;
   if (attachment.textAttachment) {
     storyElement = (
-      <TextAttachment i18n={i18n} textAttachment={attachment.textAttachment} />
+      <TextAttachment
+        i18n={i18n}
+        isThumbnail={isThumbnail}
+        textAttachment={attachment.textAttachment}
+      />
     );
   } else if (isNotReadyToShow) {
     storyElement = (
@@ -70,19 +77,24 @@ export const StoryImage = ({
         width={attachment.width}
       />
     );
-  } else if (attachmentBroken) {
+  } else if (!isThumbnail && isSupportedVideo) {
+    const shouldLoop = isGIF(attachment ? [attachment] : undefined);
+
     storyElement = (
-      <div
-        aria-label={i18n('StoryImage__error')}
-        className="StoryImage__error"
-      />
+      <video
+        autoPlay
+        className={getClassName('__image')}
+        controls={false}
+        loop={shouldLoop}
+      >
+        <source src={attachment.url} />
+      </video>
     );
   } else {
     storyElement = (
       <img
         alt={label}
         className={getClassName('__image')}
-        onError={() => setAttachmentBroken(true)}
         src={
           isThumbnail && attachment.thumbnail
             ? attachment.thumbnail.url
@@ -92,10 +104,10 @@ export const StoryImage = ({
     );
   }
 
-  let spinner: JSX.Element | undefined;
+  let overlay: JSX.Element | undefined;
   if (isPending) {
-    spinner = (
-      <div className="StoryImage__spinner-container">
+    overlay = (
+      <div className="StoryImage__overlay-container">
         <div className="StoryImage__spinner-bubble" title={i18n('loading')}>
           <Spinner moduleClassName="StoryImage__spinner" svgSize="small" />
         </div>
@@ -111,7 +123,7 @@ export const StoryImage = ({
       )}
     >
       {storyElement}
-      {spinner}
+      {overlay}
     </div>
   );
 };

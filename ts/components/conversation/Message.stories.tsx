@@ -20,6 +20,7 @@ import {
   IMAGE_WEBP,
   VIDEO_MP4,
   stringToMIMEType,
+  IMAGE_GIF,
 } from '../../types/MIME';
 import { ReadStatus } from '../../messages/MessageReadStatus';
 import { MessageAudio } from './MessageAudio';
@@ -30,6 +31,7 @@ import { pngUrl } from '../../storybook/Fixtures';
 import { getDefaultConversation } from '../../test-both/helpers/getDefaultConversation';
 import { WidthBreakpoint } from '../_util';
 import { MINUTE } from '../../util/durations';
+import { ContactFormType } from '../../types/EmbeddedContact';
 
 import {
   fakeAttachment,
@@ -37,6 +39,7 @@ import {
 } from '../../test-both/helpers/fakeAttachment';
 import { getFakeBadge } from '../../test-both/helpers/getFakeBadge';
 import { ThemeType } from '../../types/Util';
+import { UUID } from '../../types/UUID';
 
 const i18n = setupI18n('en', enMessages);
 
@@ -118,6 +121,7 @@ const createProps = (overrideProps: Partial<Props> = {}): Props => ({
     select('conversationColor', ConversationColors, ConversationColors[0]),
   conversationId: text('conversationId', overrideProps.conversationId || ''),
   conversationType: overrideProps.conversationType || 'direct',
+  contact: overrideProps.contact,
   deletedForEveryone: overrideProps.deletedForEveryone,
   deleteMessage: action('deleteMessage'),
   deleteMessageForEveryone: action('deleteMessageForEveryone'),
@@ -191,6 +195,7 @@ const createProps = (overrideProps: Partial<Props> = {}): Props => ({
   showForwardMessageModal: action('showForwardMessageModal'),
   showMessageDetail: action('showMessageDetail'),
   showVisualAttachment: action('showVisualAttachment'),
+  startConversation: action('startConversation'),
   status: overrideProps.status || 'sent',
   text: overrideProps.text || text('text', ''),
   textDirection: overrideProps.textDirection || TextDirection.Default,
@@ -217,15 +222,30 @@ const renderMany = (propsArray: ReadonlyArray<Props>) =>
     />
   ));
 
-const renderBothDirections = (props: Props) =>
-  renderMany([
-    props,
-    {
+const renderThree = (props: Props) => renderMany([props, props, props]);
+
+const renderBothDirections = (props: Props) => (
+  <>
+    {renderThree(props)}
+    {renderThree({
       ...props,
       author: { ...props.author, id: getDefaultConversation().id },
       direction: 'outgoing',
-    },
-  ]);
+    })}
+  </>
+);
+const renderSingleBothDirections = (props: Props) => (
+  <>
+    <Message {...props} />
+    <Message
+      {...{
+        ...props,
+        author: { ...props.author, id: getDefaultConversation().id },
+        direction: 'outgoing',
+      }}
+    />
+  </>
+);
 
 story.add('Plain Message', () => {
   const props = createProps({
@@ -348,7 +368,7 @@ story.add('Delivered', () => {
     text: 'Hello there from a pal! I am sending a long message so that it will wrap a bit, since I like that look.',
   });
 
-  return <Message {...props} />;
+  return renderThree(props);
 });
 
 story.add('Read', () => {
@@ -358,7 +378,7 @@ story.add('Read', () => {
     text: 'Hello there from a pal! I am sending a long message so that it will wrap a bit, since I like that look.',
   });
 
-  return <Message {...props} />;
+  return renderThree(props);
 });
 
 story.add('Sending', () => {
@@ -368,7 +388,7 @@ story.add('Sending', () => {
     text: 'Hello there from a pal! I am sending a long message so that it will wrap a bit, since I like that look.',
   });
 
-  return <Message {...props} />;
+  return renderThree(props);
 });
 
 story.add('Expiring', () => {
@@ -385,7 +405,7 @@ story.add('Will expire but still sending', () => {
   const props = createProps({
     status: 'sending',
     expirationLength: 30 * 1000,
-    text: 'For outgoing messages, we show timer immediately. Incoming, we wait until expirationStartTimestamp is present.',
+    text: 'We always show the timer if a message has an expiration length, even if unread or still sending.',
   });
 
   return renderBothDirections(props);
@@ -497,7 +517,7 @@ story.add('Reactions (wider message)', () => {
     ],
   });
 
-  return renderBothDirections(props);
+  return renderSingleBothDirections(props);
 });
 
 const joyReactions = Array.from({ length: 52 }, () => getJoyReaction());
@@ -572,7 +592,7 @@ story.add('Reactions (short message)', () => {
     ],
   });
 
-  return renderBothDirections(props);
+  return renderSingleBothDirections(props);
 });
 
 story.add('Avatar in Group', () => {
@@ -583,7 +603,7 @@ story.add('Avatar in Group', () => {
     text: 'Hello it is me, the saxophone.',
   });
 
-  return <Message {...props} />;
+  return renderThree(props);
 });
 
 story.add('Badge in Group', () => {
@@ -594,7 +614,7 @@ story.add('Badge in Group', () => {
     text: 'Hello it is me, the saxophone.',
   });
 
-  return <Message {...props} />;
+  return renderThree(props);
 });
 
 story.add('Sticker', () => {
@@ -668,8 +688,8 @@ story.add('Deleted with error', () => {
 
   return (
     <>
-      <Message {...propsPartialError} />
-      <Message {...propsError} />
+      {renderThree(propsPartialError)}
+      {renderThree(propsError)}
     </>
   );
 });
@@ -679,9 +699,10 @@ story.add('Can delete for everyone', () => {
     status: 'read',
     text: 'I hope you get this.',
     canDeleteForEveryone: true,
+    direction: 'outgoing',
   });
 
-  return <Message {...props} direction="outgoing" />;
+  return renderThree(props);
 });
 
 story.add('Error', () => {
@@ -911,7 +932,7 @@ story.add('Link Preview with too new a date', () => {
 });
 
 story.add('Image', () => {
-  const props = createProps({
+  const darkImageProps = createProps({
     attachments: [
       fakeAttachment({
         url: '/fixtures/tina-rolf-269345-unsplash.jpg',
@@ -923,8 +944,25 @@ story.add('Image', () => {
     ],
     status: 'sent',
   });
+  const lightImageProps = createProps({
+    attachments: [
+      fakeAttachment({
+        url: pngUrl,
+        fileName: 'the-sax.png',
+        contentType: IMAGE_PNG,
+        height: 240,
+        width: 320,
+      }),
+    ],
+    status: 'sent',
+  });
 
-  return renderBothDirections(props);
+  return (
+    <>
+      {renderBothDirections(darkImageProps)}
+      {renderBothDirections(lightImageProps)}
+    </>
+  );
 });
 
 for (let i = 2; i <= 5; i += 1) {
@@ -932,39 +970,39 @@ for (let i = 2; i <= 5; i += 1) {
     const props = createProps({
       attachments: [
         fakeAttachment({
-          url: '/fixtures/tina-rolf-269345-unsplash.jpg',
-          fileName: 'tina-rolf-269345-unsplash.jpg',
-          contentType: IMAGE_JPEG,
-          width: 128,
-          height: 128,
+          url: pngUrl,
+          fileName: 'the-sax.png',
+          contentType: IMAGE_PNG,
+          height: 240,
+          width: 320,
         }),
         fakeAttachment({
-          url: '/fixtures/tina-rolf-269345-unsplash.jpg',
-          fileName: 'tina-rolf-269345-unsplash.jpg',
-          contentType: IMAGE_JPEG,
-          width: 128,
-          height: 128,
+          url: pngUrl,
+          fileName: 'the-sax.png',
+          contentType: IMAGE_PNG,
+          height: 240,
+          width: 320,
         }),
         fakeAttachment({
-          url: '/fixtures/tina-rolf-269345-unsplash.jpg',
-          fileName: 'tina-rolf-269345-unsplash.jpg',
-          contentType: IMAGE_JPEG,
-          width: 128,
-          height: 128,
+          url: pngUrl,
+          fileName: 'the-sax.png',
+          contentType: IMAGE_PNG,
+          height: 240,
+          width: 320,
         }),
         fakeAttachment({
-          url: '/fixtures/tina-rolf-269345-unsplash.jpg',
-          fileName: 'tina-rolf-269345-unsplash.jpg',
-          contentType: IMAGE_JPEG,
-          width: 128,
-          height: 128,
+          url: pngUrl,
+          fileName: 'the-sax.png',
+          contentType: IMAGE_PNG,
+          height: 240,
+          width: 320,
         }),
         fakeAttachment({
-          url: '/fixtures/tina-rolf-269345-unsplash.jpg',
-          fileName: 'tina-rolf-269345-unsplash.jpg',
-          contentType: IMAGE_JPEG,
-          width: 128,
-          height: 128,
+          url: pngUrl,
+          fileName: 'the-sax.png',
+          contentType: IMAGE_PNG,
+          height: 240,
+          width: 320,
         }),
       ].slice(0, i),
       status: 'sent',
@@ -1311,7 +1349,7 @@ story.add('TapToView Error', () => {
     status: 'sent',
   });
 
-  return <Message {...props} />;
+  return renderThree(props);
 });
 
 story.add('Dangerous File Type', () => {
@@ -1414,23 +1452,23 @@ story.add('Not approved, with link preview', () => {
 
 story.add('Custom Color', () => (
   <>
-    <Message
-      {...createProps({ text: 'Solid.' })}
-      direction="outgoing"
-      customColor={{
+    {renderThree({
+      ...createProps({ text: 'Solid.' }),
+      direction: 'outgoing',
+      customColor: {
         start: { hue: 82, saturation: 35 },
-      }}
-    />
+      },
+    })}
     <br style={{ clear: 'both' }} />
-    <Message
-      {...createProps({ text: 'Gradient.' })}
-      direction="outgoing"
-      customColor={{
+    {renderThree({
+      ...createProps({ text: 'Gradient.' }),
+      direction: 'outgoing',
+      customColor: {
         deg: 192,
         start: { hue: 304, saturation: 85 },
         end: { hue: 231, saturation: 76 },
-      }}
-    />
+      },
+    })}
   </>
 ));
 
@@ -1501,18 +1539,140 @@ story.add('Collapsing text-only group messages', () => {
 story.add('Story reply', () => {
   const conversation = getDefaultConversation();
 
-  return (
-    <Message
-      {...createProps({ text: 'Wow!' })}
-      storyReplyContext={{
-        authorTitle: conversation.title,
-        conversationColor: ConversationColors[0],
-        isFromMe: false,
-        rawAttachment: fakeAttachment({
-          url: '/fixtures/snow.jpg',
-          thumbnail: fakeThumbnail('/fixtures/snow.jpg'),
+  return renderThree({
+    ...createProps({ text: 'Wow!' }),
+    storyReplyContext: {
+      authorTitle: conversation.title,
+      conversationColor: ConversationColors[0],
+      isFromMe: false,
+      rawAttachment: fakeAttachment({
+        url: '/fixtures/snow.jpg',
+        thumbnail: fakeThumbnail('/fixtures/snow.jpg'),
+      }),
+    },
+  });
+});
+
+const fullContact = {
+  avatar: {
+    avatar: fakeAttachment({
+      path: '/fixtures/giphy-GVNvOUpeYmI7e.gif',
+      contentType: IMAGE_GIF,
+    }),
+    isProfile: true,
+  },
+  email: [
+    {
+      value: 'jerjor@fakemail.com',
+      type: ContactFormType.HOME,
+    },
+  ],
+  name: {
+    givenName: 'Jerry',
+    familyName: 'Jordan',
+    prefix: 'Dr.',
+    suffix: 'Jr.',
+    middleName: 'James',
+    displayName: 'Jerry Jordan',
+  },
+  number: [
+    {
+      value: '555-444-2323',
+      type: ContactFormType.HOME,
+    },
+  ],
+};
+
+story.add('EmbeddedContact: Full Contact', () => {
+  const props = createProps({
+    contact: fullContact,
+  });
+  return renderBothDirections(props);
+});
+
+story.add('EmbeddedContact: with Send Message', () => {
+  const props = createProps({
+    contact: {
+      ...fullContact,
+      firstNumber: fullContact.number[0].value,
+      uuid: UUID.generate().toString(),
+    },
+    direction: 'incoming',
+  });
+  return renderBothDirections(props);
+});
+
+story.add('EmbeddedContact: Only Email', () => {
+  const props = createProps({
+    contact: {
+      email: fullContact.email,
+    },
+  });
+
+  return renderBothDirections(props);
+});
+
+story.add('EmbeddedContact: Given Name', () => {
+  const props = createProps({
+    contact: {
+      name: {
+        givenName: 'Jerry',
+      },
+    },
+  });
+
+  return renderBothDirections(props);
+});
+
+story.add('EmbeddedContact: Organization', () => {
+  const props = createProps({
+    contact: {
+      organization: 'Company 5',
+    },
+  });
+
+  return renderBothDirections(props);
+});
+
+story.add('EmbeddedContact: Given + Family Name', () => {
+  const props = createProps({
+    contact: {
+      name: {
+        givenName: 'Jerry',
+        familyName: 'FamilyName',
+      },
+    },
+  });
+
+  return renderBothDirections(props);
+});
+
+story.add('EmbeddedContact: Family Name', () => {
+  const props = createProps({
+    contact: {
+      name: {
+        familyName: 'FamilyName',
+      },
+    },
+  });
+
+  return renderBothDirections(props);
+});
+
+story.add('EmbeddedContact: Loading Avatar', () => {
+  const props = createProps({
+    contact: {
+      name: {
+        displayName: 'Jerry Jordan',
+      },
+      avatar: {
+        avatar: fakeAttachment({
+          pending: true,
+          contentType: IMAGE_GIF,
         }),
-      }}
-    />
-  );
+        isProfile: true,
+      },
+    },
+  });
+  return renderBothDirections(props);
 });
