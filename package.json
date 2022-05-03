@@ -1,14 +1,14 @@
 {
-  "name": "CoolApp-desktop",
+  "name": "coolapp-desktop",
   "productName": "CoolApp",
   "description": "Private messaging from your desktop",
   "desktopName": "coolapp.desktop",
-  "repository": "https://github.com/signalapp/Signal-Desktop.git",
+  "repository": "https://github.com/pengleng/Signal-Desktop.git",
   "version": "5.42.0-beta.1",
   "license": "AGPL-3.0-only",
   "author": {
     "name": "CoolApp Messenger, LLC",
-    "email": "support@signal.org"
+    "email": "support@coolapp.asia"
   },
   "main": "app/main.js",
   "scripts": {
@@ -324,7 +324,7 @@
       "publish": [
         {
           "provider": "generic",
-          "url": "https://updates.signal.org/desktop"
+          "url": "https://updates.coolapp.asia/desktop"
         }
       ],
       "mergeASARs": true,
@@ -360,7 +360,7 @@
       "publish": [
         {
           "provider": "generic",
-          "url": "https://updates.signal.org/desktop"
+          "url": "https://updates.coolapp.asia/desktop"
         }
       ],
       "target": [

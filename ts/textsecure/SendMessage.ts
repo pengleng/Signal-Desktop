@@ -675,10 +675,11 @@ export default class MessageSender {
     const iv = getRandomBytes(16);
 
     const result = encryptAttachment(padded, key, iv);
-    const id = await this.server.putAttachment(result.ciphertext);
+    const response = await this.server.putAttachment(result.ciphertext);
 
     const proto = new Proto.AttachmentPointer();
-    proto.cdnId = Long.fromString(id);
+    proto.cdnNumber = response.cdn;
+    proto.cdnKey = response.key;
     proto.contentType = attachment.contentType;
     proto.key = key;
     proto.size = data.byteLength;

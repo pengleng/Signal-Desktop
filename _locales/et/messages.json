@@ -5,7 +5,7 @@
     },
     "privacyPolicy": {
         "message": "Tingimused ja privaatsuspoliitika",
-        "description": "Shown in the about box for the link to https://signal.org/legal"
+        "description": "Shown in the about box for the link to https://chat.coolapp.asia/legal"
     },
     "copyErrorAndQuit": {
         "message": "Kopeeri tõrke tekst ja välju",
@@ -274,7 +274,7 @@
         "description": "Header of screen shown as data is import"
     },
     "importErrorFirst": {
-        "message": "Ole kindel, et oled valinud õige kataloogi, mis sisaldab sinu salvestatud Signali andmeid. Selle nimi peaks algama fraasiga \"Signal Export\". Sul on võimalik salvestada andmetest ka uus koopia rakendusest Chrome App.",
+        "message": "Ole kindel, et oled valinud õige kataloogi, mis sisaldab sinu salvestatud Signali andmeid. Selle nimi peaks algama fraasiga \"CoolApp Export\". Sul on võimalik salvestada andmetest ka uus koopia rakendusest Chrome App.",
         "description": "Message shown if the import went wrong; first paragraph"
     },
     "importErrorSecond": {
@@ -290,7 +290,7 @@
         "description": "Header shown on the screen at the end of a successful import process"
     },
     "importCompleteStartButton": {
-        "message": "Alusta Signal Desktopi kasutamist",
+        "message": "Alusta CoolApp Desktopi kasutamist",
         "description": "Button shown at end of successful import process, nothing left but a restart"
     },
     "importCompleteLinkButton": {
@@ -464,7 +464,7 @@
         "description": "Description of what will happen with your debug log"
     },
     "debugLogError": {
-        "message": "Midagi läks üleslaadimisega kehvasti! Palun saada kiri aadressile support@signal.org ja lisa logifailid tekstifailina.",
+        "message": "Midagi läks üleslaadimisega kehvasti! Palun saada kiri aadressile support@chat.coolapp.asia ja lisa logifailid tekstifailina.",
         "description": "Error message a recommendations if debug log upload fails"
     },
     "debugLogSuccess": {
@@ -609,11 +609,11 @@
     },
     "loadingPreview": {
         "message": "Eelvaate laadimine...",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area"
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area"
     },
     "stagedPreviewThumbnail": {
         "message": "Lingi eelvaate pisipildi mustand: $domain$",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area",
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area",
         "placeholders": {
             "path": {
                 "content": "$1",
@@ -623,7 +623,7 @@
     },
     "previewThumbnail": {
         "message": "Lingi eelvaate pisipilt: $domain$",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area",
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area",
         "placeholders": {
             "domain": {
                 "content": "$1",
@@ -737,18 +737,18 @@
     },
     "joinTheBeta": {
         "message": "Liitu beeta-programmiga",
-        "description": "Item under the Help menu, takes you to an article describing how to install the beta release of Signal Desktop"
+        "description": "Item under the Help menu, takes you to an article describing how to install the beta release of CoolApp Desktop"
     },
     "signalDesktopPreferences": {
-        "message": "Signal Desktopi eelistused",
-        "description": "Title of the window that pops up with Signal Desktop preferences in it"
+        "message": "CoolApp Desktopi eelistused",
+        "description": "Title of the window that pops up with CoolApp Desktop preferences in it"
     },
     "signalDesktopStickerCreator": {
         "message": "Kleebisepaki looja",
-        "description": "Title of the window that pops up with Signal Desktop preferences in it"
+        "description": "Title of the window that pops up with CoolApp Desktop preferences in it"
     },
     "aboutSignalDesktop": {
-        "message": "Teave Signal Desktopi kohta",
+        "message": "Teave CoolApp Desktopi kohta",
         "description": "Item under the Help menu, which opens a small about window"
     },
     "screenShareWindow": {
@@ -772,7 +772,7 @@
         "description": "Command in the tray icon menu, to quit the application"
     },
     "signalDesktop": {
-        "message": "Signal Desktop",
+        "message": "CoolApp Desktop",
         "description": "Tooltip for the tray icon"
     },
     "search": {
@@ -798,7 +798,7 @@
         }
     },
     "noSearchResults--sms-only": {
-        "message": "SMS/MMS kontaktid pole Signal Desktopis saadaval.",
+        "message": "SMS/MMS kontaktid pole CoolApp Desktopis saadaval.",
         "description": "Shown in the search left pane when no results were found and primary device has SMS/MMS handling enabled"
     },
     "noSearchResultsInConversation": {
@@ -891,7 +891,7 @@
     },
     "sendMessageToContact": {
         "message": "Saada sõnum",
-        "description": "Shown when you are sent a contact and that contact has a signal account"
+        "description": "Shown when you are sent a contact and that contact has a CoolApp account"
     },
     "home": {
         "message": "kodu",
@@ -1004,15 +1004,15 @@
         }
     },
     "audioPermissionNeeded": {
-        "message": "Audiosõnumite saatmiseks luba Signal Desktopil mikrofoni kasutada.",
+        "message": "Audiosõnumite saatmiseks luba CoolApp Desktopil mikrofoni kasutada.",
         "description": "Shown if the user attempts to send an audio message without audio permissions turned on"
     },
     "audioCallingPermissionNeeded": {
-        "message": "Häälkõnede tegemiseks pead andma Signal Desktop-ile mikrofonile ligipääsu.",
+        "message": "Häälkõnede tegemiseks pead andma CoolApp Desktop-ile mikrofonile ligipääsu.",
         "description": "Shown if the user attempts access the microphone for calling without audio permissions turned on"
     },
     "videoCallingPermissionNeeded": {
-        "message": "Videokõnede tegemiseks pead andma Signal Desktop-ile kaamerale ligipääsu.",
+        "message": "Videokõnede tegemiseks pead andma CoolApp Desktop-ile kaamerale ligipääsu.",
         "description": "Shown if the user attempts access the camera for video calling without video permissions turned on"
     },
     "allowAccess": {
@@ -1052,7 +1052,7 @@
         "description": "Shown in a button when a conversation is unmuted and can be muted"
     },
     "cannotUpdateDetail": {
-        "message": "Signal couldn't update. $retry$ or visit $url$ to install it manually. Then, $support$ about this problem",
+        "message": "CoolApp couldn't update. $retry$ or visit $url$ to install it manually. Then, $support$ about this problem",
         "description": "Shown if a general error happened while trying to install update package",
         "placeholders": {
             "retry": {
@@ -1061,7 +1061,7 @@
             },
             "url": {
                 "content": "$2",
-                "example": "https://signal.org/download"
+                "example": "https://chat.coolapp.asia/download"
             },
             "support": {
                 "content": "$3",
@@ -1070,12 +1070,12 @@
         }
     },
     "cannotUpdateRequireManualDetail": {
-        "message": "Signal couldn't update. Visit $url$ to install it manually. Then, $support$ about this problem",
+        "message": "CoolApp couldn't update. Visit $url$ to install it manually. Then, $support$ about this problem",
         "description": "Shown if a general error happened while trying to install update package and manual update is required",
         "placeholders": {
             "url": {
                 "content": "$2",
-                "example": "https://signal.org/download"
+                "example": "https://chat.coolapp.asia/download"
             },
             "support": {
                 "content": "$3",
@@ -1084,12 +1084,12 @@
         }
     },
     "readOnlyVolume": {
-        "message": "Signal Desktop on tõenäoliselt macOS-i karantiinis ja seda pole võimalik automaatselt uuendada. Palun teisalda $app$ kausta $folder$ Finderi abil.",
+        "message": "CoolApp Desktop on tõenäoliselt macOS-i karantiinis ja seda pole võimalik automaatselt uuendada. Palun teisalda $app$ kausta $folder$ Finderi abil.",
         "description": "Shown on MacOS if running on a read-only volume and we cannot update",
         "placeholders": {
             "app": {
                 "content": "$1",
-                "example": "Signal.app"
+                "example": "CoolApp.app"
             },
             "folder": {
                 "content": "$2",
@@ -1260,7 +1260,7 @@
         "description": "Shown in timeline when session is automatically reset, to provide access to a popup info dialog"
     },
     "ChatRefresh--summary": {
-        "message": "Signal kasutab otspunkt krüptimist ja võib mõnikord vajada vestluse seansi värskendamist. See ei mõjuta vestluse turvalisust, aga sa võisid mõnest selle kontakti sõnumist ilma jääda, seepärast palu neil vajadusel need uuesti saata.",
+        "message": "CoolApp kasutab otspunkt krüptimist ja võib mõnikord vajada vestluse seansi värskendamist. See ei mõjuta vestluse turvalisust, aga sa võisid mõnest selle kontakti sõnumist ilma jääda, seepärast palu neil vajadusel need uuesti saata.",
         "description": "Shown on explainer dialog available from chat session refreshed timeline events"
     },
     "ChatRefresh--contactSupport": {
@@ -1352,27 +1352,27 @@
         "description": "Used in the media gallery documents tab to visually represent a file"
     },
     "installWelcome": {
-        "message": "Tere tulemast Signal Desktopi kasutama",
+        "message": "Tere tulemast CoolApp Desktopi kasutama",
         "description": "Welcome title on the install page"
     },
     "installTagline": {
-        "message": "Privaatsus on võimalik. Signal teeb selle lihtsaks.",
+        "message": "Privaatsus on võimalik. CoolApp teeb selle lihtsaks.",
         "description": "Tagline displayed under 'installWelcome' string on the install page"
     },
     "linkedDevices": {
         "message": "Ühendatud seadmed",
-        "description": "Used in the guidance to help people find the 'link new device' area of their Signal mobile app"
+        "description": "Used in the guidance to help people find the 'link new device' area of their CoolApp mobile app"
     },
     "linkNewDevice": {
         "message": "Ühenda uus seade",
-        "description": "The menu option shown in Signal iOS to add a new linked device"
+        "description": "The menu option shown in CoolApp iOS to add a new linked device"
     },
     "Install__scan-this-code": {
-        "message": "Skanni see kood enda telefonis oleva Signal rakendusega",
+        "message": "Skanni see kood enda telefonis oleva CoolApp rakendusega",
         "description": "Title of the device link screen. Also used as alt text for the QR code on the device link screen"
     },
     "Install__instructions__1": {
-        "message": "Ava Signal enda telefonis",
+        "message": "Ava CoolApp enda telefonis",
         "description": "Instructions on the device link screen"
     },
     "Install__instructions__2": {
@@ -1650,7 +1650,7 @@
         }
     },
     "calling__pre-call-info--will-ring-1": {
-        "message": "Signal helistab isikule $person$",
+        "message": "CoolApp helistab isikule $person$",
         "description": "Shown in the calling lobby to describe who will be rung",
         "placeholders": {
             "person": {
@@ -1660,7 +1660,7 @@
         }
     },
     "calling__pre-call-info--will-ring-2": {
-        "message": "Signal helistab isikutele $first$ ja $second$",
+        "message": "CoolApp helistab isikutele $first$ ja $second$",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "first": {
@@ -1674,7 +1674,7 @@
         }
     },
     "calling__pre-call-info--will-ring-3": {
-        "message": "Signal helistab isikutele $first$, $second$ ja $third$",
+        "message": "CoolApp helistab isikutele $first$, $second$ ja $third$",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "first": {
@@ -1692,7 +1692,7 @@
         }
     },
     "calling__pre-call-info--will-ring-many": {
-        "message": "Signal helistab isikutele $first$, $second$ ja $others$ teist",
+        "message": "CoolApp helistab isikutele $first$, $second$ ja $others$ teist",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "person": {
@@ -1818,7 +1818,7 @@
         "description": "Body text for the share screen notification"
     },
     "calling__presenting--info": {
-        "message": "Signal jagab $window$.",
+        "message": "CoolApp jagab $window$.",
         "description": "Text that appears in the screen sharing controller to inform person that they are presenting",
         "placeholders": {
             "name": {
@@ -1860,7 +1860,7 @@
         "description": "Shown as the title for the modal that requests screen recording permissions"
     },
     "calling__presenting--macos-permission-description": {
-        "message": "Signal vajab juurdepääsu sinu arvuti ekraanisalvestusele.",
+        "message": "CoolApp vajab juurdepääsu sinu arvuti ekraanisalvestusele.",
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-instruction-step1": {
@@ -1913,11 +1913,11 @@
     },
     "spellCheckWillBeEnabled": {
         "message": "Õigekirja kontroll lubatakse järgmisel Signali käivitamisel.",
-        "description": "Shown when the user enables spellcheck to indicate that they must restart Signal."
+        "description": "Shown when the user enables spellcheck to indicate that they must restart CoolApp."
     },
     "spellCheckWillBeDisabled": {
         "message": "Õigekirja kontroll keelatakse järgmisel Signali käivitamisel.",
-        "description": "Shown when the user disables spellcheck to indicate that they must restart Signal."
+        "description": "Shown when the user disables spellcheck to indicate that they must restart CoolApp."
     },
     "SystemTraySetting__minimize-to-system-tray": {
         "message": "Minimeeri süsteemisalve",
@@ -1960,8 +1960,8 @@
         "description": "Message shown to user when app is disconnected and data deleted"
     },
     "deleteOldIndexedDBData": {
-        "message": "Sul on Signal Desktop-i varasematest paigaldustest jäänud üleliigseid andmeid. Kui valid jätkamise, siis need andmed kustutatakse ja sa alustad algusest peale.",
-        "description": "Shown if user last ran Signal Desktop before October 2018"
+        "message": "Sul on CoolApp Desktop-i varasematest paigaldustest jäänud üleliigseid andmeid. Kui valid jätkamise, siis need andmed kustutatakse ja sa alustad algusest peale.",
+        "description": "Shown if user last ran CoolApp Desktop before October 2018"
     },
     "deleteOldData": {
         "message": "Kustuta vanad andmed",
@@ -2074,11 +2074,11 @@
         "description": "Text that links to a support article on verifying safety numbers"
     },
     "expiredWarning": {
-        "message": "See Signal Desktopi versioon on aegunud. Palun uuenda uusimale versioonile sõnumite saatmiseks jätkamiseks.",
+        "message": "See CoolApp Desktopi versioon on aegunud. Palun uuenda uusimale versioonile sõnumite saatmiseks jätkamiseks.",
         "description": "Warning notification that this version of the app has expired"
     },
     "upgrade": {
-        "message": "Klõpsa aadressile signal.org/download minemiseks",
+        "message": "Klõpsa aadressile chat.coolapp.asia/download minemiseks",
         "description": "Label text for button to upgrade the app to the latest version"
     },
     "mediaMessage": {
@@ -2399,14 +2399,14 @@
     },
     "Toast--failed-to-fetch-username": {
         "message": "Failed to fetch username. Check your connection and try again.",
-        "description": "Shown if request to Signal servers to find username fails"
+        "description": "Shown if request to CoolApp servers to find username fails"
     },
     "Toast--failed-to-fetch-phone-number": {
         "message": "Failed to fetch phone number. Check your connection and try again.",
-        "description": "Shown if request to Signal servers to find phone number fails"
+        "description": "Shown if request to CoolApp servers to find phone number fails"
     },
     "startConversation--username-not-found": {
-        "message": "User not found. $atUsername$ is not a Signal user; make sure you’ve entered the complete username.",
+        "message": "User not found. $atUsername$ is not a CoolApp user; make sure you’ve entered the complete username.",
         "description": "Shown in dialog if username is not found. Note that 'username' will be the output of at-username",
         "placeholders": {
             "atUsername": {
@@ -2416,7 +2416,7 @@
         }
     },
     "startConversation--phone-number-not-found": {
-        "message": "User not found. \"$phoneNumber$\" is not a Signal user.",
+        "message": "User not found. \"$phoneNumber$\" is not a CoolApp user.",
         "description": "Shown in dialog if phone number is not found.",
         "placeholders": {
             "phoneNumber": {
@@ -2528,7 +2528,7 @@
         "description": "When a person inputs a number that is invalid"
     },
     "unlinkedWarning": {
-        "message": "Klõpsa Signal Desktopi nutiseadmega ühendamiseks, et jätkata sõnumite saatmisega.",
+        "message": "Klõpsa CoolApp Desktopi nutiseadmega ühendamiseks, et jätkata sõnumite saatmisega.",
         "description": ""
     },
     "unlinked": {
@@ -2560,15 +2560,15 @@
         "description": ""
     },
     "downloadFullNewVersionMessage": {
-        "message": "Signal couldn’t update. Click to try again.",
+        "message": "CoolApp couldn’t update. Click to try again.",
         "description": "Shown in update dialog when partial update fails and we have to ask user to download full update"
     },
     "autoUpdateNewVersionInstructions": {
-        "message": "Uuenduste paigaldamiseks vajuta \"Taaskäivita Signal\".",
+        "message": "Uuenduste paigaldamiseks vajuta \"Taaskäivita CoolApp\".",
         "description": ""
     },
     "autoUpdateRestartButtonLabel": {
-        "message": "Taaskäivita Signal",
+        "message": "Taaskäivita CoolApp",
         "description": ""
     },
     "autoUpdateLaterButtonLabel": {
@@ -2735,7 +2735,7 @@
     },
     "message--getDescription--unsupported-message": {
         "message": "Mittetoetatud sõnum",
-        "description": "Shown in notifications and in the left pane when a message has features too new for this signal install."
+        "description": "Shown in notifications and in the left pane when a message has features too new for this CoolApp install."
     },
     "message--getDescription--disappearing-media": {
         "message": "Ühekordseks nägemiseks meedia",
@@ -2770,7 +2770,7 @@
         "description": "Shown in the sticker pack manager above the default sticker packs."
     },
     "stickers--StickerManager--BlessedPacks--Empty": {
-        "message": "Signal Artist kleebiseid pole saadaval",
+        "message": "CoolApp Artist kleebiseid pole saadaval",
         "description": "Shown in the sticker pack manager when there are no blessed sticker packs available."
     },
     "stickers--StickerManager--ReceivedPacks": {
@@ -2795,15 +2795,15 @@
     },
     "stickers--StickerManager--Introduction--Image": {
         "message": "Tutvustame kleebiseid: Bandiit kass",
-        "description": "Alt text on a tooltip image when the user upgrades to a version of Signal supporting stickers."
+        "description": "Alt text on a tooltip image when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerManager--Introduction--Title": {
         "message": "Tutvustame kleebiseid",
-        "description": "Shown as the title on a tooltip when the user upgrades to a version of Signal supporting stickers."
+        "description": "Shown as the title on a tooltip when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerManager--Introduction--Body": {
         "message": "Miks kasutada sõnu, kui saab kasutada kleebiseid?",
-        "description": "Shown as the body on a tooltip when the user upgrades to a version of Signal supporting stickers."
+        "description": "Shown as the body on a tooltip when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerPicker--Open": {
         "message": "Ava kleebisepakk",
@@ -2947,9 +2947,9 @@
         "message": "Tulevikusõnumid nagu see sünkroniseeritakse nüüd, kui kasutad värskendatud Signali versiooni.",
         "description": ""
     },
-    "Message--update-signal": {
+    "Message--update-CoolApp": {
         "message": "Uuenda Signalit",
-        "description": "Text for a button which will take user to Signal download page"
+        "description": "Text for a button which will take user to CoolApp download page"
     },
     "Message--tap-to-view-expired": {
         "message": "Vaadatud",
@@ -3910,7 +3910,7 @@
         "description": "Shown in the call screen when the call is reconnecting due to network issues"
     },
     "callDuration": {
-        "message": "Signal $duration$",
+        "message": "CoolApp $duration$",
         "description": "Shown in the call screen to indicate how long the call has been connected",
         "placeholders": {
             "duration": {
@@ -4138,7 +4138,7 @@
         "description": "This group link is no longer valid."
     },
     "GroupV2--join--unknown-link-version": {
-        "message": "See Signal Desktop ei toeta seda linki.",
+        "message": "See CoolApp Desktop ei toeta seda linki.",
         "description": "Shown if you click a group link and we can't get information about it"
     },
     "GroupV2--join--link-revoked--title": {
@@ -5494,11 +5494,11 @@
         "description": "In the instructions for becoming a sustainer. The heading."
     },
     "BadgeSustainerInstructions__subheader": {
-        "message": "Signal is powered by people like you. Contribute and receive a badge.",
+        "message": "CoolApp is powered by people like you. Contribute and receive a badge.",
         "description": "In the instructions for becoming a sustainer. The subheading."
     },
     "BadgeSustainerInstructions__instructions__1": {
-        "message": "Ava Signal enda telefonis",
+        "message": "Ava CoolApp enda telefonis",
         "description": "In the instructions for becoming a sustainer. First instruction."
     },
     "BadgeSustainerInstructions__instructions__2": {
@@ -5522,7 +5522,7 @@
         "description": "Title for the composition area for the SMS-only contact"
     },
     "CompositionArea--sms-only__body": {
-        "message": "Signal Desktop ei toeta sõnumite vahetamist kontaktidega, kes ei kasuta Signalit. Palu sellel isikul turvalisema sõnumivahetuskogemuse saamiseks Signal paigaldada.",
+        "message": "CoolApp Desktop ei toeta sõnumite vahetamist kontaktidega, kes ei kasuta Signalit. Palu sellel isikul turvalisema sõnumivahetuskogemuse saamiseks CoolApp paigaldada.",
         "description": "Body for the composition area for the SMS-only contact"
     },
     "CompositionArea--sms-only__spinner-label": {
@@ -6115,10 +6115,10 @@
     },
     "MessageRequestWarning__dialog__learn-even-more": {
         "message": "Teave sõnumitaotluste kohta",
-        "description": "Shown in the message request warning dialog. Clicking this button will open a page on Signal's support site"
+        "description": "Shown in the message request warning dialog. Clicking this button will open a page on CoolApp's support site"
     },
     "ContactSpoofing__same-name": {
-        "message": "Kontrolli taotlusi hoolega. Signal leidis teise sama nimega kontakti. $link$",
+        "message": "Kontrolli taotlusi hoolega. CoolApp leidis teise sama nimega kontakti. $link$",
         "description": "Shown in the timeline warning when you have a message request from someone with the same name as someone else",
         "placeholders": {
             "link": {
@@ -6690,7 +6690,7 @@
         "description": "Title for the generate link previews setting"
     },
     "Preferences__link-previews--description": {
-        "message": "Selle sätte muutmiseks ava enda nutiseadmes Signal äpp ja liigu Sätted -> Vestlused",
+        "message": "Selle sätte muutmiseks ava enda nutiseadmes CoolApp äpp ja liigu Sätted -> Vestlused",
         "description": "Description for the generate link previews setting"
     },
     "Preferences--advanced": {
@@ -6730,7 +6730,7 @@
         "description": "Title for the 'who can do X' setting"
     },
     "Preferences__privacy--description": {
-        "message": "Nende sätete muutmiseks ava enda nutiseadmes Signal äpp ja liigu Sätted -> Privaatsus",
+        "message": "Nende sätete muutmiseks ava enda nutiseadmes CoolApp äpp ja liigu Sätted -> Privaatsus",
         "description": "Description for the 'who can do X' setting"
     },
     "Preferences__who-can--everybody": {
@@ -6804,7 +6804,7 @@
         "description": "A title of the dialog displayed when starting an application after a recent crash"
     },
     "CrashReportDialog__body": {
-        "message": "Signal restarted after a crash. You can submit a crash report to help Signal investigate the issue.",
+        "message": "CoolApp restarted after a crash. You can submit a crash report to help CoolApp investigate the issue.",
         "description": "The body of the dialog displayed when starting an application after a recent crash"
     },
     "CrashReportDialog__submit": {

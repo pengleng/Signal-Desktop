@@ -300,8 +300,9 @@ async function downloadSticker(
   const { id, emoji } = proto;
   strictAssert(id !== undefined && id !== null, "Sticker id can't be null");
 
-  const ciphertext = await window.textsecure.messaging.getSticker(packId, id);
-  const plaintext = decryptSticker(packKey, ciphertext);
+  // const ciphertext = await window.textsecure.messaging.getSticker(packId, id);
+  // const plaintext = decryptSticker(packKey, ciphertext);
+  const plaintext = await window.textsecure.messaging.getSticker(packId, id);
 
   const sticker = ephemeral
     ? await window.Signal.Migrations.processNewEphemeralSticker(plaintext)
@@ -405,7 +406,8 @@ export async function downloadEphemeralPack(
     const firstStickerProto = proto.stickers ? proto.stickers[0] : null;
     const stickerCount = proto.stickers.length;
 
-    const coverProto = proto.cover || firstStickerProto;
+    // const coverProto = proto.cover || firstStickerProto;
+    const coverProto = firstStickerProto;
     const coverStickerId = coverProto ? coverProto.id : null;
 
     if (!coverProto || !isNumber(coverStickerId)) {
@@ -603,7 +605,8 @@ async function doDownloadStickerPack(
     const firstStickerProto = proto.stickers ? proto.stickers[0] : undefined;
     const stickerCount = proto.stickers.length;
 
-    coverProto = proto.cover || firstStickerProto;
+    // coverProto = proto.cover || firstStickerProto;
+    coverProto = firstStickerProto;
     coverStickerId = dropNull(coverProto ? coverProto.id : undefined);
 
     if (!coverProto || !isNumber(coverStickerId)) {

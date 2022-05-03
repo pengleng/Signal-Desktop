@@ -177,6 +177,7 @@ type PromiseAjaxOptionsType = {
   socketManager?: SocketManager;
   basicAuth?: string;
   certificateAuthority?: string;
+  awsCertificateAuthority?: string;
   contentType?: string;
   data?: Uint8Array | string;
   headers?: HeaderListType;
@@ -609,6 +610,7 @@ type InitializeOptionsType = {
     readonly [propName: string]: string;
   };
   certificateAuthority: string;
+  awsCertificateAuthority: string;
   contentProxyUrl: string;
   proxyUrl: string;
   version: string;
@@ -805,6 +807,12 @@ export type GetProfileUnauthOptionsType = GetProfileCommonOptionsType &
     accessKey: string;
   }>;
 
+export type ServerAttachmentTypeV4 = {
+  key: string;
+  cdn: number;
+  signedUploadLocation: string;
+};
+
 export type WebAPIType = {
   startRegistration(): unknown;
   finishRegistration(baton: unknown): void;
@@ -905,7 +913,7 @@ export type WebAPIType = {
     inviteLinkBase64?: string
   ) => Promise<Proto.IGroupChange>;
   modifyStorageRecords: MessageSender['modifyStorageRecords'];
-  putAttachment: (encryptedBin: Uint8Array) => Promise<string>;
+  putAttachment: (encryptedBin: Uint8Array) => Promise<ServerAttachmentTypeV4>;
   putProfile: (
     jsonData: ProfileRequestDataType
   ) => Promise<UploadAvatarHeadersType | undefined>;
@@ -1027,6 +1035,7 @@ export function initialize({
   directoryV2CodeHashes,
   cdnUrlObject,
   certificateAuthority,
+  awsCertificateAuthority,
   contentProxyUrl,
   proxyUrl,
   version,
@@ -1081,6 +1090,9 @@ export function initialize({
   }
   if (!is.string(certificateAuthority)) {
     throw new Error('WebAPI.initialize: Invalid certificateAuthority');
+  }
+  if (!is.string(awsCertificateAuthority)) {
+    throw new Error('WebAPI.initialize: Invalid awsCertificateAuthority');
   }
   if (!is.string(contentProxyUrl)) {
     throw new Error('WebAPI.initialize: Invalid contentProxyUrl');
@@ -2072,7 +2084,7 @@ export function initialize({
         throw new Error('getSticker: pack ID was invalid');
       }
       return _outerAjax(
-        `${cdnUrlObject['0']}/stickers/${packId}/full/${stickerId}`,
+        `${cdnUrlObject['2']}/stickers/${packId}/full/${stickerId}`,
         {
           certificateAuthority,
           proxyUrl,
@@ -2089,7 +2101,7 @@ export function initialize({
         throw new Error('getStickerPackManifest: pack ID was invalid');
       }
       return _outerAjax(
-        `${cdnUrlObject['0']}/stickers/${packId}/manifest.proto`,
+        `${cdnUrlObject['2']}/stickers/${packId}/manifest.proto`,
         {
           certificateAuthority,
           proxyUrl,
@@ -2109,11 +2121,6 @@ export function initialize({
       date: string;
       policy: string;
       signature: string;
-    };
-
-    type ServerAttachmentTypeV4 = ServerAttachmentType & {
-      cdn: number;
-      signedUploadLocation: string;
     };
 
     function makePutParamsV4(encryptedBin: Uint8Array) {
@@ -2295,7 +2302,7 @@ export function initialize({
         version,
       });
 
-      return response.key;
+      return response;
     }
 
     function getHeaderPadding() {
@@ -2490,7 +2497,7 @@ export function initialize({
 
       await _outerAjax(`${cdnUrlObject['0']}/`, {
         ...manifestParams,
-        certificateAuthority,
+        awsCertificateAuthority,
         proxyUrl,
         timeout: 0,
         type: 'POST',

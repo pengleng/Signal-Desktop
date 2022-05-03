@@ -5,7 +5,7 @@
     },
     "privacyPolicy": {
         "message": "Polisi Telerau a Phreifatrwydd",
-        "description": "Shown in the about box for the link to https://signal.org/legal"
+        "description": "Shown in the about box for the link to https://chat.coolapp.asia/legal"
     },
     "copyErrorAndQuit": {
         "message": "Copïo'r gwall a gadael",
@@ -72,7 +72,7 @@
         "description": "Application menu command to show all application windows"
     },
     "appMenuQuit": {
-        "message": "Gadael Signal",
+        "message": "Gadael CoolApp",
         "description": "Application menu command to close the application"
     },
     "editMenuUndo": {
@@ -184,7 +184,7 @@
         "description": "One of the menu options available in the Avatar popup menu"
     },
     "avatarMenuUpdateAvailable": {
-        "message": "Diweddaru Signal",
+        "message": "Diweddaru CoolApp",
         "description": "One of the menu options available in the Avatar popup menu"
     },
     "loading": {
@@ -262,7 +262,7 @@
         "description": "Header shown on the first screen in the data import process"
     },
     "loadDataDescription": {
-        "message": "Rydych newydd fynd trwy'r broses allforio, ac mae eich cysylltiadau a'ch negeseuon yn aros yn amyneddgar ar eich cyfrifiadur. Dewiswch y ffolder sy'n cynnwys eich data Signal wedi'i gadw.",
+        "message": "Rydych newydd fynd trwy'r broses allforio, ac mae eich cysylltiadau a'ch negeseuon yn aros yn amyneddgar ar eich cyfrifiadur. Dewiswch y ffolder sy'n cynnwys eich data CoolApp wedi'i gadw.",
         "description": "Introduction to the process of importing messages and contacts from disk"
     },
     "importChooserTitle": {
@@ -278,7 +278,7 @@
         "description": "Header of screen shown as data is import"
     },
     "importErrorFirst": {
-        "message": "Sicrhewch eich bod wedi dewis y cyfeiriadur cywir sy'n cynnwys eich data Signal wedi'i gadw. Dylai ei enw ddechrau gyda 'Signal Export.' Gallwch hefyd gadw copi newydd o'ch data o'r App Chrome.",
+        "message": "Sicrhewch eich bod wedi dewis y cyfeiriadur cywir sy'n cynnwys eich data CoolApp wedi'i gadw. Dylai ei enw ddechrau gyda 'CoolApp Export.' Gallwch hefyd gadw copi newydd o'ch data o'r App Chrome.",
         "description": "Message shown if the import went wrong; first paragraph"
     },
     "importErrorSecond": {
@@ -294,7 +294,7 @@
         "description": "Header shown on the screen at the end of a successful import process"
     },
     "importCompleteStartButton": {
-        "message": "Dechreuwch ddefnyddio Signal Desktop",
+        "message": "Dechreuwch ddefnyddio CoolApp Desktop",
         "description": "Button shown at end of successful import process, nothing left but a restart"
     },
     "importCompleteLinkButton": {
@@ -402,7 +402,7 @@
         "description": "When there are multiple previously-verified group members with safety number changes, a banner will be shown. The list of contacts with safety number changes is shown, and this text introduces that list."
     },
     "changedRightAfterVerify": {
-        "message": "Mae'r rhif diogelwch rydych yn ceisio ei ddilysu wedi newid. Adolygwch eich rhif diogelwch newydd â $name1$. Cofiwch, gall y newid hwn olygu bod rhywun yn ceisio rhyng-gipio eich cyfathrebiad neu fod $name2$ wedi ailosod Signal.",
+        "message": "Mae'r rhif diogelwch rydych yn ceisio ei ddilysu wedi newid. Adolygwch eich rhif diogelwch newydd â $name1$. Cofiwch, gall y newid hwn olygu bod rhywun yn ceisio rhyng-gipio eich cyfathrebiad neu fod $name2$ wedi ailosod CoolApp.",
         "description": "Shown on the safety number screen when the user has selected to verify/unverify a contact's safety number, and we immediately discover a safety number change",
         "placeholders": {
             "name1": {
@@ -424,7 +424,7 @@
         "description": "Shown on confirmation dialog when user attempts to send a message in the outbox"
     },
     "identityKeyErrorOnSend": {
-        "message": "Mae'ch rhif diogelwch gyda $name1$ wedi newid. Gall hyn olygu bod rhywun yn ceisio rhyng-gipio eich cyfathrebu, neu fod $name2$ wedi ail-osod Signal. Efallai hoffech chi wirio'r rhif diogelwch gyda'r cysylltiad hwn.",
+        "message": "Mae'ch rhif diogelwch gyda $name1$ wedi newid. Gall hyn olygu bod rhywun yn ceisio rhyng-gipio eich cyfathrebu, neu fod $name2$ wedi ail-osod CoolApp. Efallai hoffech chi wirio'r rhif diogelwch gyda'r cysylltiad hwn.",
         "description": "Shown when user clicks on a failed recipient in the message detail view after an identity key change",
         "placeholders": {
             "name1": {
@@ -468,7 +468,7 @@
         "description": "Description of what will happen with your debug log"
     },
     "debugLogError": {
-        "message": "Aeth rhywbeth o'i le wrth lwytho i fyny! E-bostiwch support@signal.org ac atodwch eich cofnod fel ffeil testun.",
+        "message": "Aeth rhywbeth o'i le wrth lwytho i fyny! E-bostiwch support@chat.coolapp.asia ac atodwch eich cofnod fel ffeil testun.",
         "description": "Error message a recommendations if debug log upload fails"
     },
     "debugLogSuccess": {
@@ -496,7 +496,7 @@
         "description": "Shown in a toast to let the user know that the link to the debug log has been copied to their clipboard"
     },
     "reportIssue": {
-        "message": "Cysylltu â Chymorth Signal",
+        "message": "Cysylltu â Chymorth CoolApp",
         "description": "Link to open the issue tracker"
     },
     "gotIt": {
@@ -548,7 +548,7 @@
         "description": "Header for a key change dialog"
     },
     "identityChanged": {
-        "message": "Mae'ch rhif diogelwch gyda'r cysylltiad hwn wedi newid. Gall hyn olygu bod rhywun yn ceisio rhyng-gipio eich cyfathrebu, neu fod wedi ail-osod Signal. Efallai hoffech wirio'r rhif diogelwch newydd isod.",
+        "message": "Mae'ch rhif diogelwch gyda'r cysylltiad hwn wedi newid. Gall hyn olygu bod rhywun yn ceisio rhyng-gipio eich cyfathrebu, neu fod wedi ail-osod CoolApp. Efallai hoffech wirio'r rhif diogelwch newydd isod.",
         "description": ""
     },
     "incomingError": {
@@ -613,11 +613,11 @@
     },
     "loadingPreview": {
         "message": "Yn Llwytho Rhagolwg...",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area"
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area"
     },
     "stagedPreviewThumbnail": {
         "message": "Rhagolwg dolen llun bach drafft ar gyfer $domain$",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area",
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area",
         "placeholders": {
             "path": {
                 "content": "$1",
@@ -627,7 +627,7 @@
     },
     "previewThumbnail": {
         "message": "Rhagolwg dolen llun bach ar gyfer $domain$",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area",
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area",
         "placeholders": {
             "domain": {
                 "content": "$1",
@@ -741,18 +741,18 @@
     },
     "joinTheBeta": {
         "message": "Ymuno â'r Beta",
-        "description": "Item under the Help menu, takes you to an article describing how to install the beta release of Signal Desktop"
+        "description": "Item under the Help menu, takes you to an article describing how to install the beta release of CoolApp Desktop"
     },
     "signalDesktopPreferences": {
-        "message": "Dewisiadau Signal Desktop",
-        "description": "Title of the window that pops up with Signal Desktop preferences in it"
+        "message": "Dewisiadau CoolApp Desktop",
+        "description": "Title of the window that pops up with CoolApp Desktop preferences in it"
     },
     "signalDesktopStickerCreator": {
         "message": "Crëwr y pecyn sticeri",
-        "description": "Title of the window that pops up with Signal Desktop preferences in it"
+        "description": "Title of the window that pops up with CoolApp Desktop preferences in it"
     },
     "aboutSignalDesktop": {
-        "message": "Ynghylch Signal Desktop",
+        "message": "Ynghylch CoolApp Desktop",
         "description": "Item under the Help menu, which opens a small about window"
     },
     "screenShareWindow": {
@@ -776,7 +776,7 @@
         "description": "Command in the tray icon menu, to quit the application"
     },
     "signalDesktop": {
-        "message": "Signal Desktop",
+        "message": "CoolApp Desktop",
         "description": "Tooltip for the tray icon"
     },
     "search": {
@@ -802,7 +802,7 @@
         }
     },
     "noSearchResults--sms-only": {
-        "message": "Nid yw cysylltiadau SMS/MMS ar gael ar Signal Desktop",
+        "message": "Nid yw cysylltiadau SMS/MMS ar gael ar CoolApp Desktop",
         "description": "Shown in the search left pane when no results were found and primary device has SMS/MMS handling enabled"
     },
     "noSearchResultsInConversation": {
@@ -854,7 +854,7 @@
         }
     },
     "welcomeToSignal": {
-        "message": "Croeso i Signal",
+        "message": "Croeso i CoolApp",
         "description": ""
     },
     "whatsNew": {
@@ -895,7 +895,7 @@
     },
     "sendMessageToContact": {
         "message": "Anfon Neges",
-        "description": "Shown when you are sent a contact and that contact has a signal account"
+        "description": "Shown when you are sent a contact and that contact has a CoolApp account"
     },
     "home": {
         "message": "cartref",
@@ -1008,15 +1008,15 @@
         }
     },
     "audioPermissionNeeded": {
-        "message": "I anfon negeseuon sain, gadewch i Signal Desktop gael mynediad i'ch meicroffon.",
+        "message": "I anfon negeseuon sain, gadewch i CoolApp Desktop gael mynediad i'ch meicroffon.",
         "description": "Shown if the user attempts to send an audio message without audio permissions turned on"
     },
     "audioCallingPermissionNeeded": {
-        "message": "Ar gyfer galw, rhaid i chi ganiatáu i Signal Desktop gael mynediad i'ch meicroffon.",
+        "message": "Ar gyfer galw, rhaid i chi ganiatáu i CoolApp Desktop gael mynediad i'ch meicroffon.",
         "description": "Shown if the user attempts access the microphone for calling without audio permissions turned on"
     },
     "videoCallingPermissionNeeded": {
-        "message": "Ar gyfer galw fideo, rhaid i chi ganiatáu i Signal Desktop gael mynediad i'ch camera.",
+        "message": "Ar gyfer galw fideo, rhaid i chi ganiatáu i CoolApp Desktop gael mynediad i'ch camera.",
         "description": "Shown if the user attempts access the camera for video calling without video permissions turned on"
     },
     "allowAccess": {
@@ -1056,7 +1056,7 @@
         "description": "Shown in a button when a conversation is unmuted and can be muted"
     },
     "cannotUpdateDetail": {
-        "message": "Nid oedd modd i Signal ddiweddaru. $retry$ neu ewch i $url$ i'w osod â llaw. Yna, i $support$ am y broblem hon",
+        "message": "Nid oedd modd i CoolApp ddiweddaru. $retry$ neu ewch i $url$ i'w osod â llaw. Yna, i $support$ am y broblem hon",
         "description": "Shown if a general error happened while trying to install update package",
         "placeholders": {
             "retry": {
@@ -1065,7 +1065,7 @@
             },
             "url": {
                 "content": "$2",
-                "example": "https://signal.org/download"
+                "example": "https://chat.coolapp.asia/download"
             },
             "support": {
                 "content": "$3",
@@ -1074,12 +1074,12 @@
         }
     },
     "cannotUpdateRequireManualDetail": {
-        "message": "Nid oedd Signal yn gallu diweddaru. Ewch i $url$ i'w osod â llaw. Yna, $support$ am y broblem hon",
+        "message": "Nid oedd CoolApp yn gallu diweddaru. Ewch i $url$ i'w osod â llaw. Yna, $support$ am y broblem hon",
         "description": "Shown if a general error happened while trying to install update package and manual update is required",
         "placeholders": {
             "url": {
                 "content": "$2",
-                "example": "https://signal.org/download"
+                "example": "https://chat.coolapp.asia/download"
             },
             "support": {
                 "content": "$3",
@@ -1088,12 +1088,12 @@
         }
     },
     "readOnlyVolume": {
-        "message": "Mae Signal Desktop yn debygol o fod yng nghwarantin macOS, ac ni fydd yn gallu diweddaru ei hun. Ceisiwch symud $app$ i $folder$ gyda Finder.",
+        "message": "Mae CoolApp Desktop yn debygol o fod yng nghwarantin macOS, ac ni fydd yn gallu diweddaru ei hun. Ceisiwch symud $app$ i $folder$ gyda Finder.",
         "description": "Shown on MacOS if running on a read-only volume and we cannot update",
         "placeholders": {
             "app": {
                 "content": "$1",
-                "example": "Signal.app"
+                "example": "CoolApp.app"
             },
             "folder": {
                 "content": "$2",
@@ -1154,7 +1154,7 @@
         "description": "Text shown in the confirmation dialog for deleting a message locally"
     },
     "deleteForEveryoneWarning": {
-        "message": "Bydd y neges hon yn cael ei dileu i bawb sydd yn y sgwrs os ydynt yn defnyddio fersiwn diweddar o Signal. Byddan nhw'n gallu gweld eich bod wedi dileu neges.",
+        "message": "Bydd y neges hon yn cael ei dileu i bawb sydd yn y sgwrs os ydynt yn defnyddio fersiwn diweddar o CoolApp. Byddan nhw'n gallu gweld eich bod wedi dileu neges.",
         "description": "Text shown in the confirmation dialog for deleting a message for everyone"
     },
     "from": {
@@ -1264,11 +1264,11 @@
         "description": "Shown in timeline when session is automatically reset, to provide access to a popup info dialog"
     },
     "ChatRefresh--summary": {
-        "message": "Mae Signal yn defnyddio amgryptio dechrau-i'r-diwedd ac efallai bydd rhaid iddo adnewyddu eich sesiwn sgwrsio o dro i dro. Nid yw hyn yn cael effaith ar ddiogelwch eich sgyrsiau ond efallai byddwch wedi methu neges gan y cysylltiad yma a gallwch ofyn iddyn nhw ei hail-anfon.",
+        "message": "Mae CoolApp yn defnyddio amgryptio dechrau-i'r-diwedd ac efallai bydd rhaid iddo adnewyddu eich sesiwn sgwrsio o dro i dro. Nid yw hyn yn cael effaith ar ddiogelwch eich sgyrsiau ond efallai byddwch wedi methu neges gan y cysylltiad yma a gallwch ofyn iddyn nhw ei hail-anfon.",
         "description": "Shown on explainer dialog available from chat session refreshed timeline events"
     },
     "ChatRefresh--contactSupport": {
-        "message": "Cysylltu â Chymorth Signal",
+        "message": "Cysylltu â Chymorth CoolApp",
         "description": "Shown on explainer dialog available from chat session refreshed timeline events"
     },
     "DeliveryIssue--preview": {
@@ -1356,27 +1356,27 @@
         "description": "Used in the media gallery documents tab to visually represent a file"
     },
     "installWelcome": {
-        "message": "Croeso i Signal Desktop",
+        "message": "Croeso i CoolApp Desktop",
         "description": "Welcome title on the install page"
     },
     "installTagline": {
-        "message": "Mae preifatrwydd yn bosib. Mae Signal yn ei wneud yn hawdd.",
+        "message": "Mae preifatrwydd yn bosib. Mae CoolApp yn ei wneud yn hawdd.",
         "description": "Tagline displayed under 'installWelcome' string on the install page"
     },
     "linkedDevices": {
         "message": "Dyfeisiau Cysylltiedig",
-        "description": "Used in the guidance to help people find the 'link new device' area of their Signal mobile app"
+        "description": "Used in the guidance to help people find the 'link new device' area of their CoolApp mobile app"
     },
     "linkNewDevice": {
         "message": "Cysylltu Dyfais Newydd",
-        "description": "The menu option shown in Signal iOS to add a new linked device"
+        "description": "The menu option shown in CoolApp iOS to add a new linked device"
     },
     "Install__scan-this-code": {
-        "message": "Sganio'r cod hwn yn yr ap Signal ar eich ffôn",
+        "message": "Sganio'r cod hwn yn yr ap CoolApp ar eich ffôn",
         "description": "Title of the device link screen. Also used as alt text for the QR code on the device link screen"
     },
     "Install__instructions__1": {
-        "message": "Agorwch Signal ar eich ffôn",
+        "message": "Agorwch CoolApp ar eich ffôn",
         "description": "Instructions on the device link screen"
     },
     "Install__instructions__2": {
@@ -1466,7 +1466,7 @@
         "description": ""
     },
     "installTooOld": {
-        "message": "Diweddarwch Signal ar y ddyfais hon i gysylltu eich ffôn.",
+        "message": "Diweddarwch CoolApp ar y ddyfais hon i gysylltu eich ffôn.",
         "description": ""
     },
     "installErrorHeader": {
@@ -1654,7 +1654,7 @@
         }
     },
     "calling__pre-call-info--will-ring-1": {
-        "message": "Bydd Signal yn ffonio $person$",
+        "message": "Bydd CoolApp yn ffonio $person$",
         "description": "Shown in the calling lobby to describe who will be rung",
         "placeholders": {
             "person": {
@@ -1664,7 +1664,7 @@
         }
     },
     "calling__pre-call-info--will-ring-2": {
-        "message": "Bydd Signal yn ffonio $first$ a $second$",
+        "message": "Bydd CoolApp yn ffonio $first$ a $second$",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "first": {
@@ -1678,7 +1678,7 @@
         }
     },
     "calling__pre-call-info--will-ring-3": {
-        "message": "Bydd Signal yn ffonio $first$, $second$, a $third$",
+        "message": "Bydd CoolApp yn ffonio $first$, $second$, a $third$",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "first": {
@@ -1696,7 +1696,7 @@
         }
     },
     "calling__pre-call-info--will-ring-many": {
-        "message": "Bydd Signal yn ffonio $first$, $second$, a $others$ arall",
+        "message": "Bydd CoolApp yn ffonio $first$, $second$, a $others$ arall",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "person": {
@@ -1822,7 +1822,7 @@
         "description": "Body text for the share screen notification"
     },
     "calling__presenting--info": {
-        "message": "Mae Signal yn rhannu $window$.",
+        "message": "Mae CoolApp yn rhannu $window$.",
         "description": "Text that appears in the screen sharing controller to inform person that they are presenting",
         "placeholders": {
             "name": {
@@ -1864,7 +1864,7 @@
         "description": "Shown as the title for the modal that requests screen recording permissions"
     },
     "calling__presenting--macos-permission-description": {
-        "message": "Mae angen caniatâd ar Signal i gael mynediad at recordio sgrin eich cyfrifiadur.",
+        "message": "Mae angen caniatâd ar CoolApp i gael mynediad at recordio sgrin eich cyfrifiadur.",
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-instruction-step1": {
@@ -1876,7 +1876,7 @@
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-instruction-step3": {
-        "message": "Ar y dde, ticiwch y blwch wrth ymyl Signal. Os na welwch Signal yn y rhestr, cliciwch y + i'w ychwanegu.",
+        "message": "Ar y dde, ticiwch y blwch wrth ymyl CoolApp. Os na welwch CoolApp yn y rhestr, cliciwch y + i'w ychwanegu.",
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-open": {
@@ -1892,7 +1892,7 @@
         "description": "Description of the always relay calls setting"
     },
     "alwaysRelayCallsDetail": {
-        "message": "Ail-alw pob galwad drwy'r gweinydd Signal i osgoi datgelu eich cyfeiriad IP i'ch cyswllt. Bydd ei alluogi yn lleihau ansawdd galwadau.",
+        "message": "Ail-alw pob galwad drwy'r gweinydd CoolApp i osgoi datgelu eich cyfeiriad IP i'ch cyswllt. Bydd ei alluogi yn lleihau ansawdd galwadau.",
         "description": "Details describing the always relay calls setting"
     },
     "permissions": {
@@ -1916,12 +1916,12 @@
         "description": "Description of the spell check setting"
     },
     "spellCheckWillBeEnabled": {
-        "message": "Bydd y sillafwr yn cael ei alluogi y tro nesaf y bydd Signal yn cychwyn.",
-        "description": "Shown when the user enables spellcheck to indicate that they must restart Signal."
+        "message": "Bydd y sillafwr yn cael ei alluogi y tro nesaf y bydd CoolApp yn cychwyn.",
+        "description": "Shown when the user enables spellcheck to indicate that they must restart CoolApp."
     },
     "spellCheckWillBeDisabled": {
-        "message": "Bydd y sillafwr wedi'i analluogi y tro nesaf y bydd Signal yn cychwyn.",
-        "description": "Shown when the user disables spellcheck to indicate that they must restart Signal."
+        "message": "Bydd y sillafwr wedi'i analluogi y tro nesaf y bydd CoolApp yn cychwyn.",
+        "description": "Shown when the user disables spellcheck to indicate that they must restart CoolApp."
     },
     "SystemTraySetting__minimize-to-system-tray": {
         "message": "Lleihau i'r drôr y system",
@@ -1964,8 +1964,8 @@
         "description": "Message shown to user when app is disconnected and data deleted"
     },
     "deleteOldIndexedDBData": {
-        "message": "Mae gennych hen ddata o osodiad blaenorol Signal Desktop. Os dewiswch barhau, bydd yn cael ei ddileu a byddwch yn dechrau o'r dechrau.",
-        "description": "Shown if user last ran Signal Desktop before October 2018"
+        "message": "Mae gennych hen ddata o osodiad blaenorol CoolApp Desktop. Os dewiswch barhau, bydd yn cael ei ddileu a byddwch yn dechrau o'r dechrau.",
+        "description": "Shown if user last ran CoolApp Desktop before October 2018"
     },
     "deleteOldData": {
         "message": "Dileu Hen Ddata",
@@ -2078,11 +2078,11 @@
         "description": "Text that links to a support article on verifying safety numbers"
     },
     "expiredWarning": {
-        "message": "Mae'r fersiwn hwn o Signal Desktop wedi dod i ben. Uwchraddiwch i'r fersiwn diweddaraf i barhau i negeseua.",
+        "message": "Mae'r fersiwn hwn o CoolApp Desktop wedi dod i ben. Uwchraddiwch i'r fersiwn diweddaraf i barhau i negeseua.",
         "description": "Warning notification that this version of the app has expired"
     },
     "upgrade": {
-        "message": "Cliciwch i fynd i signal.org/download",
+        "message": "Cliciwch i fynd i chat.coolapp.asia/download",
         "description": "Label text for button to upgrade the app to the latest version"
     },
     "mediaMessage": {
@@ -2098,7 +2098,7 @@
         "description": "Label for contact and group sync settings"
     },
     "syncExplanation": {
-        "message": "Mewnforio pob grŵp a chyswllt Signal o'ch dyfais symudol.",
+        "message": "Mewnforio pob grŵp a chyswllt CoolApp o'ch dyfais symudol.",
         "description": "Explanatory text for sync settings"
     },
     "lastSynced": {
@@ -2403,14 +2403,14 @@
     },
     "Toast--failed-to-fetch-username": {
         "message": "Wedi methu estyn enw defnyddiwr. Gwiriwch eich cysylltiad a rhoi cynnig arall arni.",
-        "description": "Shown if request to Signal servers to find username fails"
+        "description": "Shown if request to CoolApp servers to find username fails"
     },
     "Toast--failed-to-fetch-phone-number": {
         "message": "Wedi methu â nôl rhif ffôn. Gwiriwch eich cysylltiad a rhowch gynnig arall arni.",
-        "description": "Shown if request to Signal servers to find phone number fails"
+        "description": "Shown if request to CoolApp servers to find phone number fails"
     },
     "startConversation--username-not-found": {
-        "message": "Heb ganfod y defnyddiwr. Nid yw $atUsername$ yn ddefnyddiwr Signal; gwnewch yn siŵr eich bod wedi rhoi'r enw defnyddiwr llawn.",
+        "message": "Heb ganfod y defnyddiwr. Nid yw $atUsername$ yn ddefnyddiwr CoolApp; gwnewch yn siŵr eich bod wedi rhoi'r enw defnyddiwr llawn.",
         "description": "Shown in dialog if username is not found. Note that 'username' will be the output of at-username",
         "placeholders": {
             "atUsername": {
@@ -2420,7 +2420,7 @@
         }
     },
     "startConversation--phone-number-not-found": {
-        "message": "Defnyddiwr heb ei ganfod. Nid yw \"$phoneNumber$\" yn ddefnyddiwr Signal.",
+        "message": "Defnyddiwr heb ei ganfod. Nid yw \"$phoneNumber$\" yn ddefnyddiwr CoolApp.",
         "description": "Shown in dialog if phone number is not found.",
         "placeholders": {
             "phoneNumber": {
@@ -2460,7 +2460,7 @@
         "description": "Shown in the alert when you add the maximum number of group members"
     },
     "chooseGroupMembers__maximum-group-size__body": {
-        "message": "Gall grwpiau Signal fod ag uchafswm o $max$ aelod.",
+        "message": "Gall grwpiau CoolApp fod ag uchafswm o $max$ aelod.",
         "description": "Shown in the alert when you add the maximum number of group members",
         "placeholders": {
             "max": {
@@ -2474,7 +2474,7 @@
         "description": "Shown in the alert when you add the maximum recommended number of group members"
     },
     "chooseGroupMembers__maximum-recommended-group-size__body": {
-        "message": "Mae grwpiau Signal yn gweithio orau gydag $max$ aelod neu lai. Bydd ychwanegu mwy o aelodau yn achosi oedi wrth anfon a derbyn negeseuon.",
+        "message": "Mae grwpiau CoolApp yn gweithio orau gydag $max$ aelod neu lai. Bydd ychwanegu mwy o aelodau yn achosi oedi wrth anfon a derbyn negeseuon.",
         "description": "Shown in the alert when you add the maximum recommended number of group members",
         "placeholders": {
             "max": {
@@ -2532,7 +2532,7 @@
         "description": "When a person inputs a number that is invalid"
     },
     "unlinkedWarning": {
-        "message": "Cliciwch i ail-leoli Signal Desktop i'ch dyfais symudol i barhau â negeseuon.",
+        "message": "Cliciwch i ail-leoli CoolApp Desktop i'ch dyfais symudol i barhau â negeseuon.",
         "description": ""
     },
     "unlinked": {
@@ -2556,7 +2556,7 @@
         "description": ""
     },
     "autoUpdateNewVersionMessage": {
-        "message": "Cliciwch i ailgychwyn Signal",
+        "message": "Cliciwch i ailgychwyn CoolApp",
         "description": ""
     },
     "downloadNewVersionMessage": {
@@ -2564,15 +2564,15 @@
         "description": ""
     },
     "downloadFullNewVersionMessage": {
-        "message": "Methwyd diweddaru Signal. Cliciwch i rhoi gynnig arall arni.",
+        "message": "Methwyd diweddaru CoolApp. Cliciwch i rhoi gynnig arall arni.",
         "description": "Shown in update dialog when partial update fails and we have to ask user to download full update"
     },
     "autoUpdateNewVersionInstructions": {
-        "message": "Pwyswch Ailgychwyn Signal i diweddaru.",
+        "message": "Pwyswch Ailgychwyn CoolApp i diweddaru.",
         "description": ""
     },
     "autoUpdateRestartButtonLabel": {
-        "message": "Ail-gychwyn Signal",
+        "message": "Ail-gychwyn CoolApp",
         "description": ""
     },
     "autoUpdateLaterButtonLabel": {
@@ -2739,7 +2739,7 @@
     },
     "message--getDescription--unsupported-message": {
         "message": "Neges heb gefnogaeth",
-        "description": "Shown in notifications and in the left pane when a message has features too new for this signal install."
+        "description": "Shown in notifications and in the left pane when a message has features too new for this CoolApp install."
     },
     "message--getDescription--disappearing-media": {
         "message": "Cyfrwng Gweld-unwaith",
@@ -2770,11 +2770,11 @@
         "description": "Shown in the sticker pack manager when you don't have any installed sticker packs."
     },
     "stickers--StickerManager--BlessedPacks": {
-        "message": "Cyfres Artistiaid Signal",
+        "message": "Cyfres Artistiaid CoolApp",
         "description": "Shown in the sticker pack manager above the default sticker packs."
     },
     "stickers--StickerManager--BlessedPacks--Empty": {
-        "message": "Dim sticeri Artist Signal ar gael",
+        "message": "Dim sticeri Artist CoolApp ar gael",
         "description": "Shown in the sticker pack manager when there are no blessed sticker packs available."
     },
     "stickers--StickerManager--ReceivedPacks": {
@@ -2799,15 +2799,15 @@
     },
     "stickers--StickerManager--Introduction--Image": {
         "message": "Yn cyflwyno Sticeri: Bandit y Gath",
-        "description": "Alt text on a tooltip image when the user upgrades to a version of Signal supporting stickers."
+        "description": "Alt text on a tooltip image when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerManager--Introduction--Title": {
         "message": "Yn Cyflwyno Sticeri",
-        "description": "Shown as the title on a tooltip when the user upgrades to a version of Signal supporting stickers."
+        "description": "Shown as the title on a tooltip when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerManager--Introduction--Body": {
         "message": "Pam defnyddio geiriau pan allwch chi ddefnyddio sticeri?",
-        "description": "Shown as the body on a tooltip when the user upgrades to a version of Signal supporting stickers."
+        "description": "Shown as the body on a tooltip when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerPicker--Open": {
         "message": "Agorwch y dewisydd sticeri",
@@ -2924,7 +2924,7 @@
         "description": "When a message is too long this is the affordance to expand the message"
     },
     "Message--unsupported-message": {
-        "message": "Anfonodd $contact$ neges atoch nad oes modd ei phrosesu na'i harddangos oherwydd ei bod yn defnyddio nodwedd Signal newydd.",
+        "message": "Anfonodd $contact$ neges atoch nad oes modd ei phrosesu na'i harddangos oherwydd ei bod yn defnyddio nodwedd CoolApp newydd.",
         "description": "",
         "placeholders": {
             "contact": {
@@ -2934,7 +2934,7 @@
         }
     },
     "Message--unsupported-message-ask-to-resend": {
-        "message": "Gallwch ofyn i $contact$ ail-anfon y neges hon nawr eich bod yn defnyddio'r fersiwn ddiweddaraf o Signal.",
+        "message": "Gallwch ofyn i $contact$ ail-anfon y neges hon nawr eich bod yn defnyddio'r fersiwn ddiweddaraf o CoolApp.",
         "description": "",
         "placeholders": {
             "contact": {
@@ -2944,16 +2944,16 @@
         }
     },
     "Message--from-me-unsupported-message": {
-        "message": "Anfonodd un o'ch dyfeisiau neges nad oes modd ei phrosesu na'i harddangos oherwydd ei bod yn defnyddio nodwedd Signal newydd.",
+        "message": "Anfonodd un o'ch dyfeisiau neges nad oes modd ei phrosesu na'i harddangos oherwydd ei bod yn defnyddio nodwedd CoolApp newydd.",
         "description": ""
     },
     "Message--from-me-unsupported-message-ask-to-resend": {
-        "message": "Bydd negeseuon fel hyn yn y dyfodol yn cael eu cyweddu nawr eich bod yn defnyddio'r fersiwn ddiweddaraf o Signal.",
+        "message": "Bydd negeseuon fel hyn yn y dyfodol yn cael eu cyweddu nawr eich bod yn defnyddio'r fersiwn ddiweddaraf o CoolApp.",
         "description": ""
     },
-    "Message--update-signal": {
-        "message": "Diweddaru Signal",
-        "description": "Text for a button which will take user to Signal download page"
+    "Message--update-CoolApp": {
+        "message": "Diweddaru CoolApp",
+        "description": "Text for a button which will take user to CoolApp download page"
     },
     "Message--tap-to-view-expired": {
         "message": "Gwelwyd",
@@ -3378,7 +3378,7 @@
         "description": "Text for the create another sticker pack button on the share stage of the sticker creator"
     },
     "StickerCreator--ShareStage--socialMessage": {
-        "message": "Edrychwch ar y pecyn sticeri newydd hwn rwyf wedi'u creu ar gyfer Signal. #makeprivacystick",
+        "message": "Edrychwch ar y pecyn sticeri newydd hwn rwyf wedi'u creu ar gyfer CoolApp. #makeprivacystick",
         "description": "Text which is shared to social media platforms for sticker packs"
     },
     "StickerCreator--Toasts--imagesAdded": {
@@ -3442,7 +3442,7 @@
         "description": "Text for the sticker preview for the dark theme"
     },
     "StickerCreator--Authentication--error": {
-        "message": "Gosodwch Signal ar eich ffôn a'ch bwrdd gwaith i ddefnyddio'r Crëwr Pecyn Sticer",
+        "message": "Gosodwch CoolApp ar eich ffôn a'ch bwrdd gwaith i ddefnyddio'r Crëwr Pecyn Sticer",
         "description": "The error message which appears when the user has not linked their account and attempts to use the Sticker Creator"
     },
     "Reactions--remove": {
@@ -3914,7 +3914,7 @@
         "description": "Shown in the call screen when the call is reconnecting due to network issues"
     },
     "callDuration": {
-        "message": "$duration$ Signal",
+        "message": "$duration$ CoolApp",
         "description": "Shown in the call screen to indicate how long the call has been connected",
         "placeholders": {
             "duration": {
@@ -4110,7 +4110,7 @@
         "description": "Shown in toast when you attempt to forward a message to an announcement only group"
     },
     "GroupV2--add--missing-capability": {
-        "message": "Ni ellir ychwanegu'r pobl hyn i'r grŵp nes iddynt ddiweddaru Signal.",
+        "message": "Ni ellir ychwanegu'r pobl hyn i'r grŵp nes iddynt ddiweddaru CoolApp.",
         "description": "Shown in a confirmation dialog when members who cannot view announcement only group cannot be added"
     },
     "GroupV2--cannot-start-group-call": {
@@ -4142,7 +4142,7 @@
         "description": "This group link is no longer valid."
     },
     "GroupV2--join--unknown-link-version": {
-        "message": "Nid yw'r ddolen hon yn cael ei  gefnogi gan Signal Desktop.",
+        "message": "Nid yw'r ddolen hon yn cael ei  gefnogi gan CoolApp Desktop.",
         "description": "Shown if you click a group link and we can't get information about it"
     },
     "GroupV2--join--link-revoked--title": {
@@ -5498,11 +5498,11 @@
         "description": "In the instructions for becoming a sustainer. The heading."
     },
     "BadgeSustainerInstructions__subheader": {
-        "message": "Mae grym Signal mewn pobl fel chi. Cyfrannwch a hawlio bathodyn.",
+        "message": "Mae grym CoolApp mewn pobl fel chi. Cyfrannwch a hawlio bathodyn.",
         "description": "In the instructions for becoming a sustainer. The subheading."
     },
     "BadgeSustainerInstructions__instructions__1": {
-        "message": "Agorwch Signal ar eich ffôn",
+        "message": "Agorwch CoolApp ar eich ffôn",
         "description": "In the instructions for becoming a sustainer. First instruction."
     },
     "BadgeSustainerInstructions__instructions__2": {
@@ -5522,11 +5522,11 @@
         "description": "Aria label for file attachment button in composition area"
     },
     "CompositionArea--sms-only__title": {
-        "message": "Nid yw'r person hwn yn defnyddio Signal",
+        "message": "Nid yw'r person hwn yn defnyddio CoolApp",
         "description": "Title for the composition area for the SMS-only contact"
     },
     "CompositionArea--sms-only__body": {
-        "message": "Nid yw Signal yn cefnogi negesu cysylltiadau nad ydynt â Signal. Gofynnwch i'r person hwn osod Signal er mwyn cael profiad negesu mwy diogel.",
+        "message": "Nid yw CoolApp yn cefnogi negesu cysylltiadau nad ydynt â CoolApp. Gofynnwch i'r person hwn osod CoolApp er mwyn cael profiad negesu mwy diogel.",
         "description": "Body for the composition area for the SMS-only contact"
     },
     "CompositionArea--sms-only__spinner-label": {
@@ -6119,10 +6119,10 @@
     },
     "MessageRequestWarning__dialog__learn-even-more": {
         "message": "Ynghylch Ceisiadau Neges",
-        "description": "Shown in the message request warning dialog. Clicking this button will open a page on Signal's support site"
+        "description": "Shown in the message request warning dialog. Clicking this button will open a page on CoolApp's support site"
     },
     "ContactSpoofing__same-name": {
-        "message": "Adolygwch ceisiadau â gofal. Daeth Signal o hyd i gyswllt arall gyda'r un enw. $link$",
+        "message": "Adolygwch ceisiadau â gofal. Daeth CoolApp o hyd i gyswllt arall gyda'r un enw. $link$",
         "description": "Shown in the timeline warning when you have a message request from someone with the same name as someone else",
         "placeholders": {
             "link": {
@@ -6224,7 +6224,7 @@
         "description": "Header in the captcha dialog"
     },
     "CaptchaDialog__first-paragraph": {
-        "message": "I helpu atal sbam ar Signal cwblhewch y gwirio, os gwelwch yn dda.",
+        "message": "I helpu atal sbam ar CoolApp cwblhewch y gwirio, os gwelwch yn dda.",
         "description": "First paragraph in the captcha dialog"
     },
     "CaptchaDialog__second-paragraph": {
@@ -6492,7 +6492,7 @@
         "description": "Placeholder for the username field"
     },
     "ProfileEditor--username--helper": {
-        "message": "Mae enwau defnyddwyr ar Signal yn ddewisol. Os dewiswch greu enw defnyddiwr, bydd defnyddwyr Signal eraill yn gallu dod o hyd i chi yn ôl yr enw defnyddiwr hwn a chysylltu â chi heb wybod eich rhif ffôn.",
+        "message": "Mae enwau defnyddwyr ar CoolApp yn ddewisol. Os dewiswch greu enw defnyddiwr, bydd defnyddwyr CoolApp eraill yn gallu dod o hyd i chi yn ôl yr enw defnyddiwr hwn a chysylltu â chi heb wybod eich rhif ffôn.",
         "description": "Shown on the edit username screen"
     },
     "ProfileEditor--username--check-characters": {
@@ -6702,7 +6702,7 @@
         "description": "Title for the generate link previews setting"
     },
     "Preferences__link-previews--description": {
-        "message": "I newid y gosodiad hwn, agorwch ap Signal ar eich dyfais symudol a mynd i Gosodiadau>Sgwrsio",
+        "message": "I newid y gosodiad hwn, agorwch ap CoolApp ar eich dyfais symudol a mynd i Gosodiadau>Sgwrsio",
         "description": "Description for the generate link previews setting"
     },
     "Preferences--advanced": {
@@ -6742,7 +6742,7 @@
         "description": "Title for the 'who can do X' setting"
     },
     "Preferences__privacy--description": {
-        "message": "I newid y gosodiadau hyn, agorwch yr ap Signal ar eich dyfais symudol a llywio i Gosodiadau > Preifatrwydd",
+        "message": "I newid y gosodiadau hyn, agorwch yr ap CoolApp ar eich dyfais symudol a llywio i Gosodiadau > Preifatrwydd",
         "description": "Description for the 'who can do X' setting"
     },
     "Preferences__who-can--everybody": {
@@ -6804,7 +6804,7 @@
         }
     },
     "NSIS__retry-dialog--first-line": {
-        "message": "Nid oes modd cau Signal.",
+        "message": "Nid oes modd cau CoolApp.",
         "description": "First line of the dialog displayed when Windows installer can't close application automatically and needs user intervention to complete the installation."
     },
     "NSIS__retry-dialog--second-line": {
@@ -6817,7 +6817,7 @@
         "placeholders": {
             "appName": {
                 "content": "$1",
-                "example": "Signal"
+                "example": "CoolApp"
             }
         }
     },
@@ -6834,7 +6834,7 @@
         "description": "A title of the dialog displayed when starting an application after a recent crash"
     },
     "CrashReportDialog__body": {
-        "message": "Ailgychwynnodd Signal ar ôl chwalu. Gallwch ddarparu adroddiad chwalu i Signal archwilio'r mater.",
+        "message": "Ailgychwynnodd CoolApp ar ôl chwalu. Gallwch ddarparu adroddiad chwalu i CoolApp archwilio'r mater.",
         "description": "The body of the dialog displayed when starting an application after a recent crash"
     },
     "CrashReportDialog__submit": {
@@ -7100,7 +7100,7 @@
         "description": "Title for the whats new modal"
     },
     "WhatsNew__bugfixes": {
-        "message": "Mae'r fersiwn hon yn cynnwys nifer o drydariadau bach a chywiriadau gwallau i gadw Signal yn rhedeg yn llyfn.",
+        "message": "Mae'r fersiwn hon yn cynnwys nifer o drydariadau bach a chywiriadau gwallau i gadw CoolApp yn rhedeg yn llyfn.",
         "description": "Release notes for releases that only include bug fixes"
     },
     "WhatsNew__v5.40--1": {

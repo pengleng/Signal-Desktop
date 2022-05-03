@@ -12,7 +12,7 @@ GlobalErrors.addHandler();
 // set such that only we have read access to our files
 process.umask(0o077);
 
-const appUserModelId = `org.whispersystems.${packageJson.name}`;
+const appUserModelId = `asia.coolapp.chat.${packageJson.name}`;
 console.log('Set Windows Application User Model ID (AUMID)', {
   appUserModelId,
 });

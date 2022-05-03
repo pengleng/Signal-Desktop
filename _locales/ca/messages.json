@@ -5,7 +5,7 @@
     },
     "privacyPolicy": {
         "message": "Condicions de servei i política de privadesa",
-        "description": "Shown in the about box for the link to https://signal.org/legal"
+        "description": "Shown in the about box for the link to https://chat.coolapp.asia/legal"
     },
     "copyErrorAndQuit": {
         "message": "Copia l'error i surt",
@@ -72,7 +72,7 @@
         "description": "Application menu command to show all application windows"
     },
     "appMenuQuit": {
-        "message": "Surt del Signal",
+        "message": "Surt del CoolApp",
         "description": "Application menu command to close the application"
     },
     "editMenuUndo": {
@@ -184,7 +184,7 @@
         "description": "One of the menu options available in the Avatar popup menu"
     },
     "avatarMenuUpdateAvailable": {
-        "message": "Actualitza el Signal",
+        "message": "Actualitza el CoolApp",
         "description": "One of the menu options available in the Avatar popup menu"
     },
     "loading": {
@@ -262,7 +262,7 @@
         "description": "Header shown on the first screen in the data import process"
     },
     "loadDataDescription": {
-        "message": "Acabeu de passar pel procés d'exportació i els vostres contactes i missatges esperen pacientment a l'ordinador. Seleccioneu la carpeta que conté les dades de Signal desades.",
+        "message": "Acabeu de passar pel procés d'exportació i els vostres contactes i missatges esperen pacientment a l'ordinador. Seleccioneu la carpeta que conté les dades de CoolApp desades.",
         "description": "Introduction to the process of importing messages and contacts from disk"
     },
     "importChooserTitle": {
@@ -278,7 +278,7 @@
         "description": "Header of screen shown as data is import"
     },
     "importErrorFirst": {
-        "message": "Assegureu-vos que heu triat el directori correcte que conté les dades de Signal desades. El seu nom hauria de començar amb \"Signal Export\". També podeu desar una còpia nova de les dades des de l'aplicació Chrome.",
+        "message": "Assegureu-vos que heu triat el directori correcte que conté les dades de CoolApp desades. El seu nom hauria de començar amb \"CoolApp Export\". També podeu desar una còpia nova de les dades des de l'aplicació Chrome.",
         "description": "Message shown if the import went wrong; first paragraph"
     },
     "importErrorSecond": {
@@ -294,7 +294,7 @@
         "description": "Header shown on the screen at the end of a successful import process"
     },
     "importCompleteStartButton": {
-        "message": "Comenceu a usar el Signal Desktop",
+        "message": "Comenceu a usar el CoolApp Desktop",
         "description": "Button shown at end of successful import process, nothing left but a restart"
     },
     "importCompleteLinkButton": {
@@ -402,7 +402,7 @@
         "description": "When there are multiple previously-verified group members with safety number changes, a banner will be shown. The list of contacts with safety number changes is shown, and this text introduces that list."
     },
     "changedRightAfterVerify": {
-        "message": "El número de seguretat que intenteu verificar ha canviat. Reviseu el número de seguretat nou amb $name1$. Recordeu que aquest canvi pot significar que algú està intentant interceptar la vostra comunicació o que $name2$ ha reinstal·lat el Signal.",
+        "message": "El número de seguretat que intenteu verificar ha canviat. Reviseu el número de seguretat nou amb $name1$. Recordeu que aquest canvi pot significar que algú està intentant interceptar la vostra comunicació o que $name2$ ha reinstal·lat el CoolApp.",
         "description": "Shown on the safety number screen when the user has selected to verify/unverify a contact's safety number, and we immediately discover a safety number change",
         "placeholders": {
             "name1": {
@@ -424,7 +424,7 @@
         "description": "Shown on confirmation dialog when user attempts to send a message in the outbox"
     },
     "identityKeyErrorOnSend": {
-        "message": "El vostre número de seguretat amb $name1$ ha canviat. Això podria significar que algú està intentant interceptar la vostra comunicació o que $name2$ ha reinstal·lat el Signal. És possible que vulgueu verificar el número de seguretat amb aquest contacte.",
+        "message": "El vostre número de seguretat amb $name1$ ha canviat. Això podria significar que algú està intentant interceptar la vostra comunicació o que $name2$ ha reinstal·lat el CoolApp. És possible que vulgueu verificar el número de seguretat amb aquest contacte.",
         "description": "Shown when user clicks on a failed recipient in the message detail view after an identity key change",
         "placeholders": {
             "name1": {
@@ -468,7 +468,7 @@
         "description": "Description of what will happen with your debug log"
     },
     "debugLogError": {
-        "message": "S'ha produït un error amb la càrrega! Envieu un correu electrònic a support@signal.org i adjunteu-hi el registre com a fitxer de text.",
+        "message": "S'ha produït un error amb la càrrega! Envieu un correu electrònic a support@chat.coolapp.asia i adjunteu-hi el registre com a fitxer de text.",
         "description": "Error message a recommendations if debug log upload fails"
     },
     "debugLogSuccess": {
@@ -548,7 +548,7 @@
         "description": "Header for a key change dialog"
     },
     "identityChanged": {
-        "message": "El número de seguretat amb aquest contacte ha canviat. Això podria voler dir que algú està provant d'interceptar les vostres comunicacions o que aquest contacte simplement ha reinstal·lat el Signal. Potser hauríeu de verificar el número de seguretat nou.",
+        "message": "El número de seguretat amb aquest contacte ha canviat. Això podria voler dir que algú està provant d'interceptar les vostres comunicacions o que aquest contacte simplement ha reinstal·lat el CoolApp. Potser hauríeu de verificar el número de seguretat nou.",
         "description": ""
     },
     "incomingError": {
@@ -613,11 +613,11 @@
     },
     "loadingPreview": {
         "message": "S'està carregant la previsualització...",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area"
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area"
     },
     "stagedPreviewThumbnail": {
         "message": "Previsualització de l'esborrany de la vista en miniatura de l'enllaç $domain$",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area",
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area",
         "placeholders": {
             "path": {
                 "content": "$1",
@@ -627,7 +627,7 @@
     },
     "previewThumbnail": {
         "message": "Previsualització de la vista en miniatura de l'enllaç $domain$",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area",
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area",
         "placeholders": {
             "domain": {
                 "content": "$1",
@@ -741,18 +741,18 @@
     },
     "joinTheBeta": {
         "message": "Uniu-vos a la versió Beta",
-        "description": "Item under the Help menu, takes you to an article describing how to install the beta release of Signal Desktop"
+        "description": "Item under the Help menu, takes you to an article describing how to install the beta release of CoolApp Desktop"
     },
     "signalDesktopPreferences": {
-        "message": "Preferències del Signal Desktop",
-        "description": "Title of the window that pops up with Signal Desktop preferences in it"
+        "message": "Preferències del CoolApp Desktop",
+        "description": "Title of the window that pops up with CoolApp Desktop preferences in it"
     },
     "signalDesktopStickerCreator": {
         "message": "Creador de paquets d'adhesius",
-        "description": "Title of the window that pops up with Signal Desktop preferences in it"
+        "description": "Title of the window that pops up with CoolApp Desktop preferences in it"
     },
     "aboutSignalDesktop": {
-        "message": "Quant al Signal Desktop",
+        "message": "Quant al CoolApp Desktop",
         "description": "Item under the Help menu, which opens a small about window"
     },
     "screenShareWindow": {
@@ -776,7 +776,7 @@
         "description": "Command in the tray icon menu, to quit the application"
     },
     "signalDesktop": {
-        "message": "Signal Desktop",
+        "message": "CoolApp Desktop",
         "description": "Tooltip for the tray icon"
     },
     "search": {
@@ -854,7 +854,7 @@
         }
     },
     "welcomeToSignal": {
-        "message": "Benvingut/da al Signal",
+        "message": "Benvingut/da al CoolApp",
         "description": ""
     },
     "whatsNew": {
@@ -895,7 +895,7 @@
     },
     "sendMessageToContact": {
         "message": "Envia un missatge",
-        "description": "Shown when you are sent a contact and that contact has a signal account"
+        "description": "Shown when you are sent a contact and that contact has a CoolApp account"
     },
     "home": {
         "message": "casa",
@@ -1008,15 +1008,15 @@
         }
     },
     "audioPermissionNeeded": {
-        "message": "Per a enviar missatges d'àudio, permeteu que el Signal Desktop tingui accés al micròfon.",
+        "message": "Per a enviar missatges d'àudio, permeteu que el CoolApp Desktop tingui accés al micròfon.",
         "description": "Shown if the user attempts to send an audio message without audio permissions turned on"
     },
     "audioCallingPermissionNeeded": {
-        "message": "Per a trucar, heu de permetre que el Signal Desktop accedeixi al micròfon.",
+        "message": "Per a trucar, heu de permetre que el CoolApp Desktop accedeixi al micròfon.",
         "description": "Shown if the user attempts access the microphone for calling without audio permissions turned on"
     },
     "videoCallingPermissionNeeded": {
-        "message": "Per a fer trucades de vídeo, heu de permetre que el Signal Desktop accedeixi a la càmera.",
+        "message": "Per a fer trucades de vídeo, heu de permetre que el CoolApp Desktop accedeixi a la càmera.",
         "description": "Shown if the user attempts access the camera for video calling without video permissions turned on"
     },
     "allowAccess": {
@@ -1056,7 +1056,7 @@
         "description": "Shown in a button when a conversation is unmuted and can be muted"
     },
     "cannotUpdateDetail": {
-        "message": "El Signal Desktop no es pot actualitzar. $retry$ o visiteu $url$ per a instal·lar la versió nova manualment. Després, $support$ sobre aquest problema.",
+        "message": "El CoolApp Desktop no es pot actualitzar. $retry$ o visiteu $url$ per a instal·lar la versió nova manualment. Després, $support$ sobre aquest problema.",
         "description": "Shown if a general error happened while trying to install update package",
         "placeholders": {
             "retry": {
@@ -1065,7 +1065,7 @@
             },
             "url": {
                 "content": "$2",
-                "example": "https://signal.org/download"
+                "example": "https://chat.coolapp.asia/download"
             },
             "support": {
                 "content": "$3",
@@ -1074,12 +1074,12 @@
         }
     },
     "cannotUpdateRequireManualDetail": {
-        "message": "El Signal no s'ha pogut actualitzar. Visiteu $url$ per instal·lar-lo manualment. Aleshores, $support$ sobre aquest problema.",
+        "message": "El CoolApp no s'ha pogut actualitzar. Visiteu $url$ per instal·lar-lo manualment. Aleshores, $support$ sobre aquest problema.",
         "description": "Shown if a general error happened while trying to install update package and manual update is required",
         "placeholders": {
             "url": {
                 "content": "$2",
-                "example": "https://signal.org/download"
+                "example": "https://chat.coolapp.asia/download"
             },
             "support": {
                 "content": "$3",
@@ -1088,12 +1088,12 @@
         }
     },
     "readOnlyVolume": {
-        "message": "El Signal Desktop es troba probablement en una quarentena de macOS i no es podrà actualitzar automàticament. Proveu de moure  $app$ a  $folder$ amb el Finder.",
+        "message": "El CoolApp Desktop es troba probablement en una quarentena de macOS i no es podrà actualitzar automàticament. Proveu de moure  $app$ a  $folder$ amb el Finder.",
         "description": "Shown on MacOS if running on a read-only volume and we cannot update",
         "placeholders": {
             "app": {
                 "content": "$1",
-                "example": "Signal.app"
+                "example": "CoolApp.app"
             },
             "folder": {
                 "content": "$2",
@@ -1154,7 +1154,7 @@
         "description": "Text shown in the confirmation dialog for deleting a message locally"
     },
     "deleteForEveryoneWarning": {
-        "message": "Aquest missatge se suprimirà per a tothom que sigui a la conversa si tenen una versió recent del Signal. Podran veure que heu suprimit un missatge.",
+        "message": "Aquest missatge se suprimirà per a tothom que sigui a la conversa si tenen una versió recent del CoolApp. Podran veure que heu suprimit un missatge.",
         "description": "Text shown in the confirmation dialog for deleting a message for everyone"
     },
     "from": {
@@ -1264,7 +1264,7 @@
         "description": "Shown in timeline when session is automatically reset, to provide access to a popup info dialog"
     },
     "ChatRefresh--summary": {
-        "message": "El Signal usa encriptació d'extrem a extrem i és possible que de vegades hagi d’actualitzar la sessió de conversa. Això no n'afecta la seguretat, però és possible que perdeu algun missatge d’aquest contacte. Podeu demanar que el torni a enviar.",
+        "message": "El CoolApp usa encriptació d'extrem a extrem i és possible que de vegades hagi d’actualitzar la sessió de conversa. Això no n'afecta la seguretat, però és possible que perdeu algun missatge d’aquest contacte. Podeu demanar que el torni a enviar.",
         "description": "Shown on explainer dialog available from chat session refreshed timeline events"
     },
     "ChatRefresh--contactSupport": {
@@ -1356,7 +1356,7 @@
         "description": "Used in the media gallery documents tab to visually represent a file"
     },
     "installWelcome": {
-        "message": "Benvingut/da al Signal Desktop",
+        "message": "Benvingut/da al CoolApp Desktop",
         "description": "Welcome title on the install page"
     },
     "installTagline": {
@@ -1365,18 +1365,18 @@
     },
     "linkedDevices": {
         "message": "Dispositius enllaçats",
-        "description": "Used in the guidance to help people find the 'link new device' area of their Signal mobile app"
+        "description": "Used in the guidance to help people find the 'link new device' area of their CoolApp mobile app"
     },
     "linkNewDevice": {
         "message": "Enllaça un dispositiu nou",
-        "description": "The menu option shown in Signal iOS to add a new linked device"
+        "description": "The menu option shown in CoolApp iOS to add a new linked device"
     },
     "Install__scan-this-code": {
-        "message": "Escanegeu aquest codi a l'aplicació Signal del telèfon",
+        "message": "Escanegeu aquest codi a l'aplicació CoolApp del telèfon",
         "description": "Title of the device link screen. Also used as alt text for the QR code on the device link screen"
     },
     "Install__instructions__1": {
-        "message": "Obriu el Signal al telèfon.",
+        "message": "Obriu el CoolApp al telèfon.",
         "description": "Instructions on the device link screen"
     },
     "Install__instructions__2": {
@@ -1466,7 +1466,7 @@
         "description": ""
     },
     "installTooOld": {
-        "message": "Actualitzeu el Signal d'aquest dispositiu per a enllaçar-lo amb el telèfon.",
+        "message": "Actualitzeu el CoolApp d'aquest dispositiu per a enllaçar-lo amb el telèfon.",
         "description": ""
     },
     "installErrorHeader": {
@@ -1654,7 +1654,7 @@
         }
     },
     "calling__pre-call-info--will-ring-1": {
-        "message": "El Signal trucarà a $person$",
+        "message": "El CoolApp trucarà a $person$",
         "description": "Shown in the calling lobby to describe who will be rung",
         "placeholders": {
             "person": {
@@ -1664,7 +1664,7 @@
         }
     },
     "calling__pre-call-info--will-ring-2": {
-        "message": "El Signal trucarà a $first$ i $second$",
+        "message": "El CoolApp trucarà a $first$ i $second$",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "first": {
@@ -1678,7 +1678,7 @@
         }
     },
     "calling__pre-call-info--will-ring-3": {
-        "message": "El Signal trucarà a $first$,  $second$ i $third$",
+        "message": "El CoolApp trucarà a $first$,  $second$ i $third$",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "first": {
@@ -1696,7 +1696,7 @@
         }
     },
     "calling__pre-call-info--will-ring-many": {
-        "message": "El Signal trucarà a $first$,  $second$ i $others$ més",
+        "message": "El CoolApp trucarà a $first$,  $second$ i $others$ més",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "person": {
@@ -1822,7 +1822,7 @@
         "description": "Body text for the share screen notification"
     },
     "calling__presenting--info": {
-        "message": "El Signal comparteix $window$.",
+        "message": "El CoolApp comparteix $window$.",
         "description": "Text that appears in the screen sharing controller to inform person that they are presenting",
         "placeholders": {
             "name": {
@@ -1864,7 +1864,7 @@
         "description": "Shown as the title for the modal that requests screen recording permissions"
     },
     "calling__presenting--macos-permission-description": {
-        "message": "El Signal necessita permís per a accedir a la gravació de pantalla de l’ordinador.",
+        "message": "El CoolApp necessita permís per a accedir a la gravació de pantalla de l’ordinador.",
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-instruction-step1": {
@@ -1876,7 +1876,7 @@
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-instruction-step3": {
-        "message": "A la dreta, marqueu la casella que hi ha al costat del Signal. Si no veieu el Signal a la llista, feu clic a + per a afegir-lo.",
+        "message": "A la dreta, marqueu la casella que hi ha al costat del CoolApp. Si no veieu el CoolApp a la llista, feu clic a + per a afegir-lo.",
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-open": {
@@ -1892,7 +1892,7 @@
         "description": "Description of the always relay calls setting"
     },
     "alwaysRelayCallsDetail": {
-        "message": "Retransmet totes les trucades a través del servidor del Signal per a evitar revelar l'adreça IP al contacte. Activar-ho reduirà la qualitat de la trucada.",
+        "message": "Retransmet totes les trucades a través del servidor del CoolApp per a evitar revelar l'adreça IP al contacte. Activar-ho reduirà la qualitat de la trucada.",
         "description": "Details describing the always relay calls setting"
     },
     "permissions": {
@@ -1916,12 +1916,12 @@
         "description": "Description of the spell check setting"
     },
     "spellCheckWillBeEnabled": {
-        "message": "La comprovació d'ortografia s'activarà el proper cop que s'iniciï el Signal.",
-        "description": "Shown when the user enables spellcheck to indicate that they must restart Signal."
+        "message": "La comprovació d'ortografia s'activarà el proper cop que s'iniciï el CoolApp.",
+        "description": "Shown when the user enables spellcheck to indicate that they must restart CoolApp."
     },
     "spellCheckWillBeDisabled": {
-        "message": "La comprovació d'ortografia es desactivarà el proper cop que s'iniciï el Signal.",
-        "description": "Shown when the user disables spellcheck to indicate that they must restart Signal."
+        "message": "La comprovació d'ortografia es desactivarà el proper cop que s'iniciï el CoolApp.",
+        "description": "Shown when the user disables spellcheck to indicate that they must restart CoolApp."
     },
     "SystemTraySetting__minimize-to-system-tray": {
         "message": "Minimitza a la safata del sistema",
@@ -1964,8 +1964,8 @@
         "description": "Message shown to user when app is disconnected and data deleted"
     },
     "deleteOldIndexedDBData": {
-        "message": "Teniu dades obsoletes d'una instal·lació anterior del Signal Desktop. Si trieu continuar, se suprimiran i començareu de zero.",
-        "description": "Shown if user last ran Signal Desktop before October 2018"
+        "message": "Teniu dades obsoletes d'una instal·lació anterior del CoolApp Desktop. Si trieu continuar, se suprimiran i començareu de zero.",
+        "description": "Shown if user last ran CoolApp Desktop before October 2018"
     },
     "deleteOldData": {
         "message": "Suprimeix les dades antigues",
@@ -2078,11 +2078,11 @@
         "description": "Text that links to a support article on verifying safety numbers"
     },
     "expiredWarning": {
-        "message": "Aquesta versió del Signal Desktop ha vençut. Actualitzeu-lo a l'última versió per a poder continuar enviant i rebent missatges.",
+        "message": "Aquesta versió del CoolApp Desktop ha vençut. Actualitzeu-lo a l'última versió per a poder continuar enviant i rebent missatges.",
         "description": "Warning notification that this version of the app has expired"
     },
     "upgrade": {
-        "message": "Cliqueu per a anar a signal.org/download",
+        "message": "Cliqueu per a anar a chat.coolapp.asia/download",
         "description": "Label text for button to upgrade the app to the latest version"
     },
     "mediaMessage": {
@@ -2098,7 +2098,7 @@
         "description": "Label for contact and group sync settings"
     },
     "syncExplanation": {
-        "message": "Importa tots els grups i contactes del Signal des del dispositiu mòbil.",
+        "message": "Importa tots els grups i contactes del CoolApp des del dispositiu mòbil.",
         "description": "Explanatory text for sync settings"
     },
     "lastSynced": {
@@ -2403,14 +2403,14 @@
     },
     "Toast--failed-to-fetch-username": {
         "message": "No s'ha pogut obtenir el nom d'usuari. Comproveu la connexió i torneu-ho a provar.",
-        "description": "Shown if request to Signal servers to find username fails"
+        "description": "Shown if request to CoolApp servers to find username fails"
     },
     "Toast--failed-to-fetch-phone-number": {
         "message": "No s'ha pogut obtenir el número de telèfon. Comproveu la connexió i torneu-ho a provar.",
-        "description": "Shown if request to Signal servers to find phone number fails"
+        "description": "Shown if request to CoolApp servers to find phone number fails"
     },
     "startConversation--username-not-found": {
-        "message": "Usuari no trobat. $atUsername$ no és un usuari del Signal; assegureu-vos que heu introduït el nom d'usuari complet.",
+        "message": "Usuari no trobat. $atUsername$ no és un usuari del CoolApp; assegureu-vos que heu introduït el nom d'usuari complet.",
         "description": "Shown in dialog if username is not found. Note that 'username' will be the output of at-username",
         "placeholders": {
             "atUsername": {
@@ -2420,7 +2420,7 @@
         }
     },
     "startConversation--phone-number-not-found": {
-        "message": "Usuari no trobat. \"$phoneNumber$\" no és un usuari del Signal.",
+        "message": "Usuari no trobat. \"$phoneNumber$\" no és un usuari del CoolApp.",
         "description": "Shown in dialog if phone number is not found.",
         "placeholders": {
             "phoneNumber": {
@@ -2460,7 +2460,7 @@
         "description": "Shown in the alert when you add the maximum number of group members"
     },
     "chooseGroupMembers__maximum-group-size__body": {
-        "message": "Els grups del Signal poden tenir un màxim de $max$ membres.",
+        "message": "Els grups del CoolApp poden tenir un màxim de $max$ membres.",
         "description": "Shown in the alert when you add the maximum number of group members",
         "placeholders": {
             "max": {
@@ -2474,7 +2474,7 @@
         "description": "Shown in the alert when you add the maximum recommended number of group members"
     },
     "chooseGroupMembers__maximum-recommended-group-size__body": {
-        "message": "Els grups del Signal funcionen millor amb $max$ membres o menys. Afegir-n'hi més causarà retards d'enviament i recepció de missatges.",
+        "message": "Els grups del CoolApp funcionen millor amb $max$ membres o menys. Afegir-n'hi més causarà retards d'enviament i recepció de missatges.",
         "description": "Shown in the alert when you add the maximum recommended number of group members",
         "placeholders": {
             "max": {
@@ -2532,7 +2532,7 @@
         "description": "When a person inputs a number that is invalid"
     },
     "unlinkedWarning": {
-        "message": "Feu clic per a tornar a enllaçar el Signal Desktop amb el dispositiu mòbil i continuar enviant missatges.",
+        "message": "Feu clic per a tornar a enllaçar el CoolApp Desktop amb el dispositiu mòbil i continuar enviant missatges.",
         "description": ""
     },
     "unlinked": {
@@ -2556,7 +2556,7 @@
         "description": ""
     },
     "autoUpdateNewVersionMessage": {
-        "message": "Cliqueu per a reiniciar el Signal",
+        "message": "Cliqueu per a reiniciar el CoolApp",
         "description": ""
     },
     "downloadNewVersionMessage": {
@@ -2564,15 +2564,15 @@
         "description": ""
     },
     "downloadFullNewVersionMessage": {
-        "message": "El Signal no s'ha pogut actualitzar. Feu clic per tornar-ho a provar.",
+        "message": "El CoolApp no s'ha pogut actualitzar. Feu clic per tornar-ho a provar.",
         "description": "Shown in update dialog when partial update fails and we have to ask user to download full update"
     },
     "autoUpdateNewVersionInstructions": {
-        "message": "Premeu Reinicia el Signal per a aplicar les actualitzacions.",
+        "message": "Premeu Reinicia el CoolApp per a aplicar les actualitzacions.",
         "description": ""
     },
     "autoUpdateRestartButtonLabel": {
-        "message": "Reinicia el Signal",
+        "message": "Reinicia el CoolApp",
         "description": ""
     },
     "autoUpdateLaterButtonLabel": {
@@ -2739,7 +2739,7 @@
     },
     "message--getDescription--unsupported-message": {
         "message": "Missatge no compatible",
-        "description": "Shown in notifications and in the left pane when a message has features too new for this signal install."
+        "description": "Shown in notifications and in the left pane when a message has features too new for this CoolApp install."
     },
     "message--getDescription--disappearing-media": {
         "message": "Contingut d'una sola visualització",
@@ -2770,11 +2770,11 @@
         "description": "Shown in the sticker pack manager when you don't have any installed sticker packs."
     },
     "stickers--StickerManager--BlessedPacks": {
-        "message": "Sèries d'artistes de Signal",
+        "message": "Sèries d'artistes de CoolApp",
         "description": "Shown in the sticker pack manager above the default sticker packs."
     },
     "stickers--StickerManager--BlessedPacks--Empty": {
-        "message": "No hi ha adhesius d'artistes de Signal disponibles.",
+        "message": "No hi ha adhesius d'artistes de CoolApp disponibles.",
         "description": "Shown in the sticker pack manager when there are no blessed sticker packs available."
     },
     "stickers--StickerManager--ReceivedPacks": {
@@ -2799,15 +2799,15 @@
     },
     "stickers--StickerManager--Introduction--Image": {
         "message": "S'introdueixen els adhesius: el gat Bandit",
-        "description": "Alt text on a tooltip image when the user upgrades to a version of Signal supporting stickers."
+        "description": "Alt text on a tooltip image when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerManager--Introduction--Title": {
         "message": "S'introdueixen els adhesius.",
-        "description": "Shown as the title on a tooltip when the user upgrades to a version of Signal supporting stickers."
+        "description": "Shown as the title on a tooltip when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerManager--Introduction--Body": {
         "message": "Per què usar paraules quan podeu fer servir adhesius?",
-        "description": "Shown as the body on a tooltip when the user upgrades to a version of Signal supporting stickers."
+        "description": "Shown as the body on a tooltip when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerPicker--Open": {
         "message": "Obre el selector d'adhesius",
@@ -2924,7 +2924,7 @@
         "description": "When a message is too long this is the affordance to expand the message"
     },
     "Message--unsupported-message": {
-        "message": "$contact$ us ha enviat un missatge que no es pot processar o mostrar perquè usa una funció nova del Signal.",
+        "message": "$contact$ us ha enviat un missatge que no es pot processar o mostrar perquè usa una funció nova del CoolApp.",
         "description": "",
         "placeholders": {
             "contact": {
@@ -2934,7 +2934,7 @@
         }
     },
     "Message--unsupported-message-ask-to-resend": {
-        "message": "Podeu demanar a $contact$ que torni a enviar aquest missatge ara que useu una versió actualitzada del Signal.",
+        "message": "Podeu demanar a $contact$ que torni a enviar aquest missatge ara que useu una versió actualitzada del CoolApp.",
         "description": "",
         "placeholders": {
             "contact": {
@@ -2944,16 +2944,16 @@
         }
     },
     "Message--from-me-unsupported-message": {
-        "message": "Un dels vostres dispositius ha enviat un missatge que no es pot processar o mostrar perquè usa una funció nova del Signal.",
+        "message": "Un dels vostres dispositius ha enviat un missatge que no es pot processar o mostrar perquè usa una funció nova del CoolApp.",
         "description": ""
     },
     "Message--from-me-unsupported-message-ask-to-resend": {
-        "message": "Missatges futurs com aquest se sincronitzaran ara que useu una versió actualitzada del Signal.",
+        "message": "Missatges futurs com aquest se sincronitzaran ara que useu una versió actualitzada del CoolApp.",
         "description": ""
     },
-    "Message--update-signal": {
-        "message": "Actualitza el Signal",
-        "description": "Text for a button which will take user to Signal download page"
+    "Message--update-CoolApp": {
+        "message": "Actualitza el CoolApp",
+        "description": "Text for a button which will take user to CoolApp download page"
     },
     "Message--tap-to-view-expired": {
         "message": "Vista",
@@ -3378,7 +3378,7 @@
         "description": "Text for the create another sticker pack button on the share stage of the sticker creator"
     },
     "StickerCreator--ShareStage--socialMessage": {
-        "message": "Mireu aquest paquet d'adhesius nou que he creat per al Signal. #makeprivacystick",
+        "message": "Mireu aquest paquet d'adhesius nou que he creat per al CoolApp. #makeprivacystick",
         "description": "Text which is shared to social media platforms for sticker packs"
     },
     "StickerCreator--Toasts--imagesAdded": {
@@ -3442,7 +3442,7 @@
         "description": "Text for the sticker preview for the dark theme"
     },
     "StickerCreator--Authentication--error": {
-        "message": "Configureu el Signal del telèfon i de l'escriptori perquè usi el Creador de paquets d'adhesius.",
+        "message": "Configureu el CoolApp del telèfon i de l'escriptori perquè usi el Creador de paquets d'adhesius.",
         "description": "The error message which appears when the user has not linked their account and attempts to use the Sticker Creator"
     },
     "Reactions--remove": {
@@ -3914,7 +3914,7 @@
         "description": "Shown in the call screen when the call is reconnecting due to network issues"
     },
     "callDuration": {
-        "message": "Signal: $duration$",
+        "message": "CoolApp: $duration$",
         "description": "Shown in the call screen to indicate how long the call has been connected",
         "placeholders": {
             "duration": {
@@ -4110,7 +4110,7 @@
         "description": "Shown in toast when you attempt to forward a message to an announcement only group"
     },
     "GroupV2--add--missing-capability": {
-        "message": "Aquestes persones no es poden afegir al grup fins que no actualitzin el Signal.",
+        "message": "Aquestes persones no es poden afegir al grup fins que no actualitzin el CoolApp.",
         "description": "Shown in a confirmation dialog when members who cannot view announcement only group cannot be added"
     },
     "GroupV2--cannot-start-group-call": {
@@ -4142,7 +4142,7 @@
         "description": "This group link is no longer valid."
     },
     "GroupV2--join--unknown-link-version": {
-        "message": "Aquest enllaç no l'admet aquesta versió del Signal Desktop.",
+        "message": "Aquest enllaç no l'admet aquesta versió del CoolApp Desktop.",
         "description": "Shown if you click a group link and we can't get information about it"
     },
     "GroupV2--join--link-revoked--title": {
@@ -5498,11 +5498,11 @@
         "description": "In the instructions for becoming a sustainer. The heading."
     },
     "BadgeSustainerInstructions__subheader": {
-        "message": "El Signal és sostingut per persones com vós. Contribuïu-hi i rebeu una insígnia.",
+        "message": "El CoolApp és sostingut per persones com vós. Contribuïu-hi i rebeu una insígnia.",
         "description": "In the instructions for becoming a sustainer. The subheading."
     },
     "BadgeSustainerInstructions__instructions__1": {
-        "message": "Obriu el Signal al telèfon.",
+        "message": "Obriu el CoolApp al telèfon.",
         "description": "In the instructions for becoming a sustainer. First instruction."
     },
     "BadgeSustainerInstructions__instructions__2": {
@@ -5522,11 +5522,11 @@
         "description": "Aria label for file attachment button in composition area"
     },
     "CompositionArea--sms-only__title": {
-        "message": "Aquesta persona no usa el Signal.",
+        "message": "Aquesta persona no usa el CoolApp.",
         "description": "Title for the composition area for the SMS-only contact"
     },
     "CompositionArea--sms-only__body": {
-        "message": "El Signal Desktop no admet missatges de contactes que no són del Signal. Demaneu a aquesta persona que l'instal·li per a tenir una experiència de missatgeria més segura.",
+        "message": "El CoolApp Desktop no admet missatges de contactes que no són del CoolApp. Demaneu a aquesta persona que l'instal·li per a tenir una experiència de missatgeria més segura.",
         "description": "Body for the composition area for the SMS-only contact"
     },
     "CompositionArea--sms-only__spinner-label": {
@@ -6119,10 +6119,10 @@
     },
     "MessageRequestWarning__dialog__learn-even-more": {
         "message": "Quant a les sol·licituds de missatges",
-        "description": "Shown in the message request warning dialog. Clicking this button will open a page on Signal's support site"
+        "description": "Shown in the message request warning dialog. Clicking this button will open a page on CoolApp's support site"
     },
     "ContactSpoofing__same-name": {
-        "message": "Reviseu les sol·licituds amb atenció. El Signal ha trobat un altre contacte amb el mateix nom. $link$",
+        "message": "Reviseu les sol·licituds amb atenció. El CoolApp ha trobat un altre contacte amb el mateix nom. $link$",
         "description": "Shown in the timeline warning when you have a message request from someone with the same name as someone else",
         "placeholders": {
             "link": {
@@ -6224,7 +6224,7 @@
         "description": "Header in the captcha dialog"
     },
     "CaptchaDialog__first-paragraph": {
-        "message": "Per a ajudar a prevenir el correu brossa al Signal, completeu la verificació.",
+        "message": "Per a ajudar a prevenir el correu brossa al CoolApp, completeu la verificació.",
         "description": "First paragraph in the captcha dialog"
     },
     "CaptchaDialog__second-paragraph": {
@@ -6492,7 +6492,7 @@
         "description": "Placeholder for the username field"
     },
     "ProfileEditor--username--helper": {
-        "message": "Els noms d’usuari al Signal són opcionals. Si trieu crear un nom d’usuari, altres usuaris de Signal us podran trobar per aquest nom d’usuari i contactar sense saber el vostre número de telèfon.",
+        "message": "Els noms d’usuari al CoolApp són opcionals. Si trieu crear un nom d’usuari, altres usuaris de CoolApp us podran trobar per aquest nom d’usuari i contactar sense saber el vostre número de telèfon.",
         "description": "Shown on the edit username screen"
     },
     "ProfileEditor--username--check-characters": {
@@ -6702,7 +6702,7 @@
         "description": "Title for the generate link previews setting"
     },
     "Preferences__link-previews--description": {
-        "message": "Per a canviar aquesta configuració, obriu l'aplicació del Signal al dispositiu mòbil i aneu a Configuració > Converses.",
+        "message": "Per a canviar aquesta configuració, obriu l'aplicació del CoolApp al dispositiu mòbil i aneu a Configuració > Converses.",
         "description": "Description for the generate link previews setting"
     },
     "Preferences--advanced": {
@@ -6742,7 +6742,7 @@
         "description": "Title for the 'who can do X' setting"
     },
     "Preferences__privacy--description": {
-        "message": "Per a canviar aquesta configuració, obriu l'aplicació del Signal al dispositiu mòbil i aneu a Configuració > Privadesa.",
+        "message": "Per a canviar aquesta configuració, obriu l'aplicació del CoolApp al dispositiu mòbil i aneu a Configuració > Privadesa.",
         "description": "Description for the 'who can do X' setting"
     },
     "Preferences__who-can--everybody": {
@@ -6804,7 +6804,7 @@
         }
     },
     "NSIS__retry-dialog--first-line": {
-        "message": "No es pot tancar el Signal.",
+        "message": "No es pot tancar el CoolApp.",
         "description": "First line of the dialog displayed when Windows installer can't close application automatically and needs user intervention to complete the installation."
     },
     "NSIS__retry-dialog--second-line": {
@@ -6817,7 +6817,7 @@
         "placeholders": {
             "appName": {
                 "content": "$1",
-                "example": "Signal"
+                "example": "CoolApp"
             }
         }
     },
@@ -6834,7 +6834,7 @@
         "description": "A title of the dialog displayed when starting an application after a recent crash"
     },
     "CrashReportDialog__body": {
-        "message": "El Signal s'ha reiniciat després d'una fallada. Podeu enviar un informe d'error per a ajudar el Signal a investigar el problema.",
+        "message": "El CoolApp s'ha reiniciat després d'una fallada. Podeu enviar un informe d'error per a ajudar el CoolApp a investigar el problema.",
         "description": "The body of the dialog displayed when starting an application after a recent crash"
     },
     "CrashReportDialog__submit": {
@@ -7100,7 +7100,7 @@
         "description": "Title for the whats new modal"
     },
     "WhatsNew__bugfixes": {
-        "message": "Aquesta versió conté una sèrie de petites modificacions i correccions d'errors per tal que el Signal funcioni sense problemes.",
+        "message": "Aquesta versió conté una sèrie de petites modificacions i correccions d'errors per tal que el CoolApp funcioni sense problemes.",
         "description": "Release notes for releases that only include bug fixes"
     },
     "WhatsNew__v5.40--1": {

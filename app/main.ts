@@ -320,6 +320,7 @@ function prepareUrl(
     cdnUrl0: config.get<ConfigType>('cdn').get<string>('0'),
     cdnUrl2: config.get<ConfigType>('cdn').get<string>('2'),
     certificateAuthority: config.get<string>('certificateAuthority'),
+    awsCertificateAuthority: config.get<string>('awsCertificateAuthority'),
     environment: enableCI ? 'production' : getEnvironment(),
     enableCI: enableCI ? 'true' : '',
     node_version: process.versions.node,

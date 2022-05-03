@@ -5,7 +5,7 @@
     },
     "privacyPolicy": {
         "message": "Sera ya Masharti na Usiri",
-        "description": "Shown in the about box for the link to https://signal.org/legal"
+        "description": "Shown in the about box for the link to https://chat.coolapp.asia/legal"
     },
     "copyErrorAndQuit": {
         "message": "Nakili hitilafu na uondoke",
@@ -72,7 +72,7 @@
         "description": "Application menu command to show all application windows"
     },
     "appMenuQuit": {
-        "message": "Toka Signal",
+        "message": "Toka CoolApp",
         "description": "Application menu command to close the application"
     },
     "editMenuUndo": {
@@ -184,7 +184,7 @@
         "description": "One of the menu options available in the Avatar popup menu"
     },
     "avatarMenuUpdateAvailable": {
-        "message": "Sasisha Signal",
+        "message": "Sasisha CoolApp",
         "description": "One of the menu options available in the Avatar popup menu"
     },
     "loading": {
@@ -258,7 +258,7 @@
         "description": "Header shown on the first screen in the data import process"
     },
     "loadDataDescription": {
-        "message": "Umepita tu kwenye mchakato wa uhamisho, na wawasiliano wako na ujumbe unakungoja kwa uvumilivu kwenye tarakilishi yako. Chagua folda iliyo na data uliyohamisha ya Signal.",
+        "message": "Umepita tu kwenye mchakato wa uhamisho, na wawasiliano wako na ujumbe unakungoja kwa uvumilivu kwenye tarakilishi yako. Chagua folda iliyo na data uliyohamisha ya CoolApp.",
         "description": "Introduction to the process of importing messages and contacts from disk"
     },
     "importChooserTitle": {
@@ -274,7 +274,7 @@
         "description": "Header of screen shown as data is import"
     },
     "importErrorFirst": {
-        "message": "Hakikisha umechagua saraka sahihi iliyo ha hifadhi yako ya data ya Signal. Jina lake linastahili kuanza na ' Uhamisho wa Signal'. Unaweza kuhifadhi nakala yako plya ya data yako kutoka kwa programu ya Chrome.",
+        "message": "Hakikisha umechagua saraka sahihi iliyo ha hifadhi yako ya data ya CoolApp. Jina lake linastahili kuanza na ' Uhamisho wa CoolApp'. Unaweza kuhifadhi nakala yako plya ya data yako kutoka kwa programu ya Chrome.",
         "description": "Message shown if the import went wrong; first paragraph"
     },
     "importErrorSecond": {
@@ -290,7 +290,7 @@
         "description": "Header shown on the screen at the end of a successful import process"
     },
     "importCompleteStartButton": {
-        "message": "Anza kutumia Signal Desktop",
+        "message": "Anza kutumia CoolApp Desktop",
         "description": "Button shown at end of successful import process, nothing left but a restart"
     },
     "importCompleteLinkButton": {
@@ -398,7 +398,7 @@
         "description": "When there are multiple previously-verified group members with safety number changes, a banner will be shown. The list of contacts with safety number changes is shown, and this text introduces that list."
     },
     "changedRightAfterVerify": {
-        "message": "Nambari ya usalama unayojaribu kuthibitisha imebadilika. Tafadhali kagua nambari yako mpya ya usalama unayotumia na $name1$. Kumbuka, mabadiliko haya yanaweza kumaanisha kuwa mtu anayejaribu kuzuia mawasiliano yako au kuwa $name2$ amesakinisha Signal upya.",
+        "message": "Nambari ya usalama unayojaribu kuthibitisha imebadilika. Tafadhali kagua nambari yako mpya ya usalama unayotumia na $name1$. Kumbuka, mabadiliko haya yanaweza kumaanisha kuwa mtu anayejaribu kuzuia mawasiliano yako au kuwa $name2$ amesakinisha CoolApp upya.",
         "description": "Shown on the safety number screen when the user has selected to verify/unverify a contact's safety number, and we immediately discover a safety number change",
         "placeholders": {
             "name1": {
@@ -420,7 +420,7 @@
         "description": "Shown on confirmation dialog when user attempts to send a message in the outbox"
     },
     "identityKeyErrorOnSend": {
-        "message": "Nambari yako ya usalama unayotumia kwa $name1$ imebadilika. Hii inaweza kumaanisha kuwa mtu anajaribu kuzuia mawasiliano yako au kuwa $name2$ amesakinisha Signal upya. Unashauriwa uthibitishe nambari yako ya usalama unayotumia kwa anwani hii.",
+        "message": "Nambari yako ya usalama unayotumia kwa $name1$ imebadilika. Hii inaweza kumaanisha kuwa mtu anajaribu kuzuia mawasiliano yako au kuwa $name2$ amesakinisha CoolApp upya. Unashauriwa uthibitishe nambari yako ya usalama unayotumia kwa anwani hii.",
         "description": "Shown when user clicks on a failed recipient in the message detail view after an identity key change",
         "placeholders": {
             "name1": {
@@ -464,7 +464,7 @@
         "description": "Description of what will happen with your debug log"
     },
     "debugLogError": {
-        "message": "Something went wrong with the upload! Please email support@signal.org and attach your log as a text file.",
+        "message": "Something went wrong with the upload! Please email support@chat.coolapp.asia and attach your log as a text file.",
         "description": "Error message a recommendations if debug log upload fails"
     },
     "debugLogSuccess": {
@@ -544,7 +544,7 @@
         "description": "Header for a key change dialog"
     },
     "identityChanged": {
-        "message": "Nambari yako ya usalama na wasiliano huu imebadilika. Hili linaweza kumaaanisha kuwa aidha kuna mtu anayejaribu kukatiza mawasiliano yenu, ama tu wasiliano huu amesimika upya Signal. Unaweza taka kuhakikisha nambari yako mpya ya usalama hapa chini.",
+        "message": "Nambari yako ya usalama na wasiliano huu imebadilika. Hili linaweza kumaaanisha kuwa aidha kuna mtu anayejaribu kukatiza mawasiliano yenu, ama tu wasiliano huu amesimika upya CoolApp. Unaweza taka kuhakikisha nambari yako mpya ya usalama hapa chini.",
         "description": ""
     },
     "incomingError": {
@@ -609,11 +609,11 @@
     },
     "loadingPreview": {
         "message": "Inapakia hakiki...",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area"
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area"
     },
     "stagedPreviewThumbnail": {
         "message": "Muunganisho wa hakiki ya kijipicha rasimu kwa  $domain$",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area",
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area",
         "placeholders": {
             "path": {
                 "content": "$1",
@@ -623,7 +623,7 @@
     },
     "previewThumbnail": {
         "message": "Muunganisho wa hakiki ya kijipicha kwa  $domain$",
-        "description": "Shown while Signal Desktop is fetching metadata for a url in composition area",
+        "description": "Shown while CoolApp Desktop is fetching metadata for a url in composition area",
         "placeholders": {
             "domain": {
                 "content": "$1",
@@ -737,18 +737,18 @@
     },
     "joinTheBeta": {
         "message": "Jiunge na Toleo la Beta",
-        "description": "Item under the Help menu, takes you to an article describing how to install the beta release of Signal Desktop"
+        "description": "Item under the Help menu, takes you to an article describing how to install the beta release of CoolApp Desktop"
     },
     "signalDesktopPreferences": {
-        "message": "Upendeleo wa Signal Desktop",
-        "description": "Title of the window that pops up with Signal Desktop preferences in it"
+        "message": "Upendeleo wa CoolApp Desktop",
+        "description": "Title of the window that pops up with CoolApp Desktop preferences in it"
     },
     "signalDesktopStickerCreator": {
         "message": "Fundi wa pakiti ya vibandiko",
-        "description": "Title of the window that pops up with Signal Desktop preferences in it"
+        "description": "Title of the window that pops up with CoolApp Desktop preferences in it"
     },
     "aboutSignalDesktop": {
-        "message": "Kuhusu Signal Desktop",
+        "message": "Kuhusu CoolApp Desktop",
         "description": "Item under the Help menu, which opens a small about window"
     },
     "screenShareWindow": {
@@ -772,7 +772,7 @@
         "description": "Command in the tray icon menu, to quit the application"
     },
     "signalDesktop": {
-        "message": "Signal Desktop",
+        "message": "CoolApp Desktop",
         "description": "Tooltip for the tray icon"
     },
     "search": {
@@ -850,7 +850,7 @@
         }
     },
     "welcomeToSignal": {
-        "message": "Karibu Signal",
+        "message": "Karibu CoolApp",
         "description": ""
     },
     "whatsNew": {
@@ -891,7 +891,7 @@
     },
     "sendMessageToContact": {
         "message": "Tuma Ujumbe",
-        "description": "Shown when you are sent a contact and that contact has a signal account"
+        "description": "Shown when you are sent a contact and that contact has a CoolApp account"
     },
     "home": {
         "message": "gombo kaya",
@@ -1004,15 +1004,15 @@
         }
     },
     "audioPermissionNeeded": {
-        "message": "Ili kutuma ujumbe wa sauti, kubali Signal Desktop iweze kufikia kipaza sauti chako.",
+        "message": "Ili kutuma ujumbe wa sauti, kubali CoolApp Desktop iweze kufikia kipaza sauti chako.",
         "description": "Shown if the user attempts to send an audio message without audio permissions turned on"
     },
     "audioCallingPermissionNeeded": {
-        "message": "Ili uweze kupiga simu, sharti uiruhusu Signal Desktop ifikie maikrofoni yako.",
+        "message": "Ili uweze kupiga simu, sharti uiruhusu CoolApp Desktop ifikie maikrofoni yako.",
         "description": "Shown if the user attempts access the microphone for calling without audio permissions turned on"
     },
     "videoCallingPermissionNeeded": {
-        "message": "Ili uweze kupiga simu za video, sharti uiruhusu Signal Desktop ifikie kamera yako.",
+        "message": "Ili uweze kupiga simu za video, sharti uiruhusu CoolApp Desktop ifikie kamera yako.",
         "description": "Shown if the user attempts access the camera for video calling without video permissions turned on"
     },
     "allowAccess": {
@@ -1052,7 +1052,7 @@
         "description": "Shown in a button when a conversation is unmuted and can be muted"
     },
     "cannotUpdateDetail": {
-        "message": "Signal couldn't update. $retry$ or visit $url$ to install it manually. Then, $support$ about this problem",
+        "message": "CoolApp couldn't update. $retry$ or visit $url$ to install it manually. Then, $support$ about this problem",
         "description": "Shown if a general error happened while trying to install update package",
         "placeholders": {
             "retry": {
@@ -1061,7 +1061,7 @@
             },
             "url": {
                 "content": "$2",
-                "example": "https://signal.org/download"
+                "example": "https://chat.coolapp.asia/download"
             },
             "support": {
                 "content": "$3",
@@ -1070,12 +1070,12 @@
         }
     },
     "cannotUpdateRequireManualDetail": {
-        "message": "Signal couldn't update. Visit $url$ to install it manually. Then, $support$ about this problem",
+        "message": "CoolApp couldn't update. Visit $url$ to install it manually. Then, $support$ about this problem",
         "description": "Shown if a general error happened while trying to install update package and manual update is required",
         "placeholders": {
             "url": {
                 "content": "$2",
-                "example": "https://signal.org/download"
+                "example": "https://chat.coolapp.asia/download"
             },
             "support": {
                 "content": "$3",
@@ -1084,12 +1084,12 @@
         }
     },
     "readOnlyVolume": {
-        "message": "Huenda Signal Desktop ipo katika karantini ya macOS, na haitaweza kusasisha kiotomatiki. Tafadhali jaribu kuhamishia $app$ kwenye $folder$ kwa kutumia Kitafutaji.",
+        "message": "Huenda CoolApp Desktop ipo katika karantini ya macOS, na haitaweza kusasisha kiotomatiki. Tafadhali jaribu kuhamishia $app$ kwenye $folder$ kwa kutumia Kitafutaji.",
         "description": "Shown on MacOS if running on a read-only volume and we cannot update",
         "placeholders": {
             "app": {
                 "content": "$1",
-                "example": "Signal.app"
+                "example": "CoolApp.app"
             },
             "folder": {
                 "content": "$2",
@@ -1150,7 +1150,7 @@
         "description": "Text shown in the confirmation dialog for deleting a message locally"
     },
     "deleteForEveryoneWarning": {
-        "message": "Ujumbe huu utafutwa kwa kila mtu aliye katika mazungumzo ikiwa anatumia toleo jipya la Signal. Kila mtu ataweza kuona kuwa umefuta ujumbe.",
+        "message": "Ujumbe huu utafutwa kwa kila mtu aliye katika mazungumzo ikiwa anatumia toleo jipya la CoolApp. Kila mtu ataweza kuona kuwa umefuta ujumbe.",
         "description": "Text shown in the confirmation dialog for deleting a message for everyone"
     },
     "from": {
@@ -1260,7 +1260,7 @@
         "description": "Shown in timeline when session is automatically reset, to provide access to a popup info dialog"
     },
     "ChatRefresh--summary": {
-        "message": "Signal hutumia usimbaji wa mwisho hadi mwisho na inaweza kuhitaji kuonyesha upya gumzo zako wakati mwingine. Kitendo hiki hakiathiri usalama wa gumzo yako lakini huenda umekosa ujumbe kutoka kwa mwasiliani huyu na unaweza kumwomba autume tena.",
+        "message": "CoolApp hutumia usimbaji wa mwisho hadi mwisho na inaweza kuhitaji kuonyesha upya gumzo zako wakati mwingine. Kitendo hiki hakiathiri usalama wa gumzo yako lakini huenda umekosa ujumbe kutoka kwa mwasiliani huyu na unaweza kumwomba autume tena.",
         "description": "Shown on explainer dialog available from chat session refreshed timeline events"
     },
     "ChatRefresh--contactSupport": {
@@ -1352,27 +1352,27 @@
         "description": "Used in the media gallery documents tab to visually represent a file"
     },
     "installWelcome": {
-        "message": "Karibu kwenye Signal Desktop",
+        "message": "Karibu kwenye CoolApp Desktop",
         "description": "Welcome title on the install page"
     },
     "installTagline": {
-        "message": "Faragha inawezekana. Signal inairahisisha.",
+        "message": "Faragha inawezekana. CoolApp inairahisisha.",
         "description": "Tagline displayed under 'installWelcome' string on the install page"
     },
     "linkedDevices": {
         "message": "Vifaa Vilivyounganishwa",
-        "description": "Used in the guidance to help people find the 'link new device' area of their Signal mobile app"
+        "description": "Used in the guidance to help people find the 'link new device' area of their CoolApp mobile app"
     },
     "linkNewDevice": {
         "message": "Unganisha Kifaa Kipya",
-        "description": "The menu option shown in Signal iOS to add a new linked device"
+        "description": "The menu option shown in CoolApp iOS to add a new linked device"
     },
     "Install__scan-this-code": {
-        "message": "Scan this code in the Signal app on your phone",
+        "message": "Scan this code in the CoolApp app on your phone",
         "description": "Title of the device link screen. Also used as alt text for the QR code on the device link screen"
     },
     "Install__instructions__1": {
-        "message": "Open Signal on your phone",
+        "message": "Open CoolApp on your phone",
         "description": "Instructions on the device link screen"
     },
     "Install__instructions__2": {
@@ -1462,7 +1462,7 @@
         "description": ""
     },
     "installTooOld": {
-        "message": "Sasisha Signal kwenye kifaa hiki ili uunganishe simu yako.",
+        "message": "Sasisha CoolApp kwenye kifaa hiki ili uunganishe simu yako.",
         "description": ""
     },
     "installErrorHeader": {
@@ -1650,7 +1650,7 @@
         }
     },
     "calling__pre-call-info--will-ring-1": {
-        "message": "$person$atapigiwa simu na Signal",
+        "message": "$person$atapigiwa simu na CoolApp",
         "description": "Shown in the calling lobby to describe who will be rung",
         "placeholders": {
             "person": {
@@ -1660,7 +1660,7 @@
         }
     },
     "calling__pre-call-info--will-ring-2": {
-        "message": "Signal will ring $first$ and $second$",
+        "message": "CoolApp will ring $first$ and $second$",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "first": {
@@ -1674,7 +1674,7 @@
         }
     },
     "calling__pre-call-info--will-ring-3": {
-        "message": "Signal will ring $first$, $second$, and $third$",
+        "message": "CoolApp will ring $first$, $second$, and $third$",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "first": {
@@ -1692,7 +1692,7 @@
         }
     },
     "calling__pre-call-info--will-ring-many": {
-        "message": "Signal will ring $first$, $second$, and $others$ others",
+        "message": "CoolApp will ring $first$, $second$, and $others$ others",
         "description": "Shown in the calling lobby to describe who will be rang",
         "placeholders": {
             "person": {
@@ -1818,7 +1818,7 @@
         "description": "Body text for the share screen notification"
     },
     "calling__presenting--info": {
-        "message": "Signal inashiriki $window$.",
+        "message": "CoolApp inashiriki $window$.",
         "description": "Text that appears in the screen sharing controller to inform person that they are presenting",
         "placeholders": {
             "name": {
@@ -1860,7 +1860,7 @@
         "description": "Shown as the title for the modal that requests screen recording permissions"
     },
     "calling__presenting--macos-permission-description": {
-        "message": "Signal inahitaji ruhusa ya kufikia rekodi ya skrini ya kompyuta yako.",
+        "message": "CoolApp inahitaji ruhusa ya kufikia rekodi ya skrini ya kompyuta yako.",
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-instruction-step1": {
@@ -1872,7 +1872,7 @@
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-instruction-step3": {
-        "message": "Kwenye sehemi ya kulia, chagua sanduku lililo karibu na Signal. Usipoona Signal kwenye orodha, bonyeza + uiongeze.",
+        "message": "Kwenye sehemi ya kulia, chagua sanduku lililo karibu na CoolApp. Usipoona CoolApp kwenye orodha, bonyeza + uiongeze.",
         "description": "Shown as the description for the modal that requests screen recording permissions"
     },
     "calling__presenting--permission-open": {
@@ -1888,7 +1888,7 @@
         "description": "Description of the always relay calls setting"
     },
     "alwaysRelayCallsDetail": {
-        "message": "Wasilisha simu zote kupitia Signal seva kuzuia kutambulisha anwani yako ya IP kwa mwasiliani wako. Kuwezesha kutapunguza ubora wa simu",
+        "message": "Wasilisha simu zote kupitia CoolApp seva kuzuia kutambulisha anwani yako ya IP kwa mwasiliani wako. Kuwezesha kutapunguza ubora wa simu",
         "description": "Details describing the always relay calls setting"
     },
     "permissions": {
@@ -1912,12 +1912,12 @@
         "description": "Description of the spell check setting"
     },
     "spellCheckWillBeEnabled": {
-        "message": "Ukaguzi wa uendelezaji utawezeshwa wakati Signal itawashwa tena.",
-        "description": "Shown when the user enables spellcheck to indicate that they must restart Signal."
+        "message": "Ukaguzi wa uendelezaji utawezeshwa wakati CoolApp itawashwa tena.",
+        "description": "Shown when the user enables spellcheck to indicate that they must restart CoolApp."
     },
     "spellCheckWillBeDisabled": {
-        "message": "Ukaguzi wa uendelezaji utazimwa wakati Signal itawashwa tena.",
-        "description": "Shown when the user disables spellcheck to indicate that they must restart Signal."
+        "message": "Ukaguzi wa uendelezaji utazimwa wakati CoolApp itawashwa tena.",
+        "description": "Shown when the user disables spellcheck to indicate that they must restart CoolApp."
     },
     "SystemTraySetting__minimize-to-system-tray": {
         "message": "Punguza uonyeshe kwenye sehemu ya arifa ya mfumo",
@@ -1960,8 +1960,8 @@
         "description": "Message shown to user when app is disconnected and data deleted"
     },
     "deleteOldIndexedDBData": {
-        "message": "Una data zee kutokana na usanikishaji wa awali wa Signal Desktop. Ukichagua kuendelea, itafutwa na utaanza kutoka mwanzoni.",
-        "description": "Shown if user last ran Signal Desktop before October 2018"
+        "message": "Una data zee kutokana na usanikishaji wa awali wa CoolApp Desktop. Ukichagua kuendelea, itafutwa na utaanza kutoka mwanzoni.",
+        "description": "Shown if user last ran CoolApp Desktop before October 2018"
     },
     "deleteOldData": {
         "message": "Futa Data Zee",
@@ -2074,11 +2074,11 @@
         "description": "Text that links to a support article on verifying safety numbers"
     },
     "expiredWarning": {
-        "message": "Toleo hili la Signal Desktop limeisha. Tafadhali boresha hadi kwenye toleo la hivi punde zaidi  ili uendelee kutuma ujumbe.",
+        "message": "Toleo hili la CoolApp Desktop limeisha. Tafadhali boresha hadi kwenye toleo la hivi punde zaidi  ili uendelee kutuma ujumbe.",
         "description": "Warning notification that this version of the app has expired"
     },
     "upgrade": {
-        "message": "Click to go to signal.org/download",
+        "message": "Click to go to chat.coolapp.asia/download",
         "description": "Label text for button to upgrade the app to the latest version"
     },
     "mediaMessage": {
@@ -2094,7 +2094,7 @@
         "description": "Label for contact and group sync settings"
     },
     "syncExplanation": {
-        "message": "Hamisha vikundi na wawasiliani wote wa Signal kutoka kwa kifaa chako cha rununu.",
+        "message": "Hamisha vikundi na wawasiliani wote wa CoolApp kutoka kwa kifaa chako cha rununu.",
         "description": "Explanatory text for sync settings"
     },
     "lastSynced": {
@@ -2399,14 +2399,14 @@
     },
     "Toast--failed-to-fetch-username": {
         "message": "Failed to fetch username. Check your connection and try again.",
-        "description": "Shown if request to Signal servers to find username fails"
+        "description": "Shown if request to CoolApp servers to find username fails"
     },
     "Toast--failed-to-fetch-phone-number": {
         "message": "Failed to fetch phone number. Check your connection and try again.",
-        "description": "Shown if request to Signal servers to find phone number fails"
+        "description": "Shown if request to CoolApp servers to find phone number fails"
     },
     "startConversation--username-not-found": {
-        "message": "User not found. $atUsername$ is not a Signal user; make sure you’ve entered the complete username.",
+        "message": "User not found. $atUsername$ is not a CoolApp user; make sure you’ve entered the complete username.",
         "description": "Shown in dialog if username is not found. Note that 'username' will be the output of at-username",
         "placeholders": {
             "atUsername": {
@@ -2416,7 +2416,7 @@
         }
     },
     "startConversation--phone-number-not-found": {
-        "message": "User not found. \"$phoneNumber$\" is not a Signal user.",
+        "message": "User not found. \"$phoneNumber$\" is not a CoolApp user.",
         "description": "Shown in dialog if phone number is not found.",
         "placeholders": {
             "phoneNumber": {
@@ -2456,7 +2456,7 @@
         "description": "Shown in the alert when you add the maximum number of group members"
     },
     "chooseGroupMembers__maximum-group-size__body": {
-        "message": "Vikundi vya Signal vinaweza kuwa na kiwango cha juu zaidi cha wanachama $max$.",
+        "message": "Vikundi vya CoolApp vinaweza kuwa na kiwango cha juu zaidi cha wanachama $max$.",
         "description": "Shown in the alert when you add the maximum number of group members",
         "placeholders": {
             "max": {
@@ -2470,7 +2470,7 @@
         "description": "Shown in the alert when you add the maximum recommended number of group members"
     },
     "chooseGroupMembers__maximum-recommended-group-size__body": {
-        "message": "Vikundi vya Signal hufanya vizuri zaidi vikiwa na wanachama wasiozidi$max$. Kuongeza wanachama zaidi kutasababisha kucheleweshwa kwa kutuma na kupokea ujumbe.",
+        "message": "Vikundi vya CoolApp hufanya vizuri zaidi vikiwa na wanachama wasiozidi$max$. Kuongeza wanachama zaidi kutasababisha kucheleweshwa kwa kutuma na kupokea ujumbe.",
         "description": "Shown in the alert when you add the maximum recommended number of group members",
         "placeholders": {
             "max": {
@@ -2528,7 +2528,7 @@
         "description": "When a person inputs a number that is invalid"
     },
     "unlinkedWarning": {
-        "message": "Click to relink Signal Desktop to your mobile device to continue messaging.",
+        "message": "Click to relink CoolApp Desktop to your mobile device to continue messaging.",
         "description": ""
     },
     "unlinked": {
@@ -2552,7 +2552,7 @@
         "description": ""
     },
     "autoUpdateNewVersionMessage": {
-        "message": "Click to restart Signal",
+        "message": "Click to restart CoolApp",
         "description": ""
     },
     "downloadNewVersionMessage": {
@@ -2560,15 +2560,15 @@
         "description": ""
     },
     "downloadFullNewVersionMessage": {
-        "message": "Signal couldn’t update. Click to try again.",
+        "message": "CoolApp couldn’t update. Click to try again.",
         "description": "Shown in update dialog when partial update fails and we have to ask user to download full update"
     },
     "autoUpdateNewVersionInstructions": {
-        "message": "Tafadhali Washa Upya Signal ili kutekeleza sasisho.",
+        "message": "Tafadhali Washa Upya CoolApp ili kutekeleza sasisho.",
         "description": ""
     },
     "autoUpdateRestartButtonLabel": {
-        "message": "Washa upya Signal",
+        "message": "Washa upya CoolApp",
         "description": ""
     },
     "autoUpdateLaterButtonLabel": {
@@ -2735,7 +2735,7 @@
     },
     "message--getDescription--unsupported-message": {
         "message": "Ujumbe hautegemezwi",
-        "description": "Shown in notifications and in the left pane when a message has features too new for this signal install."
+        "description": "Shown in notifications and in the left pane when a message has features too new for this CoolApp install."
     },
     "message--getDescription--disappearing-media": {
         "message": "Media ya Mtazamo-mmoja tu",
@@ -2766,11 +2766,11 @@
         "description": "Shown in the sticker pack manager when you don't have any installed sticker packs."
     },
     "stickers--StickerManager--BlessedPacks": {
-        "message": "Mfululizo wa Sanaa za Signal",
+        "message": "Mfululizo wa Sanaa za CoolApp",
         "description": "Shown in the sticker pack manager above the default sticker packs."
     },
     "stickers--StickerManager--BlessedPacks--Empty": {
-        "message": "Hakuna vibandiko vya Msanii wa Signal vinavyopatikana",
+        "message": "Hakuna vibandiko vya Msanii wa CoolApp vinavyopatikana",
         "description": "Shown in the sticker pack manager when there are no blessed sticker packs available."
     },
     "stickers--StickerManager--ReceivedPacks": {
@@ -2795,15 +2795,15 @@
     },
     "stickers--StickerManager--Introduction--Image": {
         "message": "Kuwasilisha Vibandiko: Paka Jambazi",
-        "description": "Alt text on a tooltip image when the user upgrades to a version of Signal supporting stickers."
+        "description": "Alt text on a tooltip image when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerManager--Introduction--Title": {
         "message": "Kuwasilisha Vibandiko",
-        "description": "Shown as the title on a tooltip when the user upgrades to a version of Signal supporting stickers."
+        "description": "Shown as the title on a tooltip when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerManager--Introduction--Body": {
         "message": "Mbona utumie maneno na unaweza kutumia vibandiko?",
-        "description": "Shown as the body on a tooltip when the user upgrades to a version of Signal supporting stickers."
+        "description": "Shown as the body on a tooltip when the user upgrades to a version of CoolApp supporting stickers."
     },
     "stickers--StickerPicker--Open": {
         "message": "Fungua kiteua vibandiko",
@@ -2920,7 +2920,7 @@
         "description": "When a message is too long this is the affordance to expand the message"
     },
     "Message--unsupported-message": {
-        "message": "$contact$ amekutumia ujumbe ambao hauwezi kuchakatishwa ama kuonyeshwa kwa sababu unatumia kipengele mpya cha Signal.",
+        "message": "$contact$ amekutumia ujumbe ambao hauwezi kuchakatishwa ama kuonyeshwa kwa sababu unatumia kipengele mpya cha CoolApp.",
         "description": "",
         "placeholders": {
             "contact": {
@@ -2930,7 +2930,7 @@
         }
     },
     "Message--unsupported-message-ask-to-resend": {
-        "message": "Unaweza kumwomba  $contact$atume ujumbe huu upya kwa vile sasa unatumia toleo lililosasishwa la Signal.",
+        "message": "Unaweza kumwomba  $contact$atume ujumbe huu upya kwa vile sasa unatumia toleo lililosasishwa la CoolApp.",
         "description": "",
         "placeholders": {
             "contact": {
@@ -2940,16 +2940,16 @@
         }
     },
     "Message--from-me-unsupported-message": {
-        "message": "Moja ya kifaa chako imetuma ujumbe ambao hauwezi kuchakatishwa ama kuonyeshwa kwa sababu kinatumia kipengele mpya cha Signal.",
+        "message": "Moja ya kifaa chako imetuma ujumbe ambao hauwezi kuchakatishwa ama kuonyeshwa kwa sababu kinatumia kipengele mpya cha CoolApp.",
         "description": ""
     },
     "Message--from-me-unsupported-message-ask-to-resend": {
-        "message": "Ujumbe wa siku za usoni kama huu utaunganishwa kwa vile sasa unatumia toleo lililosasishwa la Signal.",
+        "message": "Ujumbe wa siku za usoni kama huu utaunganishwa kwa vile sasa unatumia toleo lililosasishwa la CoolApp.",
         "description": ""
     },
-    "Message--update-signal": {
-        "message": "Sasisha Signal",
-        "description": "Text for a button which will take user to Signal download page"
+    "Message--update-CoolApp": {
+        "message": "Sasisha CoolApp",
+        "description": "Text for a button which will take user to CoolApp download page"
     },
     "Message--tap-to-view-expired": {
         "message": "Imetazamwa",
@@ -3374,7 +3374,7 @@
         "description": "Text for the create another sticker pack button on the share stage of the sticker creator"
     },
     "StickerCreator--ShareStage--socialMessage": {
-        "message": "Tazama pakiti hii mpya ya vibandiko niliyobuni ya Signal. #fanyafaraghainate",
+        "message": "Tazama pakiti hii mpya ya vibandiko niliyobuni ya CoolApp. #fanyafaraghainate",
         "description": "Text which is shared to social media platforms for sticker packs"
     },
     "StickerCreator--Toasts--imagesAdded": {
@@ -3438,7 +3438,7 @@
         "description": "Text for the sticker preview for the dark theme"
     },
     "StickerCreator--Authentication--error": {
-        "message": "Tafadhali weka Signal kwenye simu yako na dawati ili utumie Kiumbaji cha Pakiti ya Vibandiko ya Signal ",
+        "message": "Tafadhali weka CoolApp kwenye simu yako na dawati ili utumie Kiumbaji cha Pakiti ya Vibandiko ya CoolApp ",
         "description": "The error message which appears when the user has not linked their account and attempts to use the Sticker Creator"
     },
     "Reactions--remove": {
@@ -3910,7 +3910,7 @@
         "description": "Shown in the call screen when the call is reconnecting due to network issues"
     },
     "callDuration": {
-        "message": "Signal $duration$",
+        "message": "CoolApp $duration$",
         "description": "Shown in the call screen to indicate how long the call has been connected",
         "placeholders": {
             "duration": {
@@ -4106,7 +4106,7 @@
         "description": "Shown in toast when you attempt to forward a message to an announcement only group"
     },
     "GroupV2--add--missing-capability": {
-        "message": "Watu hawa hawawezi kuongezwa kwenye kikundi hadi watakapoboresha Signal.",
+        "message": "Watu hawa hawawezi kuongezwa kwenye kikundi hadi watakapoboresha CoolApp.",
         "description": "Shown in a confirmation dialog when members who cannot view announcement only group cannot be added"
     },
     "GroupV2--cannot-start-group-call": {
@@ -4138,7 +4138,7 @@
         "description": "This group link is no longer valid."
     },
     "GroupV2--join--unknown-link-version": {
-        "message": "Kiungo hiki hakitumiki katika toleo hili la Signal Desktop.",
+        "message": "Kiungo hiki hakitumiki katika toleo hili la CoolApp Desktop.",
         "description": "Shown if you click a group link and we can't get information about it"
     },
     "GroupV2--join--link-revoked--title": {
@@ -5494,11 +5494,11 @@
         "description": "In the instructions for becoming a sustainer. The heading."
     },
     "BadgeSustainerInstructions__subheader": {
-        "message": "Signal is powered by people like you. Contribute and receive a badge.",
+        "message": "CoolApp is powered by people like you. Contribute and receive a badge.",
         "description": "In the instructions for becoming a sustainer. The subheading."
     },
     "BadgeSustainerInstructions__instructions__1": {
-        "message": "Open Signal on your phone",
+        "message": "Open CoolApp on your phone",
         "description": "In the instructions for becoming a sustainer. First instruction."
     },
     "BadgeSustainerInstructions__instructions__2": {
@@ -5518,11 +5518,11 @@
         "description": "Aria label for file attachment button in composition area"
     },
     "CompositionArea--sms-only__title": {
-        "message": "Mtu huyu hatumii Signal",
+        "message": "Mtu huyu hatumii CoolApp",
         "description": "Title for the composition area for the SMS-only contact"
     },
     "CompositionArea--sms-only__body": {
-        "message": "Signal Desktop haikubali kupokea ujumbe kwa watu wasiotumia Signal. Muombe mtu huyu asakinishe Signal afurahie huduma salama zaidi ya ujumbe.",
+        "message": "CoolApp Desktop haikubali kupokea ujumbe kwa watu wasiotumia CoolApp. Muombe mtu huyu asakinishe CoolApp afurahie huduma salama zaidi ya ujumbe.",
         "description": "Body for the composition area for the SMS-only contact"
     },
     "CompositionArea--sms-only__spinner-label": {
@@ -6115,10 +6115,10 @@
     },
     "MessageRequestWarning__dialog__learn-even-more": {
         "message": "Kuhusu Maombi ya Ujumbe",
-        "description": "Shown in the message request warning dialog. Clicking this button will open a page on Signal's support site"
+        "description": "Shown in the message request warning dialog. Clicking this button will open a page on CoolApp's support site"
     },
     "ContactSpoofing__same-name": {
-        "message": "Kagua maombi kwa uangalifu. Signal imempata mtu mwingine mwenye jina kama hili. $link$",
+        "message": "Kagua maombi kwa uangalifu. CoolApp imempata mtu mwingine mwenye jina kama hili. $link$",
         "description": "Shown in the timeline warning when you have a message request from someone with the same name as someone else",
         "placeholders": {
             "link": {
@@ -6220,7 +6220,7 @@
         "description": "Header in the captcha dialog"
     },
     "CaptchaDialog__first-paragraph": {
-        "message": "Ili kusaidia kuzuia ujumbe taka kwenye Signal, tafadhali kamilisha uthibitishaji.",
+        "message": "Ili kusaidia kuzuia ujumbe taka kwenye CoolApp, tafadhali kamilisha uthibitishaji.",
         "description": "First paragraph in the captcha dialog"
     },
     "CaptchaDialog__second-paragraph": {
@@ -6480,7 +6480,7 @@
         "description": "Placeholder for the username field"
     },
     "ProfileEditor--username--helper": {
-        "message": "Majina ya watumiaji kwenye Signal ni ya hiari. Ukichagua kuunda jina la mtumiaji watumiaji wengine wa Signal wataweza kukupata kwa jina hili la mtumiaji na kuwasiliana na wewe bila kujua nambari yako ya simu.",
+        "message": "Majina ya watumiaji kwenye CoolApp ni ya hiari. Ukichagua kuunda jina la mtumiaji watumiaji wengine wa CoolApp wataweza kukupata kwa jina hili la mtumiaji na kuwasiliana na wewe bila kujua nambari yako ya simu.",
         "description": "Shown on the edit username screen"
     },
     "ProfileEditor--username--check-characters": {
@@ -6690,7 +6690,7 @@
         "description": "Title for the generate link previews setting"
     },
     "Preferences__link-previews--description": {
-        "message": "To change this setting, open the Signal app on your mobile device and navigate to Settings > Chats",
+        "message": "To change this setting, open the CoolApp app on your mobile device and navigate to Settings > Chats",
         "description": "Description for the generate link previews setting"
     },
     "Preferences--advanced": {
@@ -6730,7 +6730,7 @@
         "description": "Title for the 'who can do X' setting"
     },
     "Preferences__privacy--description": {
-        "message": "To change these settings, open the Signal app on your mobile device and navigate to Settings > Privacy",
+        "message": "To change these settings, open the CoolApp app on your mobile device and navigate to Settings > Privacy",
         "description": "Description for the 'who can do X' setting"
     },
     "Preferences__who-can--everybody": {
@@ -6792,7 +6792,7 @@
         }
     },
     "NSIS__retry-dialog--first-line": {
-        "message": "Signal cannot be closed.",
+        "message": "CoolApp cannot be closed.",
         "description": "First line of the dialog displayed when Windows installer can't close application automatically and needs user intervention to complete the installation."
     },
     "NSIS__retry-dialog--second-line": {
@@ -6804,7 +6804,7 @@
         "description": "A title of the dialog displayed when starting an application after a recent crash"
     },
     "CrashReportDialog__body": {
-        "message": "Signal restarted after a crash. You can submit a crash report to help Signal investigate the issue.",
+        "message": "CoolApp restarted after a crash. You can submit a crash report to help CoolApp investigate the issue.",
         "description": "The body of the dialog displayed when starting an application after a recent crash"
     },
     "CrashReportDialog__submit": {
@@ -7062,7 +7062,7 @@
         "description": "Title for the whats new modal"
     },
     "WhatsNew__bugfixes": {
-        "message": "This version contains a number of small tweaks and bug fixes to keep Signal running smoothly.",
+        "message": "This version contains a number of small tweaks and bug fixes to keep CoolApp running smoothly.",
         "description": "Release notes for releases that only include bug fixes"
     },
     "WhatsNew__v5.36--1": {

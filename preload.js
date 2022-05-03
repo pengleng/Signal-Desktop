@@ -387,6 +387,7 @@ try {
       2: config.cdnUrl2,
     },
     certificateAuthority: config.certificateAuthority,
+    awsCertificateAuthority: config.awsCertificateAuthority,
     contentProxyUrl: config.contentProxyUrl,
     proxyUrl: config.proxyUrl,
     version: config.version,
