@@ -1,4 +1,4 @@
-// Copyright 2018-2022 Signal Messenger, LLC
+// Copyright 2018-2022 CoolApp Messenger, LLC
 // SPDX-License-Identifier: AGPL-3.0-only
 
 import { assert } from 'chai';
@@ -91,7 +91,7 @@ const getExpectedHelpMenu = (
     ...(includeAbout
       ? ([
           { type: 'separator' },
-          { label: 'About Signal Desktop', click: showAbout },
+          { label: 'About CoolApp Desktop', click: showAbout },
         ] as MenuListType)
       : []),
   ],
@@ -99,9 +99,9 @@ const getExpectedHelpMenu = (
 
 const EXPECTED_MACOS: MenuListType = [
   {
-    label: 'Signal Desktop',
+    label: 'CoolApp Desktop',
     submenu: [
-      { label: 'About Signal Desktop', click: showAbout },
+      { label: 'About CoolApp Desktop', click: showAbout },
       { type: 'separator' },
       {
         label: 'Preferences…',
@@ -115,7 +115,7 @@ const EXPECTED_MACOS: MenuListType = [
       { label: 'Hide Others', role: 'hideOthers' },
       { label: 'Show All', role: 'unhide' },
       { type: 'separator' },
-      { label: 'Quit Signal', role: 'quit' },
+      { label: 'Quit CoolApp', role: 'quit' },
     ],
   },
   {
@@ -153,7 +153,7 @@ const EXPECTED_WINDOWS: MenuListType = [
         click: showSettings,
       },
       { type: 'separator' },
-      { label: 'Quit Signal', role: 'quit' },
+      { label: 'Quit CoolApp', role: 'quit' },
     ],
   },
   getExpectedEditMenu(false),
