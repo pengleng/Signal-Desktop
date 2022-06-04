@@ -1646,7 +1646,7 @@ export function initialize({
       // Using _outerAJAX, since it's not hardcoded to the Signal Server. Unlike our
       //   attachment CDN, it uses our self-signed certificate, so we pass it in.
       return _outerAjax(`${cdnUrlObject['0']}/${path}`, {
-        certificateAuthority,
+        awsCertificateAuthority,
         contentType: 'application/octet-stream',
         proxyUrl,
         responseType: 'bytes',
@@ -2581,6 +2581,8 @@ export function initialize({
         options.groupPublicParamsHex,
         options.authCredentialPresentationHex
       );
+
+      throw basicAuth;
 
       const response = await _ajax({
         basicAuth,
